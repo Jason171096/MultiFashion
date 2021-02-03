@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 02-02-2021 a las 05:40:32
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-02-2021 a las 00:50:12
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,9 +145,10 @@ BEGIN
 	INSERT INTO venta(venta.IDFolio, venta.IDCliente, venta.Fecha, venta.Total) VALUES (idfolio, idcliente, fecha, total);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaPedido` (IN `idpedido` BIGINT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaPedido` (IN `idfolio` BIGINT, IN `idpedido` INT)  NO SQL
 BEGIN
 	UPDATE pedidos SET pedidos.Vendido = 1 WHERE pedidos.IDPedido = idpedido;
+    INSERT INTO venta_pedidos(venta_pedidos.IDFolio, venta_pedidos.IDPedido) VALUES(idfolio, idpedido);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerClientes` ()  READS SQL DATA
@@ -191,6 +192,11 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerTallas` ()  READS SQL DATA
 SELECT talla.IDTalla, talla.Numero FROM talla$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerVentaPedidoModelo` (IN `idfolio` INT)  NO SQL
+BEGIN
+	SELECT p.IDPedido, m.IDModelo, m.IDMarca, m.Color, m.Talla, m.PrecioCliente FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+END$$
 
 DELIMITER ;
 
@@ -714,8 +720,12 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`) VALUES
-(55, '104', 101, '', '', '2021-02-01 22:17:49', b'1', b'1'),
-(56, '130', 101, '', '', '2021-02-01 22:17:49', b'1', b'1');
+(60, '10009', 101, 'AMARILLLO', '22', '2021-02-03 09:39:15', b'1', b'1'),
+(61, '60', 101, 'RUBY', 'G', '2021-02-03 09:39:15', b'1', b'1'),
+(62, '7', 101, 'TURQUESA', '17', '2021-02-03 09:39:15', b'1', b'1'),
+(63, '10009', 101, 'RUBY', 'XG', '2021-02-03 09:40:23', b'1', b'1'),
+(64, '6', 101, 'TURQUESA', '22', '2021-02-03 09:40:23', b'1', b'1'),
+(65, '10009', 101, 'ROJO', 'CH', '2021-02-03 09:40:23', b'1', b'1');
 
 -- --------------------------------------------------------
 
@@ -779,7 +789,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
-(1, 101, '2021-02-01 22:37:12', '1562.70');
+(1, 101, '2021-02-03 09:39:37', '551.50'),
+(2, 101, '2021-02-03 09:41:05', '1654.50');
 
 -- --------------------------------------------------------
 
@@ -792,6 +803,18 @@ CREATE TABLE `venta_pedidos` (
   `IDFolio` bigint(20) NOT NULL,
   `IDPedido` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `venta_pedidos`
+--
+
+INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
+(1, 2, 61),
+(2, 2, 62),
+(3, 2, 64),
+(4, 2, 60),
+(5, 2, 63),
+(6, 2, 65);
 
 --
 -- Índices para tablas volcadas
@@ -860,6 +883,7 @@ ALTER TABLE `venta`
 -- Indices de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
+  ADD PRIMARY KEY (`IDVentaPedido`),
   ADD KEY `IDPedido` (`IDPedido`);
 
 --
@@ -888,7 +912,7 @@ ALTER TABLE `devolucion`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -901,6 +925,12 @@ ALTER TABLE `talla`
 --
 ALTER TABLE `usuario`
   MODIFY `IDUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `venta_pedidos`
+--
+ALTER TABLE `venta_pedidos`
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Modeloss));
             this.dgvModelos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtnNumPedido = new System.Windows.Forms.RadioButton();
@@ -42,16 +43,10 @@
             this.rbtnEditarModelo = new RoundButton.RoundButton();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lbModelos = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvModelos
@@ -229,57 +224,14 @@
             this.label3.Text = "Seleccione el Modelo, \r\nluego de en el boton de\r\nEditar Modelo";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelBarras
+            // UCBarraSuperior
             // 
-            this.panelBarras.BackColor = System.Drawing.Color.Transparent;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lbModelos);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(1026, 49);
-            this.panelBarras.TabIndex = 26;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lbModelos
-            // 
-            this.lbModelos.AutoSize = true;
-            this.lbModelos.BackColor = System.Drawing.Color.Transparent;
-            this.lbModelos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbModelos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbModelos.Location = new System.Drawing.Point(6, 9);
-            this.lbModelos.Name = "lbModelos";
-            this.lbModelos.Size = new System.Drawing.Size(107, 29);
-            this.lbModelos.TabIndex = 37;
-            this.lbModelos.Text = "Modelos";
-            this.lbModelos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbModelos_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(974, 0);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(924, 0);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(1026, 48);
+            this.UCBarraSuperior.TabIndex = 26;
             // 
             // Modeloss
             // 
@@ -287,7 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(1026, 601);
-            this.Controls.Add(this.panelBarras);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvModelos);
@@ -300,10 +252,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,14 +263,11 @@
         private System.Windows.Forms.TextBox txtBuscarModelo;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Panel panelBarras;
-        private System.Windows.Forms.Label lbModelos;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton rbtnNumPedido;
         private System.Windows.Forms.RadioButton rbtnFecha;
         private RoundButton.RoundButton rbtnEditarModelo;
         private RoundButton.RoundButton rbtnAgregarModelo;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

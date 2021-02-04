@@ -9,8 +9,6 @@ namespace MultimodeSales.Vistas
 {
     public partial class Devolucion : Form
     {
-        private int MX;
-        private int MY;
         CVenta cVenta = new CVenta();
         DataTable dt = new DataTable();
         public Devolucion()
@@ -20,6 +18,14 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonAceptar(rbtnAceptar);
             CRoundButton.FormattedRoundButtonAceptar(rbtnBuscarFolio);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.Text = "Devolución";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
             Size = new Size(880, 475);
             rbtnCancelar.Location = new Point(11, 407);
             rbtnAceptar.Location = new Point(718, 407);
@@ -63,40 +69,19 @@ namespace MultimodeSales.Vistas
 
         }
         #region Panel Barras
-        private void picMinimize_Click(object sender, EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        private void picClose_Click(object sender, EventArgs e)
+        private void closeClick(object sender, EventArgs e)
         {
             Close();
         }
-
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
+        private void mouseMove(object sender, MouseEventArgs e)
         {
-            MouseMove(sender, e);
-        }
-
-        private void lbDevolucion_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
         #endregion
-
-
     }
 }

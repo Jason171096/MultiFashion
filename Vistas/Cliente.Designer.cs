@@ -28,85 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lbClientes = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cliente));
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIDCliente = new System.Windows.Forms.TextBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbtnCancelar = new RoundButton.RoundButton();
+            this.rbtnEditarCliente = new RoundButton.RoundButton();
+            this.rbtnAgregarCliente = new RoundButton.RoundButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.rbtnAgregarCliente = new RoundButton.RoundButton();
-            this.rbtnEditarCliente = new RoundButton.RoundButton();
-            this.rbtnCancelar = new RoundButton.RoundButton();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBarras
-            // 
-            this.panelBarras.BackColor = System.Drawing.Color.Purple;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lbClientes);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(822, 46);
-            this.panelBarras.TabIndex = 29;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lbClientes
-            // 
-            this.lbClientes.AutoSize = true;
-            this.lbClientes.BackColor = System.Drawing.Color.Transparent;
-            this.lbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbClientes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbClientes.Location = new System.Drawing.Point(6, 9);
-            this.lbClientes.Name = "lbClientes";
-            this.lbClientes.Size = new System.Drawing.Size(101, 29);
-            this.lbClientes.TabIndex = 36;
-            this.lbClientes.Text = "Clientes";
-            this.lbClientes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbClientes_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.BackColor = System.Drawing.Color.Transparent;
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(760, 0);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(710, 0);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
             // 
             // label3
             // 
@@ -157,14 +98,14 @@
             this.dgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClientes.ColumnHeadersHeight = 50;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvClientes.EnableHeadersVisualStyles = false;
@@ -172,22 +113,22 @@
             this.dgvClientes.Location = new System.Drawing.Point(11, 305);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowHeadersWidth = 30;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.MidnightBlue;
-            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
+            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClientes.RowTemplate.Height = 30;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(802, 258);
@@ -210,6 +151,55 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
+            // 
+            // rbtnCancelar
+            // 
+            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnCancelar.Location = new System.Drawing.Point(212, 192);
+            this.rbtnCancelar.Name = "rbtnCancelar";
+            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.Size = new System.Drawing.Size(149, 45);
+            this.rbtnCancelar.TabIndex = 35;
+            this.rbtnCancelar.Text = "Cancelar";
+            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
+            this.rbtnCancelar.UseVisualStyleBackColor = true;
+            this.rbtnCancelar.Visible = false;
+            this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
+            // 
+            // rbtnEditarCliente
+            // 
+            this.rbtnEditarCliente.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnEditarCliente.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnEditarCliente.Location = new System.Drawing.Point(212, 143);
+            this.rbtnEditarCliente.Name = "rbtnEditarCliente";
+            this.rbtnEditarCliente.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnEditarCliente.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnEditarCliente.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnEditarCliente.Size = new System.Drawing.Size(149, 45);
+            this.rbtnEditarCliente.TabIndex = 34;
+            this.rbtnEditarCliente.Text = "Editar Cliente";
+            this.rbtnEditarCliente.TextColor = System.Drawing.Color.White;
+            this.rbtnEditarCliente.UseVisualStyleBackColor = true;
+            this.rbtnEditarCliente.Click += new System.EventHandler(this.rbtnEditarCliente_Click);
+            // 
+            // rbtnAgregarCliente
+            // 
+            this.rbtnAgregarCliente.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnAgregarCliente.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnAgregarCliente.Location = new System.Drawing.Point(21, 143);
+            this.rbtnAgregarCliente.Name = "rbtnAgregarCliente";
+            this.rbtnAgregarCliente.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnAgregarCliente.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnAgregarCliente.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnAgregarCliente.Size = new System.Drawing.Size(174, 45);
+            this.rbtnAgregarCliente.TabIndex = 33;
+            this.rbtnAgregarCliente.Text = "Agregar Cliente";
+            this.rbtnAgregarCliente.TextColor = System.Drawing.Color.White;
+            this.rbtnAgregarCliente.UseVisualStyleBackColor = true;
+            this.rbtnAgregarCliente.Click += new System.EventHandler(this.rbtnAgregarCliente_Click);
             // 
             // txtBuscar
             // 
@@ -243,54 +233,14 @@
             this.label2.Text = "Haga doble click \r\nen el Cliente \r\nque quiera editar";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rbtnAgregarCliente
+            // UCBarraSuperior
             // 
-            this.rbtnAgregarCliente.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnAgregarCliente.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAgregarCliente.Location = new System.Drawing.Point(21, 143);
-            this.rbtnAgregarCliente.Name = "rbtnAgregarCliente";
-            this.rbtnAgregarCliente.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnAgregarCliente.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnAgregarCliente.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnAgregarCliente.Size = new System.Drawing.Size(174, 45);
-            this.rbtnAgregarCliente.TabIndex = 33;
-            this.rbtnAgregarCliente.Text = "Agregar Cliente";
-            this.rbtnAgregarCliente.TextColor = System.Drawing.Color.White;
-            this.rbtnAgregarCliente.UseVisualStyleBackColor = true;
-            this.rbtnAgregarCliente.Click += new System.EventHandler(this.rbtnAgregarCliente_Click);
-            // 
-            // rbtnEditarCliente
-            // 
-            this.rbtnEditarCliente.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnEditarCliente.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnEditarCliente.Location = new System.Drawing.Point(212, 143);
-            this.rbtnEditarCliente.Name = "rbtnEditarCliente";
-            this.rbtnEditarCliente.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnEditarCliente.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnEditarCliente.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnEditarCliente.Size = new System.Drawing.Size(149, 45);
-            this.rbtnEditarCliente.TabIndex = 34;
-            this.rbtnEditarCliente.Text = "Editar Cliente";
-            this.rbtnEditarCliente.TextColor = System.Drawing.Color.White;
-            this.rbtnEditarCliente.UseVisualStyleBackColor = true;
-            this.rbtnEditarCliente.Click += new System.EventHandler(this.rbtnEditarCliente_Click);
-            // 
-            // rbtnCancelar
-            // 
-            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnCancelar.Location = new System.Drawing.Point(212, 192);
-            this.rbtnCancelar.Name = "rbtnCancelar";
-            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.Size = new System.Drawing.Size(149, 45);
-            this.rbtnCancelar.TabIndex = 35;
-            this.rbtnCancelar.Text = "Cancelar";
-            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
-            this.rbtnCancelar.UseVisualStyleBackColor = true;
-            this.rbtnCancelar.Visible = false;
-            this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(822, 48);
+            this.UCBarraSuperior.TabIndex = 37;
             // 
             // Cliente
             // 
@@ -298,21 +248,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(822, 575);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvClientes);
-            this.Controls.Add(this.panelBarras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -322,7 +268,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panelBarras;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNombreCliente;
         private System.Windows.Forms.Label label4;
@@ -331,12 +276,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
-        private System.Windows.Forms.Label lbClientes;
         private System.Windows.Forms.Label label2;
         private RoundButton.RoundButton rbtnCancelar;
         private RoundButton.RoundButton rbtnEditarCliente;
         private RoundButton.RoundButton rbtnAgregarCliente;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

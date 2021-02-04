@@ -35,28 +35,17 @@ namespace MultimodeSales.Vistas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lbDevolucion = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolucion));
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDFolio = new System.Windows.Forms.TextBox();
             this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.mtDivider = new MaterialSkin.Controls.MaterialDivider();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.uCcomboBoxCliente1 = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.gBoxCambiar = new System.Windows.Forms.GroupBox();
-            this.roundButton1 = new RoundButton.RoundButton();
-            this.gBoxCambio = new System.Windows.Forms.GroupBox();
-            this.roundButton2 = new RoundButton.RoundButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.rbtnAceptar = new RoundButton.RoundButton();
-            this.rbtnCancelar = new RoundButton.RoundButton();
-            this.rbtnBuscarFolio = new RoundButton.RoundButton();
-            this.uCcomboBoxCliente1 = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +53,11 @@ namespace MultimodeSales.Vistas
             this.IDTalla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.gBoxCambiar = new System.Windows.Forms.GroupBox();
+            this.roundButton1 = new RoundButton.RoundButton();
+            this.gBoxCambio = new System.Windows.Forms.GroupBox();
+            this.roundButton2 = new RoundButton.RoundButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,67 +65,16 @@ namespace MultimodeSales.Vistas
             this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
+            this.rbtnAceptar = new RoundButton.RoundButton();
+            this.rbtnCancelar = new RoundButton.RoundButton();
+            this.rbtnBuscarFolio = new RoundButton.RoundButton();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();
             this.gBoxCambio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelBarras
-            // 
-            this.panelBarras.BackColor = System.Drawing.Color.Transparent;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lbDevolucion);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(880, 49);
-            this.panelBarras.TabIndex = 19;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lbDevolucion
-            // 
-            this.lbDevolucion.AutoSize = true;
-            this.lbDevolucion.BackColor = System.Drawing.Color.Transparent;
-            this.lbDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDevolucion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDevolucion.Location = new System.Drawing.Point(6, 9);
-            this.lbDevolucion.Name = "lbDevolucion";
-            this.lbDevolucion.Size = new System.Drawing.Size(133, 29);
-            this.lbDevolucion.TabIndex = 37;
-            this.lbDevolucion.Text = "Devolución";
-            this.lbDevolucion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbDevolucion_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(824, 0);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(773, 0);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
             // 
             // label1
             // 
@@ -189,6 +132,14 @@ namespace MultimodeSales.Vistas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
             // 
+            // uCcomboBoxCliente1
+            // 
+            this.uCcomboBoxCliente1.Location = new System.Drawing.Point(92, 31);
+            this.uCcomboBoxCliente1.Margin = new System.Windows.Forms.Padding(6);
+            this.uCcomboBoxCliente1.Name = "uCcomboBoxCliente1";
+            this.uCcomboBoxCliente1.Size = new System.Drawing.Size(433, 34);
+            this.uCcomboBoxCliente1.TabIndex = 42;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -216,7 +167,7 @@ namespace MultimodeSales.Vistas
             // 
             this.checkCambioModelo.AutoSize = true;
             this.checkCambioModelo.Depth = 0;
-            this.checkCambioModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkCambioModelo.Font = new System.Drawing.Font("Roboto", 10F);
             this.checkCambioModelo.Location = new System.Drawing.Point(666, 147);
             this.checkCambioModelo.Margin = new System.Windows.Forms.Padding(0);
             this.checkCambioModelo.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -279,6 +230,54 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion.TabIndex = 63;
+            // 
+            // IDPedido
+            // 
+            this.IDPedido.HeaderText = "Pedido";
+            this.IDPedido.Name = "IDPedido";
+            this.IDPedido.ReadOnly = true;
+            // 
+            // IDModelo
+            // 
+            this.IDModelo.HeaderText = "Modelo";
+            this.IDModelo.Name = "IDModelo";
+            this.IDModelo.ReadOnly = true;
+            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // IDMarca
+            // 
+            this.IDMarca.HeaderText = "Marca";
+            this.IDMarca.Name = "IDMarca";
+            this.IDMarca.ReadOnly = true;
+            // 
+            // IDColor
+            // 
+            this.IDColor.HeaderText = "Color";
+            this.IDColor.Name = "IDColor";
+            this.IDColor.ReadOnly = true;
+            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // IDTalla
+            // 
+            this.IDTalla.HeaderText = "Talla";
+            this.IDTalla.Name = "IDTalla";
+            this.IDTalla.ReadOnly = true;
+            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Precio Cliente";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // gBoxCambiar
             // 
@@ -387,108 +386,6 @@ namespace MultimodeSales.Vistas
             this.dataGridView1.Size = new System.Drawing.Size(850, 150);
             this.dataGridView1.TabIndex = 64;
             // 
-            // rbtnAceptar
-            // 
-            this.rbtnAceptar.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnAceptar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAceptar.Location = new System.Drawing.Point(732, 650);
-            this.rbtnAceptar.Name = "rbtnAceptar";
-            this.rbtnAceptar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnAceptar.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnAceptar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnAceptar.Size = new System.Drawing.Size(140, 40);
-            this.rbtnAceptar.TabIndex = 67;
-            this.rbtnAceptar.Text = "Aceptar";
-            this.rbtnAceptar.TextColor = System.Drawing.Color.White;
-            this.rbtnAceptar.UseVisualStyleBackColor = true;
-            // 
-            // rbtnCancelar
-            // 
-            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnCancelar.Location = new System.Drawing.Point(11, 650);
-            this.rbtnCancelar.Name = "rbtnCancelar";
-            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.Size = new System.Drawing.Size(140, 40);
-            this.rbtnCancelar.TabIndex = 68;
-            this.rbtnCancelar.Text = "Cancelar(Esc)";
-            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
-            this.rbtnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // rbtnBuscarFolio
-            // 
-            this.rbtnBuscarFolio.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnBuscarFolio.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnBuscarFolio.Location = new System.Drawing.Point(502, 142);
-            this.rbtnBuscarFolio.Name = "rbtnBuscarFolio";
-            this.rbtnBuscarFolio.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnBuscarFolio.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnBuscarFolio.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnBuscarFolio.Size = new System.Drawing.Size(148, 37);
-            this.rbtnBuscarFolio.TabIndex = 65;
-            this.rbtnBuscarFolio.Text = "Buscar Folio";
-            this.rbtnBuscarFolio.TextColor = System.Drawing.Color.White;
-            this.rbtnBuscarFolio.UseVisualStyleBackColor = true;
-            this.rbtnBuscarFolio.Click += new System.EventHandler(this.rbtnBuscarFolio_Click);
-            // 
-            // uCcomboBoxCliente1
-            // 
-            this.uCcomboBoxCliente1.Location = new System.Drawing.Point(92, 31);
-            this.uCcomboBoxCliente1.Margin = new System.Windows.Forms.Padding(6);
-            this.uCcomboBoxCliente1.Name = "uCcomboBoxCliente1";
-            this.uCcomboBoxCliente1.Size = new System.Drawing.Size(433, 34);
-            this.uCcomboBoxCliente1.TabIndex = 42;
-            // 
-            // IDPedido
-            // 
-            this.IDPedido.HeaderText = "Pedido";
-            this.IDPedido.Name = "IDPedido";
-            this.IDPedido.ReadOnly = true;
-            // 
-            // IDModelo
-            // 
-            this.IDModelo.HeaderText = "Modelo";
-            this.IDModelo.Name = "IDModelo";
-            this.IDModelo.ReadOnly = true;
-            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // IDMarca
-            // 
-            this.IDMarca.HeaderText = "Marca";
-            this.IDMarca.Name = "IDMarca";
-            this.IDMarca.ReadOnly = true;
-            // 
-            // IDColor
-            // 
-            this.IDColor.HeaderText = "Color";
-            this.IDColor.Name = "IDColor";
-            this.IDColor.ReadOnly = true;
-            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // IDTalla
-            // 
-            this.IDTalla.HeaderText = "Talla";
-            this.IDTalla.Name = "IDTalla";
-            this.IDTalla.ReadOnly = true;
-            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Precio Cliente";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Pedido";
@@ -537,6 +434,61 @@ namespace MultimodeSales.Vistas
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // rbtnAceptar
+            // 
+            this.rbtnAceptar.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnAceptar.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnAceptar.Location = new System.Drawing.Point(732, 650);
+            this.rbtnAceptar.Name = "rbtnAceptar";
+            this.rbtnAceptar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnAceptar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnAceptar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnAceptar.Size = new System.Drawing.Size(140, 40);
+            this.rbtnAceptar.TabIndex = 67;
+            this.rbtnAceptar.Text = "Aceptar";
+            this.rbtnAceptar.TextColor = System.Drawing.Color.White;
+            this.rbtnAceptar.UseVisualStyleBackColor = true;
+            // 
+            // rbtnCancelar
+            // 
+            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnCancelar.Location = new System.Drawing.Point(11, 650);
+            this.rbtnCancelar.Name = "rbtnCancelar";
+            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.Size = new System.Drawing.Size(140, 40);
+            this.rbtnCancelar.TabIndex = 68;
+            this.rbtnCancelar.Text = "Cancelar(Esc)";
+            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
+            this.rbtnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // rbtnBuscarFolio
+            // 
+            this.rbtnBuscarFolio.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnBuscarFolio.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnBuscarFolio.Location = new System.Drawing.Point(502, 142);
+            this.rbtnBuscarFolio.Name = "rbtnBuscarFolio";
+            this.rbtnBuscarFolio.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnBuscarFolio.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnBuscarFolio.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnBuscarFolio.Size = new System.Drawing.Size(148, 37);
+            this.rbtnBuscarFolio.TabIndex = 65;
+            this.rbtnBuscarFolio.Text = "Buscar Folio";
+            this.rbtnBuscarFolio.TextColor = System.Drawing.Color.White;
+            this.rbtnBuscarFolio.UseVisualStyleBackColor = true;
+            this.rbtnBuscarFolio.Click += new System.EventHandler(this.rbtnBuscarFolio_Click);
+            // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(880, 48);
+            this.UCBarraSuperior.TabIndex = 69;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,6 +496,7 @@ namespace MultimodeSales.Vistas
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(880, 695);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.rbtnBuscarFolio);
             this.Controls.Add(this.rbtnCancelar);
             this.Controls.Add(this.rbtnAceptar);
@@ -552,15 +505,10 @@ namespace MultimodeSales.Vistas
             this.Controls.Add(this.checkCambioModelo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.mtDivider);
-            this.Controls.Add(this.panelBarras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Devolucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devolucion";
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
@@ -573,11 +521,6 @@ namespace MultimodeSales.Vistas
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelBarras;
-        private System.Windows.Forms.Label lbDevolucion;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIDFolio;
         private System.Windows.Forms.Button btnAgregarMarca;
@@ -610,5 +553,6 @@ namespace MultimodeSales.Vistas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

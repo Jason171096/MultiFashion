@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lb = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditModelo));
             this.txtIDModelo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtColor = new System.Windows.Forms.TextBox();
@@ -48,63 +45,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelBarras
-            // 
-            this.panelBarras.BackColor = System.Drawing.Color.Transparent;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lb);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(494, 49);
-            this.panelBarras.TabIndex = 19;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lb
-            // 
-            this.lb.AutoSize = true;
-            this.lb.BackColor = System.Drawing.Color.Transparent;
-            this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lb.Location = new System.Drawing.Point(6, 9);
-            this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(0, 29);
-            this.lb.TabIndex = 37;
-            this.lb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lb_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(443, 0);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(389, 0);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
             // 
             // txtIDModelo
             // 
@@ -291,6 +235,15 @@
             this.rbtnCancelar.UseVisualStyleBackColor = true;
             this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
             // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(494, 48);
+            this.UCBarraSuperior.TabIndex = 54;
+            // 
             // EditModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,18 +251,14 @@
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.CancelButton = this.rbtnCancelar;
             this.ClientSize = new System.Drawing.Size(494, 464);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.rbtnCancelar);
             this.Controls.Add(this.rbtnAgregarModelo);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.panelBarras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditModelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditModelo";
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -319,11 +268,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelBarras;
-        private System.Windows.Forms.Label lb;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
         private System.Windows.Forms.TextBox txtIDModelo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtColor;
@@ -340,5 +284,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private RoundButton.RoundButton rbtnAgregarModelo;
         private RoundButton.RoundButton rbtnCancelar;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

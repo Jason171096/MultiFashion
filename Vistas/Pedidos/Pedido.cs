@@ -18,8 +18,6 @@ namespace MultimodeSales.Vistas
         CColoresyTallas ColoresyTallas = new CColoresyTallas();
         DataTable DataModels = new DataTable();
         private bool CellValueChange = false, SelectIndexChange = false;
-        private int MX;
-        private int MY;
 
         public Pedido()
         {
@@ -29,6 +27,14 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarColorTalla);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
             CRoundButton.FormattedRoundButtonAceptar(rbtnFinalizarPedido);
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.Text = "Pedido";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
             Clientes();
             Modelos();
             Colores();
@@ -166,38 +172,20 @@ namespace MultimodeSales.Vistas
         }
 
         #region Panel Barra
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-
-        private void lbPedido_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
-        }
-        private void picMinimize_Click(object sender, EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        private void picClose_Click(object sender, EventArgs e)
+        private void closeClick(object sender, EventArgs e)
         {
             DialogResult result = CMsgBox.DisplayConfirmation("¿Seguro que desea cerrar?");
             if (result == DialogResult.Yes)
                 Close();
+        }
+        private void mouseMove(object sender, MouseEventArgs e)
+        {
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
         #endregion
     }

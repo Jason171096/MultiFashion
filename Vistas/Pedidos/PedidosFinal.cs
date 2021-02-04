@@ -13,8 +13,6 @@ namespace MultimodeSales.Vistas
     {
         private int Buscar;
         CListaPedidosFinal listaPedidosFinal = new CListaPedidosFinal();
-        private int MX;
-        private int MY;
         DataTable dt;
         DataView dv;
         CModelo modelo = new CModelo();
@@ -26,8 +24,17 @@ namespace MultimodeSales.Vistas
             CDataGridView.FormattedDataGridView(dgvPedidosFinal);
             CRoundButton.FormattedRoundButtonAceptar(rbtnFinalizar);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
+
             rbtnNumPedido.Checked = true;
             rbtnTodos.Checked = true;
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.Text = "Lista de pedidos";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
             rbtnNumPedido.CheckedChanged += new EventHandler(radioButtonBuscar_CheckedChanged);
             rbtnFecha.CheckedChanged += new EventHandler(radioButtonBuscar_CheckedChanged);
             rbtnTodos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
@@ -240,38 +247,18 @@ namespace MultimodeSales.Vistas
             CargarLista();
         }
         #region Barra Superior
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-
-        private void lbPedidoFinal_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
-        }
-
-        private void picMinimize_Click(object sender, EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        private void picClose_Click(object sender, EventArgs e)
+        private void closeClick(object sender, EventArgs e)
         {
             Close();
+        }
+        private void mouseMove(object sender, MouseEventArgs e)
+        {
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
         #endregion
     }

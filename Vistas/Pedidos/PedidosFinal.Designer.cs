@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidosFinal));
             this.dgvPedidosFinal = new System.Windows.Forms.DataGridView();
             this.rbtnFecha = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -38,10 +39,6 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.rbtnNumPedido = new System.Windows.Forms.RadioButton();
             this.btnExportExcel = new System.Windows.Forms.Button();
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lbPedidoFinal = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,11 +57,9 @@
             this.rbtnNoLlegaron = new System.Windows.Forms.RadioButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizar = new RoundButton.RoundButton();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -202,60 +197,6 @@
             this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
-            // panelBarras
-            // 
-            this.panelBarras.BackColor = System.Drawing.Color.Purple;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lbPedidoFinal);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(1232, 46);
-            this.panelBarras.TabIndex = 32;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lbPedidoFinal
-            // 
-            this.lbPedidoFinal.AutoSize = true;
-            this.lbPedidoFinal.BackColor = System.Drawing.Color.Transparent;
-            this.lbPedidoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPedidoFinal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbPedidoFinal.Location = new System.Drawing.Point(6, 9);
-            this.lbPedidoFinal.Name = "lbPedidoFinal";
-            this.lbPedidoFinal.Size = new System.Drawing.Size(162, 29);
-            this.lbPedidoFinal.TabIndex = 36;
-            this.lbPedidoFinal.Text = "Pedidos Final";
-            this.lbPedidoFinal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbPedidoFinal_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.BackColor = System.Drawing.Color.Transparent;
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(1172, -2);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(1122, -2);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
             // 
             // groupBox2
             // 
@@ -494,6 +435,15 @@
             this.rbtnFinalizar.UseVisualStyleBackColor = true;
             this.rbtnFinalizar.Click += new System.EventHandler(this.rbtnFinalizar_Click);
             // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(1232, 48);
+            this.UCBarraSuperior.TabIndex = 40;
+            // 
             // PedidosFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,12 +451,12 @@
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.CancelButton = this.rbtnCancelar;
             this.ClientSize = new System.Drawing.Size(1232, 653);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.rbtnFinalizar);
             this.Controls.Add(this.rbtnCancelar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnExportExcel);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panelBarras);
             this.Controls.Add(this.dgvPedidosFinal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -517,10 +467,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -542,10 +488,6 @@
 
         private System.Windows.Forms.DataGridView dgvPedidosFinal;
         private System.Windows.Forms.RadioButton rbtnFecha;
-        private System.Windows.Forms.Panel panelBarras;
-        private System.Windows.Forms.Label lbPedidoFinal;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.TextBox txtBuscar;
@@ -569,5 +511,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

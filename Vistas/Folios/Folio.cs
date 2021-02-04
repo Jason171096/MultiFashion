@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
 using MultimodeSales.Vistas.Folios;
+using System;
 
 namespace MultimodeSales.Vistas
 {
@@ -13,8 +14,6 @@ namespace MultimodeSales.Vistas
         CVenta cVenta = new CVenta();
         private bool ventanaDevolucion;
         private bool ventanaFolio;
-        private int MX;
-        private int MY;
         public Folio(bool pFolio, bool ventanaDevolucion)
         {
             InitializeComponent();
@@ -22,14 +21,22 @@ namespace MultimodeSales.Vistas
             ventanaFolio = pFolio;
             CDataGridView.FormattedDataGridView(dgvFolio);
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            if(pFolio)
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.Text = "Folios";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
+            if (pFolio)
             {
-                lbFolio.Text = "Folios Ventas";
+                UCBarraSuperior.lbTitle.Text = "Folios Ventas";
                 cargarFoliosVentas();
             }
             else
             {
-                lbFolio.Text = "Folios Devoluciones";
+                UCBarraSuperior.lbTitle.Text = "Folios Devoluciones";
             }
         }
 
@@ -51,6 +58,23 @@ namespace MultimodeSales.Vistas
             dgvFolio.Columns[2].Width = 250;//Fecha
             dgvFolio.Columns[3].Width = 150;//Total
         }
+        private void dgvFolio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ventanaDevolucion)
+            {
+                cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Close();
+            }
+            else if (ventanaFolio)
+            {
+                FolioVenta folioVenta = new FolioVenta();
+                folioVenta.ShowDialog();
+            }
+        }
+        public CVenta returnVenta()
+        {
+            return cVenta;
+        }
 
         #region Barra Superior
         private void picMinimize_Click(object sender, System.EventArgs e)
@@ -58,51 +82,19 @@ namespace MultimodeSales.Vistas
             WindowState = FormWindowState.Minimized;
         }
 
-        private void picClose_Click(object sender, System.EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private void closeClick(object sender, EventArgs e)
         {
             Close();
         }
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
+        private void mouseMove(object sender, MouseEventArgs e)
         {
-            MouseMove(sender, e);
-        }
-
-        private void lbFolio_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
         #endregion
-
-        private void dgvFolio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(ventanaDevolucion)
-            {
-                cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
-                Close();
-            }
-            else if(ventanaFolio)
-            {
-                FolioVenta folioVenta = new FolioVenta();
-                folioVenta.ShowDialog();
-            }
-        }
-
-        public CVenta returnVenta()
-        {
-            return cVenta;
-        }
     }
 }

@@ -32,6 +32,7 @@ namespace MultimodeSales.Vistas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Folio));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtIDFolio = new System.Windows.Forms.TextBox();
@@ -39,15 +40,9 @@ namespace MultimodeSales.Vistas
             this.rbtnIDFolio = new System.Windows.Forms.RadioButton();
             this.rbtnCliente = new System.Windows.Forms.RadioButton();
             this.rbtnFecha = new System.Windows.Forms.RadioButton();
-            this.panelBarras = new System.Windows.Forms.Panel();
-            this.lbFolio = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.picMinimize = new System.Windows.Forms.PictureBox();
             this.dgvFolio = new System.Windows.Forms.DataGridView();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             this.groupBox1.SuspendLayout();
-            this.panelBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFolio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,60 +125,6 @@ namespace MultimodeSales.Vistas
             this.rbtnFecha.Text = "Fecha:";
             this.rbtnFecha.UseVisualStyleBackColor = true;
             // 
-            // panelBarras
-            // 
-            this.panelBarras.BackColor = System.Drawing.Color.Purple;
-            this.panelBarras.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.panelBarras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBarras.Controls.Add(this.lbFolio);
-            this.panelBarras.Controls.Add(this.picClose);
-            this.panelBarras.Controls.Add(this.picMinimize);
-            this.panelBarras.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarras.Location = new System.Drawing.Point(0, 0);
-            this.panelBarras.Name = "panelBarras";
-            this.panelBarras.Size = new System.Drawing.Size(616, 46);
-            this.panelBarras.TabIndex = 30;
-            this.panelBarras.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarras_MouseMove);
-            // 
-            // lbFolio
-            // 
-            this.lbFolio.AutoSize = true;
-            this.lbFolio.BackColor = System.Drawing.Color.Transparent;
-            this.lbFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFolio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFolio.Location = new System.Drawing.Point(6, 9);
-            this.lbFolio.Name = "lbFolio";
-            this.lbFolio.Size = new System.Drawing.Size(68, 29);
-            this.lbFolio.TabIndex = 36;
-            this.lbFolio.Text = "Folio";
-            this.lbFolio.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbFolio_MouseMove);
-            // 
-            // picClose
-            // 
-            this.picClose.BackColor = System.Drawing.Color.Transparent;
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
-            this.picClose.Location = new System.Drawing.Point(565, 0);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(48, 48);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picClose.TabIndex = 24;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // picMinimize
-            // 
-            this.picMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
-            this.picMinimize.Location = new System.Drawing.Point(515, 0);
-            this.picMinimize.Name = "picMinimize";
-            this.picMinimize.Size = new System.Drawing.Size(48, 48);
-            this.picMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picMinimize.TabIndex = 23;
-            this.picMinimize.TabStop = false;
-            this.picMinimize.Click += new System.EventHandler(this.picMinimize_Click);
-            // 
             // dgvFolio
             // 
             this.dgvFolio.AllowUserToAddRows = false;
@@ -231,6 +172,15 @@ namespace MultimodeSales.Vistas
             this.dgvFolio.TabIndex = 33;
             this.dgvFolio.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFolio_CellDoubleClick);
             // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(616, 48);
+            this.UCBarraSuperior.TabIndex = 34;
+            // 
             // Folio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,30 +188,21 @@ namespace MultimodeSales.Vistas
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(616, 578);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.dgvFolio);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panelBarras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Folio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Folios";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panelBarras.ResumeLayout(false);
-            this.panelBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFolio)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelBarras;
-        private System.Windows.Forms.Label lbFolio;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.PictureBox picMinimize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbtnFecha;
         private System.Windows.Forms.RadioButton rbtnIDFolio;
@@ -270,5 +211,6 @@ namespace MultimodeSales.Vistas
         private System.Windows.Forms.TextBox txtIDCliente;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DataGridView dgvFolio;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

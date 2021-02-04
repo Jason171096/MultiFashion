@@ -12,8 +12,6 @@ namespace MultimodeSales.Vistas
     {
         CClienteDB cliente = new CClienteDB();
         DataTable dt = new DataTable();
-        private int MX = 0;
-        private int MY = 0;
         private int Rowindex;
         public Cliente()
         {
@@ -22,6 +20,14 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarCliente);
             CRoundButton.FormattedRoundButtonAceptar(rbtnEditarCliente);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.Text = "Clientes";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
             LlenarDataGridViewCliente();
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
@@ -124,41 +130,19 @@ namespace MultimodeSales.Vistas
         }
         #endregion
         #region Panel Barras
-        private void picMinimize_Click(object sender, EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        private void picClose_Click(object sender, EventArgs e)
+        private void closeClick(object sender, EventArgs e)
         {
             Close();
         }
-
-        private void lbClientes_MouseMove(object sender, MouseEventArgs e)
+        private void mouseMove(object sender, MouseEventArgs e)
         {
-            MouseMove(sender, e);
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
-
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
-        }
-
         #endregion
-
-        
     }
 }

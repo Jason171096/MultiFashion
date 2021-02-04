@@ -14,25 +14,31 @@ namespace MultimodeSales.Vistas.Modelos
         CMarcaBD marca = new CMarcaBD();
         CModelosDB modelo = new CModelosDB();
         private readonly bool Bandera;
-        private int MX;
-        private int MY;
 
         public EditModelo(bool agregar, string idmodelo, string idmarca, string color, string talla, string precioCliente)
         {
             InitializeComponent();
+            this.Bandera = agregar;
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarModelo);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
-            this.Bandera = agregar;
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
+            
             LlenarComboBoxMarca();
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             if (agregar)
             {
-                lb.Text = "Agregar Modelo";
+                UCBarraSuperior.lbTitle.Text = "Agregar Modelo";
                 rbtnAgregarModelo.Text = "Agregar Modelo";
             }
             else
             {
-                lb.Text = "Editar Modelo";
+                UCBarraSuperior.lbTitle.Text = "Editar Modelo";
                 rbtnAgregarModelo.Text = "Editar Modelo";
                 txtIDModelo.Tag = idmodelo;
                 txtIDModelo.Text = idmodelo;
@@ -102,41 +108,19 @@ namespace MultimodeSales.Vistas.Modelos
             Validaciones.SoloDecimales(sender, e);
         }
         #region Panel Barras
-        private void lb_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-
-        private void panelBarras_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove(sender, e);
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left)
-            {
-                MX = e.X;
-                MY = e.Y;
-            }
-            else
-            {
-                Left = Left + (e.X - MX);
-                Top = Top + (e.Y - MY);
-            }
-        }
-        private void picClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void picMinimize_Click(object sender, EventArgs e)
+        private void minimizedClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-
+        private void closeClick(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void mouseMove(object sender, MouseEventArgs e)
+        {
+            CBarraSuperior.ReleaseCapture();
+            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
+        }
         #endregion
-
-        
     }
 }

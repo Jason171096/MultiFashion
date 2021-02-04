@@ -28,11 +28,12 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonEliminar(rbtnEliminarColor);
             CRoundButton.FormattedRoundButtonEliminar(rbtnEliminarTalla);
 
+            CBarraSuperior.GetInt = Handle;
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
-            UCBarraSuperior.lbTitle.Text = "Lista de marcas";
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.Text = "Tallas y Colores";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
@@ -52,7 +53,6 @@ namespace MultimodeSales.Vistas
             dgvTallas.DataSource = dt;
             dgvTallas.Columns[0].Visible = false;
         }
-
 
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)

@@ -509,6 +509,7 @@ namespace MultimodeSales.Vistas
             this.Name = "Devolucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devolucion";
+            this.Activated += new System.EventHandler(this.Devolucion_Activated);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();

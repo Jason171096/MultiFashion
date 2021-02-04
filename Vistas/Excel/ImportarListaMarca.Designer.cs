@@ -254,6 +254,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Importar Lista Marca";
+            this.Activated += new System.EventHandler(this.ImportarListaMarca_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExcel)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

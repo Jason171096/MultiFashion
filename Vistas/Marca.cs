@@ -24,8 +24,8 @@ namespace MultimodeSales.Vistas
 
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Marcas";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
@@ -139,10 +139,9 @@ namespace MultimodeSales.Vistas
         {
             Close();
         }
-        private void mouseMove(object sender, MouseEventArgs e)
+        private void Marca_Activated(object sender, EventArgs e)
         {
-            CBarraSuperior.ReleaseCapture();
-            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
+            CBarraSuperior.GetInt = Handle;
         }
         #endregion
     }

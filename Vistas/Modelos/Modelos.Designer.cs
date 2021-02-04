@@ -247,6 +247,7 @@
             this.Name = "Modeloss";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modelos";
+            this.Activated += new System.EventHandler(this.Modeloss_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

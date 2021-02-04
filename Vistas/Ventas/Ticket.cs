@@ -14,8 +14,6 @@ namespace MultimodeSales.Vistas.Ventas
     {
         private Button printButton = new Button();
         private PrintDocument printDocument1 = new PrintDocument();
-        private int MX = 0;
-        private int MY = 0;
         public Ticket()
         {
             InitializeComponent();
@@ -25,8 +23,8 @@ namespace MultimodeSales.Vistas.Ventas
             this.Controls.Add(printButton);
             UCBarraSuperior.picMinimize.Click += new EventHandler(MinimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(CloseClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(MouseMove);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(MouseMove);
+            //UCBarraSuperior.MouseMove += new MouseEventHandler(MouseMove);
+            //UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(MouseMove);
             UCBarraSuperior.lbTitle.Text = "Estas son las purebas deque si";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
         }
@@ -59,11 +57,6 @@ namespace MultimodeSales.Vistas.Ventas
         private void CloseClick(object sender, EventArgs e)
         {
             Close();
-        }
-        private new void MouseMove(object sender, MouseEventArgs e)
-        {
-            CBarraSuperior.ReleaseCapture();
-            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
         }
     }
 }

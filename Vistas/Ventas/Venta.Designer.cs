@@ -393,6 +393,7 @@
             this.Name = "Venta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";
+            this.Activated += new System.EventHandler(this.Venta_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -63,10 +63,9 @@ namespace MultimodeSales.Vistas
         {
             Close();
         }
-        private void mouseMove(object sender, MouseEventArgs e)
+        private void TallasyColores_Activated(object sender, EventArgs e)
         {
-            CBarraSuperior.ReleaseCapture();
-            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
+            CBarraSuperior.GetInt = Handle;
         }
         #endregion
         #region Colores
@@ -215,5 +214,7 @@ namespace MultimodeSales.Vistas
             if (dgvTallas.Rows.Count != 0)
                 dgvTallas.CurrentCell = dgvTallas.Rows[0].Cells[1];
         }
+
+        
     }
 }

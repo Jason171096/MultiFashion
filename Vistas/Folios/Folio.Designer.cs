@@ -195,6 +195,7 @@ namespace MultimodeSales.Vistas
             this.Name = "Folio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Folios";
+            this.Activated += new System.EventHandler(this.Folio_Activated);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFolio)).EndInit();

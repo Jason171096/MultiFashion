@@ -259,6 +259,7 @@
             this.Name = "EditModelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditModelo";
+            this.Activated += new System.EventHandler(this.EditModelo_Activated);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

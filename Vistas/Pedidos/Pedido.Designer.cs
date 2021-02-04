@@ -291,6 +291,7 @@
             this.Name = "Pedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido";
+            this.Activated += new System.EventHandler(this.Pedido_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

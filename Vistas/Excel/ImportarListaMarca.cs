@@ -29,8 +29,8 @@ namespace MultimodeSales.Vistas
 
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(mouseMove);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(mouseMove);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Lista de marcas";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
@@ -40,8 +40,6 @@ namespace MultimodeSales.Vistas
         private string color = "COLOR";
         private string talla = "TALLA";
         private string claves = "CLAVES";
-        private int MX;
-        private int MY;
 
         public void LlenarComboBoxMarca()
         {
@@ -176,11 +174,12 @@ namespace MultimodeSales.Vistas
         {
             Close();
         }
-        private void mouseMove(object sender, MouseEventArgs e)
+        private void ImportarListaMarca_Activated(object sender, EventArgs e)
         {
-            CBarraSuperior.ReleaseCapture();
-            CBarraSuperior.SendMessage(Handle, 0xA1, 0x2, 0);
+            CBarraSuperior.GetInt = Handle;
         }
         #endregion
+
+
     }
 }

@@ -380,6 +380,7 @@
             this.Name = "TallasyColores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TallasyColores";
+            this.Activated += new System.EventHandler(this.TallasyColores_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTallas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

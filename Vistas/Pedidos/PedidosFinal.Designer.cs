@@ -463,6 +463,7 @@
             this.Name = "PedidosFinal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PedidosFinal";
+            this.Activated += new System.EventHandler(this.PedidosFinal_Activated);
             this.Load += new System.EventHandler(this.PedidosFinal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).EndInit();
             this.groupBox1.ResumeLayout(false);

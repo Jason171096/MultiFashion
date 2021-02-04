@@ -259,6 +259,7 @@
             this.Name = "Marca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Marca";
+            this.Activated += new System.EventHandler(this.Marca_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

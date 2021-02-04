@@ -180,7 +180,7 @@
     <Compile Include="Componentes\UCcomboBoxCliente.Designer.cs">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Programacion\CBarraSuperior.cs" />
+    <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />
     <Compile Include="Programacion\CVenta.cs" />
     <Compile Include="Programacion\ColoresyTallas\CColoresyTallas.cs" />
     <Compile Include="Programacion\Folios\CFolio.cs" />
@@ -190,7 +190,6 @@
     <Compile Include="Programacion\Conexion.cs" />
     <Compile Include="Programacion\Utilerias\CDataGridView.cs" />
     <Compile Include="Programacion\Utilerias\CMsgBox.cs" />
-    <Compile Include="Programacion\Utilerias\CPanelBarras.cs" />
     <Compile Include="Programacion\Excel\CExcelDB.cs" />
     <Compile Include="Programacion\Excel\CImportarCSVyExcel.cs" />
     <Compile Include="Programacion\CListaPedidosFinal.cs" />

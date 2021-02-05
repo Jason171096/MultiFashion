@@ -28,6 +28,7 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
             CRoundButton.FormattedRoundButtonAceptar(rbtnFinalizarPedido);
 
+            UCcboxCliente.cboxCliente.SelectedIndexChanged += new EventHandler(cboxCliente_SelectedIndexChanged);
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
@@ -42,7 +43,7 @@ namespace MultimodeSales.Vistas
             IDMarca.ReadOnly = true;
             dgvPedido.Columns[0].Visible = false;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            dgvPedido.Rows[0].Cells[5].Value = Properties.Resources.basura24px;
+            agregarIconoBasura(0);
         }
         private void Clientes()
         {
@@ -150,7 +151,7 @@ namespace MultimodeSales.Vistas
         }
         private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dgvPedido.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.basura24px;
+            agregarIconoBasura(e.RowIndex);
         }
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -170,6 +171,10 @@ namespace MultimodeSales.Vistas
                 }
             }
             SelectIndexChange = true;
+        }
+        private void agregarIconoBasura(int pRowIndex)
+        {
+            dgvPedido.Rows[pRowIndex].Cells[5].Value = Properties.Resources.basura24px;
         }
 
         #region Panel Barra

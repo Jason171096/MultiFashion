@@ -4,12 +4,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
 using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Cliente;
 
 namespace MultimodeSales.Vistas
 {
     public partial class Devolucion : Form
     {
         CVenta cVenta = new CVenta();
+        CCliente cCliente = new CCliente();
         DataTable dt = new DataTable();
         public Devolucion()
         {
@@ -31,6 +33,8 @@ namespace MultimodeSales.Vistas
             rbtnAceptar.Location = new Point(718, 407);
             mtDivider.Visible = false;
             gBoxCambio.Visible = false;
+
+            darFormatoForm();
         }
 
         private void checkCambioModelo_CheckedChanged(object sender, EventArgs e)
@@ -42,6 +46,7 @@ namespace MultimodeSales.Vistas
                 rbtnAceptar.Location = new Point(718, 650);
                 mtDivider.Visible = true;
                 gBoxCambio.Visible = true;
+                darFormatoForm();
             }
             else
             {
@@ -50,6 +55,7 @@ namespace MultimodeSales.Vistas
                 rbtnAceptar.Location = new Point(718, 407);
                 mtDivider.Visible = false;
                 gBoxCambio.Visible = false;
+                darFormatoForm();
             }
         }
         private void rbtnBuscarFolio_Click(object sender, EventArgs e)
@@ -57,16 +63,24 @@ namespace MultimodeSales.Vistas
             Folio folio = new Folio(true, true);
             folio.ShowDialog();
             cVenta = folio.returnVenta();
+            cCliente = folio.returnCliente();
             txtIDFolio.Text = cVenta.IDVenta;
+            UCcomboBox.cboxCliente.DisplayMember = cCliente.IDCliente;
             dt = cVenta.verVentaPedidoModelo(cVenta.IDVenta);
             foreach (DataRow rows in dt.Rows)
             {
                 dgvDevolucion.Rows.Add(rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString());
             }
+            
         }
         private void darFormatoTabla()
         {
 
+        }
+
+        private void darFormatoForm()
+        {
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)

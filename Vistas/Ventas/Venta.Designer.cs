@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Venta));
             this.dgvVentasPedido = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ucCBoxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -115,7 +115,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.ucCBoxCliente);
+            this.groupBox2.Controls.Add(this.UCcboxCliente);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.groupBox2.Location = new System.Drawing.Point(11, 52);
@@ -125,13 +125,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
             // 
-            // ucCBoxCliente
+            // UCcboxCliente
             // 
-            this.ucCBoxCliente.Location = new System.Drawing.Point(87, 44);
-            this.ucCBoxCliente.Margin = new System.Windows.Forms.Padding(6);
-            this.ucCBoxCliente.Name = "ucCBoxCliente";
-            this.ucCBoxCliente.Size = new System.Drawing.Size(372, 34);
-            this.ucCBoxCliente.TabIndex = 42;
+            this.UCcboxCliente.Location = new System.Drawing.Point(87, 44);
+            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
+            this.UCcboxCliente.TabIndex = 42;
             // 
             // label4
             // 
@@ -433,7 +433,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private Componentes.UCcomboBoxCliente ucCBoxCliente;
+        private Componentes.UCcomboBoxCliente UCcboxCliente;
         private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

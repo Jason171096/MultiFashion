@@ -12,8 +12,6 @@ namespace MultimodeSales.Vistas.Ventas
     public partial class Venta : Form
     {
         CListaPedidosFinal pedidosFinal = new CListaPedidosFinal();
-        CClienteDB cliente = new CClienteDB();
-        private bool SelectIndexChange = false;
         CModelo modelo = new CModelo();
         DataTable dtPedidos;
         private bool ventaCompleta;
@@ -28,6 +26,7 @@ namespace MultimodeSales.Vistas.Ventas
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarPedido);
             CRoundButton.FormattedRoundButtonCancelar(rbtnVender);
 
+            UCcboxCliente.cboxCliente.SelectedIndexChanged += new EventHandler(cboxCliente_SelectedIndexChanged);
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
@@ -35,28 +34,25 @@ namespace MultimodeSales.Vistas.Ventas
             UCBarraSuperior.lbTitle.Text = "Venta";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
-            Clientes();
+            //Clientes();
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             dgvVentasPedido.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvVentasPedido_ColumnHeaderMouseClick);
         }
-        private void Clientes()
-        {
-            DataTable dt = cliente.VerClientes();
-            ucCBoxCliente.cboxCliente.DisplayMember = "Nombre";
-            ucCBoxCliente.cboxCliente.ValueMember = "IDCliente";
-            dt.Rows.Add(0, "--Seleccione el cliente--");
-            ucCBoxCliente.cboxCliente.DataSource = dt;
-            ucCBoxCliente.cboxCliente.SelectedIndex = ucCBoxCliente.cboxCliente.Items.Count - 1;
-        }
 
+        //private void Clientes()
+        //{
+        //    DataTable dt = cliente.VerClientes();
+        //    UCcboxCliente.cboxCliente.DisplayMember = "Nombre";
+        //    UCcboxCliente.cboxCliente.ValueMember = "IDCliente";
+        //    dt.Rows.Add(0, "--Seleccione el cliente--");
+        //    UCcboxCliente.cboxCliente.DataSource = dt;
+        //    UCcboxCliente.cboxCliente.SelectedIndex = UCcboxCliente.cboxCliente.Items.Count - 1;
+        //}
+        
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SelectIndexChange)
-            {
-                idcliente = ucCBoxCliente.cboxCliente.SelectedValue + "";
-                CargarPedidos(idcliente);
-            }
-            SelectIndexChange = true;
+            idcliente = UCcboxCliente.cboxCliente.SelectedValue + "";
+            CargarPedidos(idcliente);
             borrarLabels();
         }
         private void CargarPedidos(string idcliente)
@@ -138,7 +134,7 @@ namespace MultimodeSales.Vistas.Ventas
                 if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
                     cont++;
             }
-            if (ucCBoxCliente.cboxCliente.SelectedIndex != ucCBoxCliente.cboxCliente.Items.Count - 1)
+            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
             {
                 if (txtFolio.Text != "")
                 {
@@ -149,7 +145,7 @@ namespace MultimodeSales.Vistas.Ventas
                             CMsgBox.DisplayWarning("Folio existente");
                         else
                         {
-                            DialogVenta dialog = new DialogVenta(txtFolio.Text, ucCBoxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
+                            DialogVenta dialog = new DialogVenta(txtFolio.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
                             dialog.ShowDialog();
                             ventaCompleta = dialog.ventaCompletada();
                             if(ventaCompleta)

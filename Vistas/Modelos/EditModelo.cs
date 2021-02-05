@@ -21,13 +21,6 @@ namespace MultimodeSales.Vistas.Modelos
             this.Bandera = agregar;
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarModelo);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
-
-            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
-            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
-            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
             
             LlenarComboBoxMarca();
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
@@ -47,6 +40,12 @@ namespace MultimodeSales.Vistas.Modelos
                 txtTalla.Text = talla;
                 txtPrecioCliente.Text = precioCliente;
             }
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
         }
         public void LlenarComboBoxMarca()
         {

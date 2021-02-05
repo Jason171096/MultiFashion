@@ -180,6 +180,7 @@
     <Compile Include="Componentes\UCcomboBoxCliente.Designer.cs">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Programacion\Cliente\CCliente.cs" />
     <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />
     <Compile Include="Programacion\CVenta.cs" />
     <Compile Include="Programacion\ColoresyTallas\CColoresyTallas.cs" />

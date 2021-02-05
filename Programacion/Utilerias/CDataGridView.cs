@@ -17,8 +17,8 @@ namespace MultimodeSales.Programacion
             dataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSlateBlue;
             dataGrid.RowsDefaultCellStyle.BackColor = Color.Indigo;
             dataGrid.RowsDefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
-            dataGrid.RowsDefaultCellStyle.Font = new Font("Segoe UI", 14);
-            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 16);
+            dataGrid.RowsDefaultCellStyle.Font = new Font("Segoe UI", 12);
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 14);
             dataGrid.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }

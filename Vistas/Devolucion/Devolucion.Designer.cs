@@ -41,7 +41,7 @@ namespace MultimodeSales.Vistas
             this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.mtDivider = new MaterialSkin.Controls.MaterialDivider();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.uCcomboBoxCliente1 = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCcomboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
@@ -54,6 +54,13 @@ namespace MultimodeSales.Vistas
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.gBoxCambiar = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbLeyenda1 = new MaterialSkin.Controls.MaterialLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.roundButton1 = new RoundButton.RoundButton();
             this.gBoxCambio = new System.Windows.Forms.GroupBox();
             this.roundButton2 = new RoundButton.RoundButton();
@@ -72,6 +79,11 @@ namespace MultimodeSales.Vistas
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gBoxCambio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -120,7 +132,7 @@ namespace MultimodeSales.Vistas
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.uCcomboBoxCliente1);
+            this.groupBox2.Controls.Add(this.UCcomboBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtIDFolio);
             this.groupBox2.Controls.Add(this.label1);
@@ -132,13 +144,13 @@ namespace MultimodeSales.Vistas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
             // 
-            // uCcomboBoxCliente1
+            // UCcomboBox
             // 
-            this.uCcomboBoxCliente1.Location = new System.Drawing.Point(92, 31);
-            this.uCcomboBoxCliente1.Margin = new System.Windows.Forms.Padding(6);
-            this.uCcomboBoxCliente1.Name = "uCcomboBoxCliente1";
-            this.uCcomboBoxCliente1.Size = new System.Drawing.Size(433, 34);
-            this.uCcomboBoxCliente1.TabIndex = 42;
+            this.UCcomboBox.Location = new System.Drawing.Point(92, 31);
+            this.UCcomboBox.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcomboBox.Name = "UCcomboBox";
+            this.UCcomboBox.Size = new System.Drawing.Size(433, 34);
+            this.UCcomboBox.TabIndex = 42;
             // 
             // label4
             // 
@@ -189,7 +201,7 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -227,7 +239,7 @@ namespace MultimodeSales.Vistas
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDevolucion.RowTemplate.Height = 30;
-            this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion.TabIndex = 63;
             // 
@@ -236,6 +248,7 @@ namespace MultimodeSales.Vistas
             this.IDPedido.HeaderText = "Pedido";
             this.IDPedido.Name = "IDPedido";
             this.IDPedido.ReadOnly = true;
+            this.IDPedido.Visible = false;
             // 
             // IDModelo
             // 
@@ -281,6 +294,7 @@ namespace MultimodeSales.Vistas
             // 
             // gBoxCambiar
             // 
+            this.gBoxCambiar.Controls.Add(this.tableLayoutPanel2);
             this.gBoxCambiar.Controls.Add(this.roundButton1);
             this.gBoxCambiar.Controls.Add(this.dgvDevolucion);
             this.gBoxCambiar.Controls.Add(this.btnAgregarMarca);
@@ -291,6 +305,88 @@ namespace MultimodeSales.Vistas
             this.gBoxCambiar.TabIndex = 65;
             this.gBoxCambiar.TabStop = false;
             this.gBoxCambiar.Text = "Modelos a cambiar";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(575, 28);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(280, 26);
+            this.tableLayoutPanel2.TabIndex = 72;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.lbLeyenda1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(144, 20);
+            this.panel1.TabIndex = 41;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Indigo;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lbLeyenda1
+            // 
+            this.lbLeyenda1.AutoSize = true;
+            this.lbLeyenda1.Depth = 0;
+            this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbLeyenda1.Location = new System.Drawing.Point(20, 0);
+            this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbLeyenda1.Name = "lbLeyenda1";
+            this.lbLeyenda1.Size = new System.Drawing.Size(124, 19);
+            this.lbLeyenda1.TabIndex = 39;
+            this.lbLeyenda1.Text = "No Seleccionado";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.materialLabel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(153, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(124, 20);
+            this.panel2.TabIndex = 42;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.YellowGreen;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.TabIndex = 40;
+            this.pictureBox2.TabStop = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(24, 0);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(100, 19);
+            this.materialLabel1.TabIndex = 39;
+            this.materialLabel1.Text = "Seleccionado";
             // 
             // roundButton1
             // 
@@ -344,7 +440,7 @@ namespace MultimodeSales.Vistas
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -382,7 +478,7 @@ namespace MultimodeSales.Vistas
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(850, 150);
             this.dataGridView1.TabIndex = 64;
             // 
@@ -391,6 +487,7 @@ namespace MultimodeSales.Vistas
             this.dataGridViewTextBoxColumn1.HeaderText = "Pedido";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewComboBoxColumn1
             // 
@@ -514,6 +611,13 @@ namespace MultimodeSales.Vistas
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
             this.gBoxCambiar.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gBoxCambio.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -539,7 +643,15 @@ namespace MultimodeSales.Vistas
         private RoundButton.RoundButton rbtnAceptar;
         private RoundButton.RoundButton rbtnCancelar;
         private RoundButton.RoundButton rbtnBuscarFolio;
-        private Componentes.UCcomboBoxCliente uCcomboBoxCliente1;
+        private Componentes.UCcomboBoxCliente UCcomboBox;
+        private Componentes.UCBarraSuperior UCBarraSuperior;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
@@ -554,6 +666,5 @@ namespace MultimodeSales.Vistas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private Componentes.UCBarraSuperior UCBarraSuperior;
     }
 }

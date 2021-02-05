@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using MultimodeSales.Vistas.Folios;
 using System;
+using MultimodeSales.Programacion.Cliente;
 
 namespace MultimodeSales.Vistas
 {
@@ -12,6 +13,7 @@ namespace MultimodeSales.Vistas
     {
         CFolio cFolio = new CFolio();
         CVenta cVenta = new CVenta();
+        CCliente cCliente = new CCliente();
         private bool ventanaDevolucion;
         private bool ventanaFolio;
         public Folio(bool pFolio, bool ventanaDevolucion)
@@ -62,6 +64,7 @@ namespace MultimodeSales.Vistas
             if (ventanaDevolucion)
             {
                 cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[2].Value.ToString();
                 Close();
             }
             else if (ventanaFolio)
@@ -73,6 +76,10 @@ namespace MultimodeSales.Vistas
         public CVenta returnVenta()
         {
             return cVenta;
+        }
+        public CCliente returnCliente()
+        {
+            return cCliente;
         }
 
         #region Barra Superior

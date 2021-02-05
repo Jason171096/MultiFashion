@@ -211,13 +211,18 @@ namespace MultimodeSales.Vistas
         {
             if (activeCellClick)
             {
-                modelo.IDPedido = dgvPedidosFinal.Rows[e.RowIndex].Cells[0].Value.ToString();
-                modelo.IDModelo = dgvPedidosFinal.Rows[e.RowIndex].Cells[3].Value.ToString();
-                modelo.IDMarca = dgvPedidosFinal.Rows[e.RowIndex].Cells[4].Value.ToString();
-                modelo.Color = dgvPedidosFinal.Rows[e.RowIndex].Cells[5].Value.ToString();
-                modelo.Talla = dgvPedidosFinal.Rows[e.RowIndex].Cells[6].Value.ToString();
-                modelo.PrecioCliente = dgvPedidosFinal.Rows[e.RowIndex].Cells[7].Value.ToString();
-                Close();
+                if (dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.OrangeRed)
+                {
+                    modelo.IDPedido = dgvPedidosFinal.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    modelo.IDModelo = dgvPedidosFinal.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    modelo.IDMarca = dgvPedidosFinal.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    modelo.Color = dgvPedidosFinal.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    modelo.Talla = dgvPedidosFinal.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    modelo.PrecioCliente = dgvPedidosFinal.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    Close();
+                }
+                else
+                    CMsgBox.DisplayWarning("No puede vender un pedido que ya esta vendido");
             } 
         }
 

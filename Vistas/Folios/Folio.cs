@@ -22,13 +22,6 @@ namespace MultimodeSales.Vistas
             CDataGridView.FormattedDataGridView(dgvFolio);
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
-            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
-            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
-            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
-            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
-            UCBarraSuperior.lbTitle.Text = "Folios";
-            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
             if (pFolio)
             {
                 UCBarraSuperior.lbTitle.Text = "Folios Ventas";
@@ -38,6 +31,12 @@ namespace MultimodeSales.Vistas
             {
                 UCBarraSuperior.lbTitle.Text = "Folios Devoluciones";
             }
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
         }
 
         private void cargarFoliosVentas()

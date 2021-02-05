@@ -42,6 +42,7 @@ namespace MultimodeSales.Vistas
             IDMarca.ReadOnly = true;
             dgvPedido.Columns[0].Visible = false;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            dgvPedido.Rows[0].Cells[5].Value = Properties.Resources.basura24px;
         }
         private void Clientes()
         {

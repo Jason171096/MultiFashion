@@ -34,20 +34,9 @@ namespace MultimodeSales.Vistas.Ventas
             UCBarraSuperior.lbTitle.Text = "Venta";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
-            //Clientes();
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             dgvVentasPedido.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvVentasPedido_ColumnHeaderMouseClick);
         }
-
-        //private void Clientes()
-        //{
-        //    DataTable dt = cliente.VerClientes();
-        //    UCcboxCliente.cboxCliente.DisplayMember = "Nombre";
-        //    UCcboxCliente.cboxCliente.ValueMember = "IDCliente";
-        //    dt.Rows.Add(0, "--Seleccione el cliente--");
-        //    UCcboxCliente.cboxCliente.DataSource = dt;
-        //    UCcboxCliente.cboxCliente.SelectedIndex = UCcboxCliente.cboxCliente.Items.Count - 1;
-        //}
         
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -171,20 +160,26 @@ namespace MultimodeSales.Vistas.Ventas
 
         private void rbtnAgregarPedido_Click(object sender, EventArgs e)
         {
-            borrarLabels();
-            PedidosFinal final = new PedidosFinal(true);
-            final.ShowDialog();
-            modelo = final.returnModelo();
-            agregarModelo();
+            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+            {
+                borrarLabels();
+                PedidosFinal final = new PedidosFinal(true);
+                final.ShowDialog();
+                modelo = final.returnModelo();
+                agregarModelo();
+            }
         }
 
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)
         {
-            borrarLabels();
-            Modeloss modelos = new Modeloss(true);
-            modelos.ShowDialog();
-            modelo = modelos.returnModelo();
-            agregarModelo();
+            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+            {
+                borrarLabels();
+                Modeloss modelos = new Modeloss(true);
+                modelos.ShowDialog();
+                modelo = modelos.returnModelo();
+                agregarModelo();
+            }
         }
 
         private void borrarLabels()

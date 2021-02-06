@@ -29,21 +29,19 @@ namespace MultimodeSales.Vistas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolucion));
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDFolio = new System.Windows.Forms.TextBox();
-            this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.mtDivider = new MaterialSkin.Controls.MaterialDivider();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.UCcomboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
             this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,17 +52,16 @@ namespace MultimodeSales.Vistas
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.gBoxCambiar = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbLeyenda1 = new MaterialSkin.Controls.MaterialLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.roundButton1 = new RoundButton.RoundButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbTotalDevolucion = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbtnSelPedido = new RoundButton.RoundButton();
             this.gBoxCambio = new System.Windows.Forms.GroupBox();
-            this.roundButton2 = new RoundButton.RoundButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbTotalDevolucion2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rbtnSelModelo = new RoundButton.RoundButton();
+            this.dgvDevolucion2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,13 +76,10 @@ namespace MultimodeSales.Vistas
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.gBoxCambio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -105,19 +99,6 @@ namespace MultimodeSales.Vistas
             this.txtIDFolio.Name = "txtIDFolio";
             this.txtIDFolio.Size = new System.Drawing.Size(227, 29);
             this.txtIDFolio.TabIndex = 20;
-            // 
-            // btnAgregarMarca
-            // 
-            this.btnAgregarMarca.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnAgregarMarca.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAgregarMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarMarca.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAgregarMarca.Location = new System.Drawing.Point(331, 19);
-            this.btnAgregarMarca.Name = "btnAgregarMarca";
-            this.btnAgregarMarca.Size = new System.Drawing.Size(179, 37);
-            this.btnAgregarMarca.TabIndex = 22;
-            this.btnAgregarMarca.Text = "Seleccionar Modelo";
-            this.btnAgregarMarca.UseVisualStyleBackColor = false;
             // 
             // mtDivider
             // 
@@ -162,19 +143,6 @@ namespace MultimodeSales.Vistas
             this.label4.TabIndex = 41;
             this.label4.Text = "Cliente:";
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.SlateBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button3.Location = new System.Drawing.Point(325, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(179, 37);
-            this.button3.TabIndex = 61;
-            this.button3.Text = "Seleccionar Pedido";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // checkCambioModelo
             // 
             this.checkCambioModelo.AutoSize = true;
@@ -199,14 +167,14 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevolucion.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDevolucion.ColumnHeadersHeight = 50;
             this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDevolucion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -222,26 +190,27 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.Location = new System.Drawing.Point(8, 62);
             this.dgvDevolucion.Name = "dgvDevolucion";
             this.dgvDevolucion.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDevolucion.RowHeadersVisible = false;
             this.dgvDevolucion.RowHeadersWidth = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
-            this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.MidnightBlue;
+            this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDevolucion.RowTemplate.Height = 30;
             this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion.TabIndex = 63;
+            this.dgvDevolucion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellClick);
             // 
             // IDPedido
             // 
@@ -294,10 +263,9 @@ namespace MultimodeSales.Vistas
             // 
             // gBoxCambiar
             // 
-            this.gBoxCambiar.Controls.Add(this.tableLayoutPanel2);
-            this.gBoxCambiar.Controls.Add(this.roundButton1);
+            this.gBoxCambiar.Controls.Add(this.tableLayoutPanel1);
+            this.gBoxCambiar.Controls.Add(this.rbtnSelPedido);
             this.gBoxCambiar.Controls.Add(this.dgvDevolucion);
-            this.gBoxCambiar.Controls.Add(this.btnAgregarMarca);
             this.gBoxCambiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.gBoxCambiar.Location = new System.Drawing.Point(11, 180);
             this.gBoxCambiar.Name = "gBoxCambiar";
@@ -306,108 +274,63 @@ namespace MultimodeSales.Vistas
             this.gBoxCambiar.TabStop = false;
             this.gBoxCambiar.Text = "Modelos a cambiar";
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel1
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(575, 28);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(280, 26);
-            this.tableLayoutPanel2.TabIndex = 72;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanel1.Controls.Add(this.lbTotalDevolucion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(647, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(208, 37);
+            this.tableLayoutPanel1.TabIndex = 65;
             // 
-            // panel1
+            // lbTotalDevolucion
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.lbLeyenda1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(144, 20);
-            this.panel1.TabIndex = 41;
+            this.lbTotalDevolucion.AutoSize = true;
+            this.lbTotalDevolucion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTotalDevolucion.Location = new System.Drawing.Point(75, 0);
+            this.lbTotalDevolucion.Name = "lbTotalDevolucion";
+            this.lbTotalDevolucion.Size = new System.Drawing.Size(130, 37);
+            this.lbTotalDevolucion.TabIndex = 1;
+            this.lbTotalDevolucion.Text = "$0.00";
+            this.lbTotalDevolucion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // label2
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Indigo;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.TabIndex = 40;
-            this.pictureBox1.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 37);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbLeyenda1
+            // rbtnSelPedido
             // 
-            this.lbLeyenda1.AutoSize = true;
-            this.lbLeyenda1.Depth = 0;
-            this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLeyenda1.Location = new System.Drawing.Point(20, 0);
-            this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lbLeyenda1.Name = "lbLeyenda1";
-            this.lbLeyenda1.Size = new System.Drawing.Size(124, 19);
-            this.lbLeyenda1.TabIndex = 39;
-            this.lbLeyenda1.Text = "No Seleccionado";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.materialLabel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(153, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(124, 20);
-            this.panel2.TabIndex = 42;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.YellowGreen;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.TabIndex = 40;
-            this.pictureBox2.TabStop = false;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(24, 0);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(100, 19);
-            this.materialLabel1.TabIndex = 39;
-            this.materialLabel1.Text = "Seleccionado";
-            // 
-            // roundButton1
-            // 
-            this.roundButton1.BorderColor = System.Drawing.Color.Silver;
-            this.roundButton1.ButtonColor = System.Drawing.Color.Red;
-            this.roundButton1.Location = new System.Drawing.Point(233, 19);
-            this.roundButton1.Name = "roundButton1";
-            this.roundButton1.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.roundButton1.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.roundButton1.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.roundButton1.Size = new System.Drawing.Size(187, 37);
-            this.roundButton1.TabIndex = 64;
-            this.roundButton1.Text = "Seleccionar pedido";
-            this.roundButton1.TextColor = System.Drawing.Color.White;
-            this.roundButton1.UseVisualStyleBackColor = true;
+            this.rbtnSelPedido.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnSelPedido.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnSelPedido.Location = new System.Drawing.Point(307, 19);
+            this.rbtnSelPedido.Name = "rbtnSelPedido";
+            this.rbtnSelPedido.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnSelPedido.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnSelPedido.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnSelPedido.Size = new System.Drawing.Size(187, 37);
+            this.rbtnSelPedido.TabIndex = 64;
+            this.rbtnSelPedido.Text = "Seleccionar pedido";
+            this.rbtnSelPedido.TextColor = System.Drawing.Color.White;
+            this.rbtnSelPedido.UseVisualStyleBackColor = true;
+            this.rbtnSelPedido.Click += new System.EventHandler(this.rbtnSelPedido_Click);
             // 
             // gBoxCambio
             // 
-            this.gBoxCambio.Controls.Add(this.roundButton2);
-            this.gBoxCambio.Controls.Add(this.dataGridView1);
-            this.gBoxCambio.Controls.Add(this.button3);
+            this.gBoxCambio.Controls.Add(this.tableLayoutPanel2);
+            this.gBoxCambio.Controls.Add(this.rbtnSelModelo);
+            this.gBoxCambio.Controls.Add(this.dgvDevolucion2);
             this.gBoxCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.gBoxCambio.Location = new System.Drawing.Point(11, 423);
             this.gBoxCambio.Name = "gBoxCambio";
@@ -416,39 +339,76 @@ namespace MultimodeSales.Vistas
             this.gBoxCambio.TabStop = false;
             this.gBoxCambio.Text = "Modelo por cambio";
             // 
-            // roundButton2
+            // tableLayoutPanel2
             // 
-            this.roundButton2.BorderColor = System.Drawing.Color.Silver;
-            this.roundButton2.ButtonColor = System.Drawing.Color.Red;
-            this.roundButton2.Location = new System.Drawing.Point(233, 19);
-            this.roundButton2.Name = "roundButton2";
-            this.roundButton2.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.roundButton2.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.roundButton2.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.roundButton2.Size = new System.Drawing.Size(187, 37);
-            this.roundButton2.TabIndex = 65;
-            this.roundButton2.Text = "Seleccionar pedido";
-            this.roundButton2.TextColor = System.Drawing.Color.White;
-            this.roundButton2.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanel2.Controls.Add(this.lbTotalDevolucion2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(647, 19);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(205, 37);
+            this.tableLayoutPanel2.TabIndex = 66;
             // 
-            // dataGridView1
+            // lbTotalDevolucion2
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.DimGray;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.ColumnHeadersHeight = 50;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lbTotalDevolucion2.AutoSize = true;
+            this.lbTotalDevolucion2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTotalDevolucion2.Location = new System.Drawing.Point(74, 0);
+            this.lbTotalDevolucion2.Name = "lbTotalDevolucion2";
+            this.lbTotalDevolucion2.Size = new System.Drawing.Size(128, 37);
+            this.lbTotalDevolucion2.TabIndex = 1;
+            this.lbTotalDevolucion2.Text = "$0.00";
+            this.lbTotalDevolucion2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 37);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Total:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rbtnSelModelo
+            // 
+            this.rbtnSelModelo.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnSelModelo.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnSelModelo.Location = new System.Drawing.Point(307, 19);
+            this.rbtnSelModelo.Name = "rbtnSelModelo";
+            this.rbtnSelModelo.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnSelModelo.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnSelModelo.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnSelModelo.Size = new System.Drawing.Size(187, 37);
+            this.rbtnSelModelo.TabIndex = 65;
+            this.rbtnSelModelo.Text = "Seleccionar modelo";
+            this.rbtnSelModelo.TextColor = System.Drawing.Color.White;
+            this.rbtnSelModelo.UseVisualStyleBackColor = true;
+            this.rbtnSelModelo.Click += new System.EventHandler(this.rbtnSelModelo_Click);
+            // 
+            // dgvDevolucion2
+            // 
+            this.dgvDevolucion2.AllowUserToAddRows = false;
+            this.dgvDevolucion2.AllowUserToDeleteRows = false;
+            this.dgvDevolucion2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvDevolucion2.BackgroundColor = System.Drawing.Color.DimGray;
+            this.dgvDevolucion2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvDevolucion2.ColumnHeadersHeight = 50;
+            this.dgvDevolucion2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvDevolucion2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewComboBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -456,31 +416,32 @@ namespace MultimodeSales.Vistas
             this.dataGridViewComboBoxColumn3,
             this.Column2,
             this.dataGridViewImageColumn1});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.DarkSlateBlue;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 30;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MidnightBlue;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(850, 150);
-            this.dataGridView1.TabIndex = 64;
+            this.dgvDevolucion2.EnableHeadersVisualStyles = false;
+            this.dgvDevolucion2.GridColor = System.Drawing.Color.DarkSlateBlue;
+            this.dgvDevolucion2.Location = new System.Drawing.Point(5, 62);
+            this.dgvDevolucion2.Name = "dgvDevolucion2";
+            this.dgvDevolucion2.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion2.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvDevolucion2.RowHeadersVisible = false;
+            this.dgvDevolucion2.RowHeadersWidth = 30;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.MidnightBlue;
+            this.dgvDevolucion2.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvDevolucion2.RowTemplate.Height = 30;
+            this.dgvDevolucion2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDevolucion2.Size = new System.Drawing.Size(850, 150);
+            this.dgvDevolucion2.TabIndex = 64;
+            this.dgvDevolucion2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion2_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -611,15 +572,12 @@ namespace MultimodeSales.Vistas
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
             this.gBoxCambiar.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.gBoxCambio.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,30 +586,21 @@ namespace MultimodeSales.Vistas
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIDFolio;
-        private System.Windows.Forms.Button btnAgregarMarca;
         private MaterialSkin.Controls.MaterialDivider mtDivider;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
         private MaterialSkin.Controls.MaterialCheckBox checkCambioModelo;
         private System.Windows.Forms.DataGridView dgvDevolucion;
         private System.Windows.Forms.GroupBox gBoxCambiar;
         private System.Windows.Forms.GroupBox gBoxCambio;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private RoundButton.RoundButton roundButton1;
-        private RoundButton.RoundButton roundButton2;
+        private System.Windows.Forms.DataGridView dgvDevolucion2;
+        private RoundButton.RoundButton rbtnSelPedido;
+        private RoundButton.RoundButton rbtnSelModelo;
         private RoundButton.RoundButton rbtnAceptar;
         private RoundButton.RoundButton rbtnCancelar;
         private RoundButton.RoundButton rbtnBuscarFolio;
         private Componentes.UCcomboBoxCliente UCcomboBox;
         private Componentes.UCBarraSuperior UCBarraSuperior;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
@@ -666,5 +615,11 @@ namespace MultimodeSales.Vistas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lbTotalDevolucion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label lbTotalDevolucion2;
+        private System.Windows.Forms.Label label5;
     }
 }

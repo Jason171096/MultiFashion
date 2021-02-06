@@ -6,8 +6,9 @@ using System.Windows.Forms;
 using MultimodeSales.Programacion;
 using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
-using MultimodeSales.Vistas.Modelos;
 using System.Drawing;
+using MultimodeSales.Vistas;
+using MultimodeSales.Vistas.Modelos;
 
 namespace MultimodeSales.Vistas
 {
@@ -85,7 +86,7 @@ namespace MultimodeSales.Vistas
             dgvModelos.Columns[0].Width = 175;//IDModelo
             dgvModelos.Columns[0].HeaderText = "ID Modelo";//IDModelo
             dgvModelos.Columns[2].Width = 175;//NombreMarca
-            dgvModelos.Columns[2].HeaderText = "Nombre Marca";//NombreMarca
+            dgvModelos.Columns[2].HeaderText = "Marca";//NombreMarca
             dgvModelos.Columns[3].Width = 175;//Color
             dgvModelos.Columns[4].Width = 175;//Talla
             dgvModelos.Columns[5].Width = 175;//PrecioCliente
@@ -158,7 +159,7 @@ namespace MultimodeSales.Vistas
         {
             if(activateCellClick)
             {
-                modelo.IDModelo = dgvModelos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                modelo.IDModelo = dgvModelos.Rows[e.RowIndex].Cells[0].Value.ToString();
                 modelo.IDMarca = dgvModelos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 modelo.Color = dgvModelos.Rows[e.RowIndex].Cells[3].Value.ToString();
                 modelo.Talla = dgvModelos.Rows[e.RowIndex].Cells[4].Value.ToString();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2021 a las 00:50:12
+-- Tiempo de generación: 06-02-2021 a las 20:23:30
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -170,7 +170,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `VerColores` ()  READS SQL DATA
 SELECT color.IDColor, color.Nombre FROM color$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
-SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, ma.Nombre as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo INNER JOIN marca ma ON ma.IDMarca = m.IDMarca WHERE p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC$$
+BEGIN
+	SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC;
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerMarcas` ()  BEGIN
 	SELECT IDMarca, Nombre FROM marca;
@@ -195,7 +197,16 @@ SELECT talla.IDTalla, talla.Numero FROM talla$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerVentaPedidoModelo` (IN `idfolio` INT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, m.IDModelo, m.IDMarca, m.Color, m.Talla, m.PrecioCliente FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+END$$
+
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `NombreMarca` (`idmarca` INT) RETURNS VARCHAR(50) CHARSET utf8mb4 NO SQL
+BEGIN
+	 SET @var := (SELECT m.Nombre FROM marca m WHERE m.IDMarca = idmarca);
+     RETURN @var;
 END$$
 
 DELIMITER ;
@@ -331,8 +342,9 @@ INSERT INTO `color` (`IDColor`, `Nombre`) VALUES
 --
 
 CREATE TABLE `devolucion` (
-  `IDDevolucion` bigint(20) NOT NULL,
+  `IDFolio` bigint(20) NOT NULL,
   `IDPedido` bigint(20) NOT NULL,
+  `IDCliente` bigint(20) NOT NULL,
   `Fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -720,12 +732,20 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`) VALUES
-(60, '10009', 101, 'AMARILLLO', '22', '2021-02-03 09:39:15', b'1', b'1'),
-(61, '60', 101, 'RUBY', 'G', '2021-02-03 09:39:15', b'1', b'1'),
-(62, '7', 101, 'TURQUESA', '17', '2021-02-03 09:39:15', b'1', b'1'),
-(63, '10009', 101, 'RUBY', 'XG', '2021-02-03 09:40:23', b'1', b'1'),
-(64, '6', 101, 'TURQUESA', '22', '2021-02-03 09:40:23', b'1', b'1'),
-(65, '10009', 101, 'ROJO', 'CH', '2021-02-03 09:40:23', b'1', b'1');
+(60, '10009', 101, 'AMARILLLO', '22', '2021-02-03 09:39:15', b'0', b'1'),
+(61, '60', 101, 'RUBY', 'G', '2021-02-03 09:39:15', b'0', b'1'),
+(62, '7', 101, 'TURQUESA', '17', '2021-02-03 09:39:15', b'0', b'1'),
+(63, '10009', 101, 'RUBY', 'XG', '2021-02-03 09:40:23', b'0', b'1'),
+(64, '6', 101, 'TURQUESA', '22', '2021-02-03 09:40:23', b'0', b'1'),
+(65, '10009', 101, 'ROJO', 'CH', '2021-02-03 09:40:23', b'0', b'1'),
+(66, '4', 101, 'RUBY', '17', '2021-02-05 11:57:20', b'1', b'0'),
+(67, '101', 100, 'RUBY', '18', '2021-02-06 12:21:19', b'0', b'1'),
+(68, '129', 100, 'AMARILLLO', 'M', '2021-02-06 12:21:19', b'0', b'1'),
+(69, '12', 100, 'TURQUESA', '17', '2021-02-06 12:21:19', b'0', b'1'),
+(70, '2', 100, 'RUBY', 'CH', '2021-02-06 12:21:19', b'0', b'1'),
+(71, '60', 93, 'ROJO', '17', '2021-02-06 12:28:15', b'1', b'0'),
+(72, '111', 93, 'TURQUESA', '22', '2021-02-06 12:28:15', b'1', b'0'),
+(73, '10001', 93, 'AMARILLLO', 'M', '2021-02-06 12:28:15', b'1', b'0');
 
 -- --------------------------------------------------------
 
@@ -790,7 +810,8 @@ CREATE TABLE `venta` (
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
 (1, 101, '2021-02-03 09:39:37', '551.50'),
-(2, 101, '2021-02-03 09:41:05', '1654.50');
+(2, 101, '2021-02-03 09:41:05', '1654.50'),
+(5, 100, '2021-02-06 12:21:55', '2246.50');
 
 -- --------------------------------------------------------
 
@@ -814,7 +835,11 @@ INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
 (3, 2, 64),
 (4, 2, 60),
 (5, 2, 63),
-(6, 2, 65);
+(6, 2, 65),
+(7, 5, 67),
+(8, 5, 68),
+(9, 5, 69),
+(10, 5, 70);
 
 --
 -- Índices para tablas volcadas
@@ -836,8 +861,9 @@ ALTER TABLE `color`
 -- Indices de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  ADD PRIMARY KEY (`IDDevolucion`),
-  ADD KEY `IDPedido` (`IDPedido`);
+  ADD PRIMARY KEY (`IDFolio`),
+  ADD KEY `IDPedido` (`IDPedido`),
+  ADD KEY `IDCliente` (`IDCliente`);
 
 --
 -- Indices de la tabla `marca`
@@ -906,13 +932,13 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  MODIFY `IDDevolucion` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -930,7 +956,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
@@ -940,7 +966,8 @@ ALTER TABLE `venta_pedidos`
 -- Filtros para la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  ADD CONSTRAINT `devolucion_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`);
+  ADD CONSTRAINT `devolucion_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`),
+  ADD CONSTRAINT `devolucion_ibfk_2` FOREIGN KEY (`IDCliente`) REFERENCES `clientes` (`IDCliente`);
 
 --
 -- Filtros para la tabla `modelos`

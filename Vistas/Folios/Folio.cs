@@ -64,7 +64,7 @@ namespace MultimodeSales.Vistas
             if (ventanaDevolucion)
             {
                 cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
-                cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[2].Value.ToString();
+                cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
                 Close();
             }
             else if (ventanaFolio)

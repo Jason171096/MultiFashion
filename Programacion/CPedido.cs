@@ -13,39 +13,53 @@ namespace MultimodeSales.Programacion
         Conexion conexion = new Conexion();
         MySqlDataAdapter da = new MySqlDataAdapter();
         DataTable dt = new DataTable();
-        public void AgregarPedido(string idpedido, string idmodelo, string idcliente, string color, string talla)
+        public void AgregarPedido(string pIDPedido, string pIDModelo, string pIDCliente, string pColor, string pTalla)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("AgregarPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("idpedido", idpedido));
-            cmd.Parameters.Add(new MySqlParameter("idmodelo", idmodelo));
-            cmd.Parameters.Add(new MySqlParameter("idcliente", idcliente));
-            cmd.Parameters.Add(new MySqlParameter("color", color));
-            cmd.Parameters.Add(new MySqlParameter("talla", talla));
+            cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            cmd.Parameters.Add(new MySqlParameter("idmodelo", pIDModelo));
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            cmd.Parameters.Add(new MySqlParameter("color", pColor));
+            cmd.Parameters.Add(new MySqlParameter("talla", pTalla));
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }
-        public DataTable CargarPedido(string idcliente)
+        public DataTable CargarPedido(string pIDCliente)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("VerClientesPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("idcliente", idcliente));
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
             da.SelectCommand = cmd;
             dt.Clear();
             da.Fill(dt);
             conexion.CloseConnection();
             return dt;
         }
-        public void EliminarPedido(string idpedido)
+        public void EliminarPedido(string pIDPedido)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("EliminarPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("idpedido", idpedido));
+            cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
+        }
+
+        public string AgregarPedidoProvisional(string pIDModelo, string pIDCliente, string pColor, string pTalla)
+        {
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("AgregarPedidoProvisional", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idmodelo", pIDModelo));
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            cmd.Parameters.Add(new MySqlParameter("color", pColor));
+            cmd.Parameters.Add(new MySqlParameter("talla", pTalla));
+            string IDPedido = cmd.ExecuteScalar().ToString();
+            conexion.CloseConnection();
+            return IDPedido;
         }
     }
 }

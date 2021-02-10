@@ -35,7 +35,11 @@
             this.dgvPedidosFinal = new System.Windows.Forms.DataGridView();
             this.rbtnFecha = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.rbtnNumPedido = new System.Windows.Forms.RadioButton();
             this.btnExportExcel = new System.Windows.Forms.Button();
@@ -60,6 +64,7 @@
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -135,7 +140,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtpFecha);
+            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Controls.Add(this.rbtnNumPedido);
             this.groupBox1.Controls.Add(this.rbtnFecha);
@@ -147,16 +152,64 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dtpFecha, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(99, 74);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(383, 35);
+            this.tableLayoutPanel3.TabIndex = 43;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 26);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "a";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(233, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(142, 29);
+            this.dateTimePicker1.TabIndex = 44;
+            // 
             // dtpFecha
             // 
             this.dtpFecha.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.dtpFecha.Enabled = false;
             this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(110, 74);
+            this.dtpFecha.Location = new System.Drawing.Point(63, 3);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(142, 29);
+            this.dtpFecha.Size = new System.Drawing.Size(124, 29);
             this.dtpFecha.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 26);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "De";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtBuscar
             // 
@@ -468,6 +521,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -513,5 +568,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private Componentes.UCBarraSuperior UCBarraSuperior;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
     }
 }

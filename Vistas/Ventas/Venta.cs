@@ -35,7 +35,6 @@ namespace MultimodeSales.Vistas.Ventas
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            dgvVentasPedido.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(dgvVentasPedido_ColumnHeaderMouseClick);
         }
         
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,12 +43,14 @@ namespace MultimodeSales.Vistas.Ventas
             CargarPedidos(idcliente);
             borrarLabels();
         }
-        private void CargarPedidos(string idcliente)
+        private void CargarPedidos(string pIDCliente)
         {
-            dgvVentasPedido.DataSource = null;
-            dtPedidos = pedidosFinal.ObtenerPedidoFinalLlego(idcliente);
-            dgvVentasPedido.DataSource = dtPedidos;
-            darformatoTabla();
+            dgvVentasPedido.Rows.Clear();
+            dtPedidos = pedidosFinal.ObtenerPedidoFinalLlego(pIDCliente);
+            foreach (DataRow rows in dtPedidos.Rows)
+            {
+                dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
+            }
         }
 
         private void dgvPedidosFinal_KeyDown(object sender, KeyEventArgs e)
@@ -141,10 +142,16 @@ namespace MultimodeSales.Vistas.Ventas
                             {
                                 foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
                                 {
+                                    if(rows.Cells[0].Value == null)
+                                    {
+                                        CPedido pedido = new CPedido();
+                                        rows.Cells[0].Value = pedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                                    }
                                     venta.ventaPedido(txtFolio.Text, rows.Cells[0].Value.ToString());
                                 }
                                 txtFolio.Text = "";
-                                CargarPedidos(idcliente);
+                                borrarLabels();
+                                CargarPedidos(idcliente); 
                             }
                         }
                     }
@@ -162,7 +169,6 @@ namespace MultimodeSales.Vistas.Ventas
         {
             if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
             {
-                borrarLabels();
                 PedidosFinal final = new PedidosFinal(true);
                 final.ShowDialog();
                 modelo = final.returnModelo();
@@ -174,35 +180,22 @@ namespace MultimodeSales.Vistas.Ventas
         {
             if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
             {
-                borrarLabels();
                 Modeloss modelos = new Modeloss(true);
                 modelos.ShowDialog();
                 modelo = modelos.returnModelo();
                 agregarModelo();
             }
         }
-
         private void borrarLabels()
         {
             lbCantidad.Text = "0";
             lbTotal.Text = "$0.00";
         }
-        private void dgvVentasPedido_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            borrarLabels();
-        }
-        private void darformatoTabla()
-        {
-            dgvVentasPedido.Columns[0].Visible = false;//IDPedido
-        }
         private void agregarModelo()
         {
             if (modelo.IDModelo != null)
             {
-                dtPedidos.Rows.Add(modelo.IDPedido, modelo.IDModelo, modelo.IDMarca, modelo.Color, modelo.Talla, modelo.PrecioCliente);
-                dgvVentasPedido.DataSource = null;
-                dgvVentasPedido.DataSource = dtPedidos;
-                darformatoTabla();
+                dgvVentasPedido.Rows.Add(modelo.IDPedido, modelo.IDModelo, modelo.IDMarca, modelo.Color, modelo.Talla, modelo.PrecioCliente);
             }
         }
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)

@@ -173,6 +173,7 @@
             // 
             // cobxMarca
             // 
+            this.cobxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cobxMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cobxMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cobxMarca.FormattingEnabled = true;

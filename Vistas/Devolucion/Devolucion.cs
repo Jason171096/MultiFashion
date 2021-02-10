@@ -34,7 +34,7 @@ namespace MultimodeSales.Vistas
             UCBarraSuperior.lbTitle.Text = "Devolución";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
-            Size = new Size(880, 475);
+            Size = new Size(880, 450);
             rbtnCancelar.Location = new Point(11, 407);
             rbtnAceptar.Location = new Point(718, 407);
             mtDivider.Visible = false;
@@ -47,7 +47,7 @@ namespace MultimodeSales.Vistas
             if (checkCambioModelo.Checked)
             {
                 Size = new Size(880, 695);
-                rbtnCancelar.Location = new Point(17, 650);
+                rbtnCancelar.Location = new Point(11, 650);
                 rbtnAceptar.Location = new Point(718, 650);
                 mtDivider.Visible = true;
                 gBoxCambio.Visible = true;
@@ -55,7 +55,7 @@ namespace MultimodeSales.Vistas
             }
             else
             {
-                Size = new Size(880, 475);
+                Size = new Size(880, 450);
                 rbtnCancelar.Location = new Point(11, 407);
                 rbtnAceptar.Location = new Point(718, 407);
                 mtDivider.Visible = false;
@@ -65,12 +65,12 @@ namespace MultimodeSales.Vistas
         }
         private void rbtnBuscarFolio_Click(object sender, EventArgs e)
         {
-            borrar();
+            borrarTodo();
             Folio folio = new Folio(true, true);
             folio.ShowDialog();
             cVenta = folio.returnVenta();
             cCliente = folio.returnCliente();
-            txtIDFolio.Text = cVenta.IDVenta;
+            txtFolioVenta.Text = cVenta.IDVenta;
             UCcomboBox.cboxCliente.SelectedValue = Convert.ToInt32(cCliente.IDCliente);
             dt = cVenta.verVentaPedidoModelo(cVenta.IDVenta);
             foreach (DataRow rows in dt.Rows)
@@ -136,11 +136,21 @@ namespace MultimodeSales.Vistas
                 totalDev2 += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
             }
             lbTotalDevolucion2.Text = string.Format("{0:C}", totalDev2);
+            if(totalDev2 > totalDev1)
+            {
+                lbTotalDevolucion2.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbTotalDevolucion2.ForeColor = Color.Black;
+            }
         }
-        private void borrar()
+        private void borrarTodo()
         {
             dgvDevolucion.Rows.Clear();
-            lbTotalDevolucion.Text = "$0.00";
+            dgvDevolucion2.Rows.Clear();
+            txtFolioVenta.Text = "";
+            totalLabels();
         }
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
@@ -157,5 +167,19 @@ namespace MultimodeSales.Vistas
         }
 
         #endregion
+
+        private void checkBuscarFolio_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBuscarFolio.Checked)
+            {
+                borrarTodo();
+                rbtnBuscarFolio.Enabled = true;
+            }
+            else
+            {
+                borrarTodo();
+                rbtnBuscarFolio.Enabled = false;
+            }
+        }
     }
 }

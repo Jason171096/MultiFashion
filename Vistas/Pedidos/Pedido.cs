@@ -36,7 +36,6 @@ namespace MultimodeSales.Vistas
             UCBarraSuperior.lbTitle.Text = "Pedido";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
 
-            Clientes();
             Modelos();
             Colores();
             Tallas();
@@ -44,15 +43,6 @@ namespace MultimodeSales.Vistas
             dgvPedido.Columns[0].Visible = false;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             agregarIconoBasura(0);
-        }
-        private void Clientes()
-        {
-            DataTable dt = cliente.VerClientes();
-            UCcboxCliente.cboxCliente.DisplayMember = "Nombre";
-            UCcboxCliente.cboxCliente.ValueMember = "IDCliente";
-            dt.Rows.Add(0, "--Seleccione el cliente--");
-            UCcboxCliente.cboxCliente.DataSource = dt;
-            UCcboxCliente.cboxCliente.SelectedIndex = UCcboxCliente.cboxCliente.Items.Count - 1;
         }
         private void Modelos()
         {
@@ -93,9 +83,8 @@ namespace MultimodeSales.Vistas
             if (index != UCcboxCliente.cboxCliente.SelectedIndex)
             {
                 foreach (DataGridViewRow rows in dgvPedido.Rows)
-                {
-
-                    if (rows.Cells[1].Value + "" != "")
+                { 
+                    if (rows.Cells[1].Value != null)
                     {
                         pedido.AgregarPedido(rows.Cells[0].Value + "", rows.Cells[1].Value + "", UCcboxCliente.cboxCliente.SelectedValue + "", rows.Cells[3].Value + "", rows.Cells[4].Value + "");
                     }
@@ -113,7 +102,7 @@ namespace MultimodeSales.Vistas
                 Close();
         }
         private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        { 
+        {
             if (e.ColumnIndex == 1)
             {
                 if (CellValueChange)
@@ -155,22 +144,18 @@ namespace MultimodeSales.Vistas
         }
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SelectIndexChange)
+            dgvPedido.Rows.Clear();
+            DataTable dt = pedido.CargarPedido(UCcboxCliente.cboxCliente.SelectedValue + "");
+            int i = 0;
+            foreach (DataRow rows in dt.Rows)
             {
-                dgvPedido.Rows.Clear();
-                DataTable dt = pedido.CargarPedido(UCcboxCliente.cboxCliente.SelectedValue + "");
-                int i = 0;
-                foreach (DataRow rows in dt.Rows)
-                {
-                    dgvPedido.Rows.Add();
-                    dgvPedido.Rows[i].Cells[0].Value = rows[0];
-                    dgvPedido.Rows[i].Cells[1].Value = rows[1];
-                    dgvPedido.Rows[i].Cells[3].Value = rows[2];
-                    dgvPedido.Rows[i].Cells[4].Value = rows[3];
-                    i++;
-                }
+                dgvPedido.Rows.Add();
+                dgvPedido.Rows[i].Cells[0].Value = rows[0];
+                dgvPedido.Rows[i].Cells[1].Value = rows[1];
+                dgvPedido.Rows[i].Cells[3].Value = rows[2];
+                dgvPedido.Rows[i].Cells[4].Value = rows[3];
+                i++;
             }
-            SelectIndexChange = true;
         }
         private void agregarIconoBasura(int pRowIndex)
         {

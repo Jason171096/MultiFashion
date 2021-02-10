@@ -71,8 +71,8 @@ namespace MultimodeSales.Vistas.Modelos
         }
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(txtIDModelo.Text) || !String.IsNullOrWhiteSpace(txtColor.Text)
-               || !String.IsNullOrWhiteSpace(txtTalla.Text) || !String.IsNullOrWhiteSpace(txtPrecioPublico.Text))
+            if (!string.IsNullOrWhiteSpace(txtIDModelo.Text) && !string.IsNullOrWhiteSpace(txtColor.Text)
+               && !string.IsNullOrWhiteSpace(txtTalla.Text) && !string.IsNullOrWhiteSpace(txtPrecioCliente.Text))
             {
                 if (cobxMarca.SelectedIndex != 0)
                     if (Bandera)

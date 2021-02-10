@@ -11,7 +11,6 @@ namespace MultimodeSales.Vistas
 {
     public partial class PedidosFinal : Form
     {
-        private int Buscar;
         CListaPedidosFinal listaPedidosFinal = new CListaPedidosFinal();
         DataTable dt;
         DataView dv;
@@ -55,12 +54,10 @@ namespace MultimodeSales.Vistas
             if (rb.Checked && rb.TabIndex == 10)
             {
                 dtpFecha.Enabled = false;
-                Buscar = 1;
             }
             else if (rb.Checked && rb.TabIndex == 12)
             {
                 dtpFecha.Enabled = true;
-                Buscar = 2;
             }
         }
         private void radioButtonOrdenar_CheckedChanged(object sender, EventArgs e)

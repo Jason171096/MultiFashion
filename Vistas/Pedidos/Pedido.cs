@@ -44,7 +44,6 @@ namespace MultimodeSales.Vistas
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             agregarIconoBasura(0);
 
-            
         }
         private void Modelos()
         {

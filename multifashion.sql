@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2021 a las 20:23:30
+-- Tiempo de generación: 12-02-2021 a las 00:23:32
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -59,6 +59,12 @@ BEGIN
 		INSERT INTO pedidos(IDModelo, IDCliente, Color, Talla, Fecha) VALUES
     (idmodelo, idcliente, color, talla, NOW());
     END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarPedidoProvisional` (IN `idmodelo` VARCHAR(50), IN `idcliente` BIGINT, IN `color` VARCHAR(50), IN `talla` VARCHAR(50))  NO SQL
+BEGIN
+	INSERT INTO pedidos(IDModelo, IDCliente, Color, Talla, Fecha) VALUES(idmodelo, idcliente, color, talla, NOW());
+    SELECT LAST_INSERT_ID();
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarPedidosFinal` (IN `idmodelo` VARCHAR(50), IN `idcliente` BIGINT, IN `color` INT, IN `talla` INT)  MODIFIES SQL DATA
@@ -158,7 +164,8 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerClientesPedido` (IN `idcliente` BIGINT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, p.IDModelo, p.Color, p.Talla FROM pedidos p WHERE p.IDCliente = idcliente;
+	SET @date := (SELECT `PrimerDiaSemana`());
+	SELECT p.IDPedido, p.IDModelo, p.Color, p.Talla FROM pedidos p WHERE p.IDCliente = idcliente AND p.Fecha > (@date);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerClientesPedidoLlego` (IN `idcliente` BIGINT)  NO SQL
@@ -207,6 +214,11 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `NombreMarca` (`idmarca` INT) RETURNS
 BEGIN
 	 SET @var := (SELECT m.Nombre FROM marca m WHERE m.IDMarca = idmarca);
      RETURN @var;
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `PrimerDiaSemana` () RETURNS DATE NO SQL
+BEGIN
+	RETURN SUBDATE(NOW(), WEEKDAY(NOW()));
 END$$
 
 DELIMITER ;
@@ -343,9 +355,22 @@ INSERT INTO `color` (`IDColor`, `Nombre`) VALUES
 
 CREATE TABLE `devolucion` (
   `IDFolio` bigint(20) NOT NULL,
-  `IDPedido` bigint(20) NOT NULL,
   `IDCliente` bigint(20) NOT NULL,
-  `Fecha` datetime NOT NULL
+  `Fecha` datetime NOT NULL,
+  `TotalDevuelto` decimal(10,2) NOT NULL,
+  `TotalAceptado` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `devolucion_pedidos`
+--
+
+CREATE TABLE `devolucion_pedidos` (
+  `IDDevolucionPedido` bigint(20) NOT NULL,
+  `IDFolio` bigint(20) NOT NULL,
+  `IDPedido` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -415,7 +440,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('117', 7, 'AMARILLO', '23', '781.35', NULL, '2020-10-13 23:35:15'),
 ('118', 3, 'NEGRO', '24', '4000.00', NULL, '2020-10-13 23:35:15'),
 ('119', 7, 'VIOLETA', '25', '814.45', NULL, '2020-10-13 23:35:15'),
-('12', 6, '', '', '0.00', NULL, '2021-01-15 10:25:17'),
+('12', 6, 'MAGENTA', '15 AL 21', '950.00', NULL, '2021-01-15 10:25:17'),
 ('120', 7, 'AZUL', 'M', '831.00', NULL, '2020-10-13 23:35:15'),
 ('121', 7, 'AMARILLO', 'CH', '847.55', NULL, '2020-10-13 23:35:16'),
 ('122', 7, 'NEGRO', 'T', '864.10', NULL, '2020-10-13 23:35:16'),
@@ -589,7 +614,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('288', 7, 'AZUL', 'M', '3611.40', NULL, '2020-10-13 23:35:27'),
 ('289', 7, 'AMARILLO', 'CH', '3627.95', NULL, '2020-10-13 23:35:27'),
 ('290', 6, 'NEGRO', 'T', '0.00', NULL, '2020-10-13 23:35:27'),
-('291', 3, 'VIOLETA', 'XG', '0.00', NULL, '2020-10-13 23:35:27'),
+('291', 3, 'VIOLETA', 'XG', '556.20', NULL, '2020-10-13 23:35:27'),
 ('292', 7, 'AZUL', '22', '3677.60', NULL, '2020-10-13 23:35:27'),
 ('293', 7, 'AMARILLO', '23', '3694.15', NULL, '2020-10-13 23:35:27'),
 ('294', 7, 'NEGRO', '24', '3710.70', NULL, '2020-10-13 23:35:28'),
@@ -703,8 +728,8 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('6', 6, 'MAGENTA', '35 AL 25', '0.00', NULL, '2020-10-19 15:04:05'),
 ('60', 2, 'MORADO', '5', '0.00', NULL, '2021-01-16 12:48:54'),
 ('6762', 7, 'NEGRO', '22 AL 27  ENTEROS', '459.50', NULL, '2020-10-04 18:19:49'),
-('7', 6, 'CELESTE', '34', '0.00', NULL, '2020-10-19 14:31:38'),
-('8', 6, 'ROSA', '22 AL 28', '0.00', NULL, '2020-10-19 15:05:43'),
+('7', 6, 'CELESTE', '34', '633.30', NULL, '2020-10-19 14:31:38'),
+('8', 6, 'ROSA', '22 AL 28', '1050.50', NULL, '2020-10-19 15:05:43'),
 ('801', 7, 'LADRILLO', '22 AL 26', '45.00', NULL, '2020-10-04 18:19:48'),
 ('8049', 7, 'NEGRO', '23 AL 26', '505.50', NULL, '2020-10-04 18:19:49'),
 ('8050', 7, 'NUTRIA', '23 AL 26', '574.50', NULL, '2020-10-04 18:19:49'),
@@ -732,20 +757,13 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`) VALUES
-(60, '10009', 101, 'AMARILLLO', '22', '2021-02-03 09:39:15', b'0', b'1'),
-(61, '60', 101, 'RUBY', 'G', '2021-02-03 09:39:15', b'0', b'1'),
-(62, '7', 101, 'TURQUESA', '17', '2021-02-03 09:39:15', b'0', b'1'),
-(63, '10009', 101, 'RUBY', 'XG', '2021-02-03 09:40:23', b'0', b'1'),
-(64, '6', 101, 'TURQUESA', '22', '2021-02-03 09:40:23', b'0', b'1'),
-(65, '10009', 101, 'ROJO', 'CH', '2021-02-03 09:40:23', b'0', b'1'),
-(66, '4', 101, 'RUBY', '17', '2021-02-05 11:57:20', b'1', b'0'),
-(67, '101', 100, 'RUBY', '18', '2021-02-06 12:21:19', b'0', b'1'),
-(68, '129', 100, 'AMARILLLO', 'M', '2021-02-06 12:21:19', b'0', b'1'),
-(69, '12', 100, 'TURQUESA', '17', '2021-02-06 12:21:19', b'0', b'1'),
-(70, '2', 100, 'RUBY', 'CH', '2021-02-06 12:21:19', b'0', b'1'),
-(71, '60', 93, 'ROJO', '17', '2021-02-06 12:28:15', b'1', b'0'),
-(72, '111', 93, 'TURQUESA', '22', '2021-02-06 12:28:15', b'1', b'0'),
-(73, '10001', 93, 'AMARILLLO', 'M', '2021-02-06 12:28:15', b'1', b'0');
+(96, '8', 100, 'RUBY', '18', '2021-02-10 13:46:33', b'0', b'1'),
+(97, '119', 100, 'RUBY', '22', '2021-02-10 13:46:33', b'0', b'1'),
+(98, '135', 100, 'MORADO', 'XG', '2021-02-10 13:46:33', b'0', b'1'),
+(99, '138', 100, 'TURQUESA', '17', '2021-02-10 13:46:33', b'0', b'1'),
+(100, '118', 100, 'NEGRO', '24', '2021-02-10 13:47:49', b'0', b'1'),
+(101, '12', 101, 'RUBY', 'XG', '2021-02-10 17:00:55', b'1', b'1'),
+(102, '118', 101, 'NEGRO', '24', '2021-02-10 17:01:25', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -809,9 +827,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
-(1, 101, '2021-02-03 09:39:37', '551.50'),
-(2, 101, '2021-02-03 09:41:05', '1654.50'),
-(5, 100, '2021-02-06 12:21:55', '2246.50');
+(1, 100, '2021-02-10 13:47:48', '4814.45'),
+(2, 101, '2021-02-10 17:01:24', '4950.00');
 
 -- --------------------------------------------------------
 
@@ -830,16 +847,13 @@ CREATE TABLE `venta_pedidos` (
 --
 
 INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
-(1, 2, 61),
-(2, 2, 62),
-(3, 2, 64),
-(4, 2, 60),
-(5, 2, 63),
-(6, 2, 65),
-(7, 5, 67),
-(8, 5, 68),
-(9, 5, 69),
-(10, 5, 70);
+(36, 1, 96),
+(37, 1, 97),
+(38, 1, 98),
+(39, 1, 99),
+(40, 1, 100),
+(41, 2, 101),
+(42, 2, 102);
 
 --
 -- Índices para tablas volcadas
@@ -862,8 +876,15 @@ ALTER TABLE `color`
 --
 ALTER TABLE `devolucion`
   ADD PRIMARY KEY (`IDFolio`),
-  ADD KEY `IDPedido` (`IDPedido`),
   ADD KEY `IDCliente` (`IDCliente`);
+
+--
+-- Indices de la tabla `devolucion_pedidos`
+--
+ALTER TABLE `devolucion_pedidos`
+  ADD PRIMARY KEY (`IDDevolucionPedido`),
+  ADD KEY `IDFolio` (`IDFolio`),
+  ADD KEY `IDPedido` (`IDPedido`);
 
 --
 -- Indices de la tabla `marca`
@@ -935,10 +956,16 @@ ALTER TABLE `devolucion`
   MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `devolucion_pedidos`
+--
+ALTER TABLE `devolucion_pedidos`
+  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -956,7 +983,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Restricciones para tablas volcadas
@@ -966,8 +993,14 @@ ALTER TABLE `venta_pedidos`
 -- Filtros para la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  ADD CONSTRAINT `devolucion_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`),
   ADD CONSTRAINT `devolucion_ibfk_2` FOREIGN KEY (`IDCliente`) REFERENCES `clientes` (`IDCliente`);
+
+--
+-- Filtros para la tabla `devolucion_pedidos`
+--
+ALTER TABLE `devolucion_pedidos`
+  ADD CONSTRAINT `devolucion_pedidos_ibfk_1` FOREIGN KEY (`IDFolio`) REFERENCES `devolucion` (`IDFolio`),
+  ADD CONSTRAINT `devolucion_pedidos_ibfk_2` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`);
 
 --
 -- Filtros para la tabla `modelos`
@@ -993,6 +1026,14 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `venta_pedidos`
   ADD CONSTRAINT `venta_pedidos_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `BorrarPedidoMes` ON SCHEDULE EVERY 1 MONTH STARTS '2021-02-01 11:04:04' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM pedidos WHERE pedidos.Llego = 0 AND pedidos.Vendido = 0$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

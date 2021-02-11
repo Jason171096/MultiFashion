@@ -239,7 +239,6 @@
             // IDModelo
             // 
             this.IDModelo.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.IDModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.IDModelo.HeaderText = "Modelo";
             this.IDModelo.Name = "IDModelo";
             this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -252,7 +251,7 @@
             // 
             // IDColor
             // 
-            this.IDColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IDColor.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.IDColor.HeaderText = "Color";
             this.IDColor.Name = "IDColor";
             this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -260,8 +259,7 @@
             // 
             // IDTalla
             // 
-            this.IDTalla.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.IDTalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IDTalla.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.IDTalla.HeaderText = "Talla";
             this.IDTalla.Name = "IDTalla";
             this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;

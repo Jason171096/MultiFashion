@@ -134,7 +134,7 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "ID Modelo";
+            this.Column2.HeaderText = "Modelo";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 

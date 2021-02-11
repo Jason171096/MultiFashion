@@ -17,7 +17,7 @@ namespace MultimodeSales.Vistas
         CPedido pedido = new CPedido();
         CColoresyTallas ColoresyTallas = new CColoresyTallas();
         DataTable DataModels = new DataTable();
-        private bool CellValueChange = false, SelectIndexChange = false;
+        private bool CellValueChange = false;
 
         public Pedido()
         {
@@ -43,6 +43,8 @@ namespace MultimodeSales.Vistas
             dgvPedido.Columns[0].Visible = false;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             agregarIconoBasura(0);
+
+            
         }
         private void Modelos()
         {

@@ -142,12 +142,15 @@ namespace MultimodeSales.Vistas.Ventas
                             {
                                 foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
                                 {
-                                    if(rows.Cells[0].Value == null)
+                                    if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
                                     {
-                                        CPedido pedido = new CPedido();
-                                        rows.Cells[0].Value = pedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                                        if (rows.Cells[0].Value == null)
+                                        {
+                                            CPedido pedido = new CPedido();
+                                            rows.Cells[0].Value = pedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                                        }
+                                        venta.ventaPedido(txtFolio.Text, rows.Cells[0].Value.ToString());
                                     }
-                                    venta.ventaPedido(txtFolio.Text, rows.Cells[0].Value.ToString());
                                 }
                                 txtFolio.Text = "";
                                 borrarLabels();

@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedido));
             this.dgvPedido = new System.Windows.Forms.DataGridView();
+            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDModelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.IDMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDColor = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.IDTalla = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtnAgregarColorTalla = new RoundButton.RoundButton();
@@ -43,12 +49,6 @@
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizarPedido = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
-            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDModelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.IDMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDColor = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.IDTalla = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,7 +106,50 @@
             this.dgvPedido.TabIndex = 32;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
+            this.dgvPedido.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvPedido_DataError);
             this.dgvPedido.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPedido_RowsAdded);
+            // 
+            // IDPedido
+            // 
+            this.IDPedido.HeaderText = "Pedido";
+            this.IDPedido.Name = "IDPedido";
+            // 
+            // IDModelo
+            // 
+            this.IDModelo.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.IDModelo.HeaderText = "Modelo";
+            this.IDModelo.Name = "IDModelo";
+            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDModelo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // IDMarca
+            // 
+            this.IDMarca.HeaderText = "Marca";
+            this.IDMarca.Name = "IDMarca";
+            // 
+            // IDColor
+            // 
+            this.IDColor.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.IDColor.HeaderText = "Color";
+            this.IDColor.Name = "IDColor";
+            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // IDTalla
+            // 
+            this.IDTalla.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.IDTalla.HeaderText = "Talla";
+            this.IDTalla.Name = "IDTalla";
+            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IDTalla.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label4
             // 
@@ -230,48 +273,6 @@
             this.UCBarraSuperior.Name = "UCBarraSuperior";
             this.UCBarraSuperior.Size = new System.Drawing.Size(1052, 48);
             this.UCBarraSuperior.TabIndex = 58;
-            // 
-            // IDPedido
-            // 
-            this.IDPedido.HeaderText = "Pedido";
-            this.IDPedido.Name = "IDPedido";
-            // 
-            // IDModelo
-            // 
-            this.IDModelo.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.IDModelo.HeaderText = "Modelo";
-            this.IDModelo.Name = "IDModelo";
-            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDModelo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // IDMarca
-            // 
-            this.IDMarca.HeaderText = "Marca";
-            this.IDMarca.Name = "IDMarca";
-            // 
-            // IDColor
-            // 
-            this.IDColor.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.IDColor.HeaderText = "Color";
-            this.IDColor.Name = "IDColor";
-            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // IDTalla
-            // 
-            this.IDTalla.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.IDTalla.HeaderText = "Talla";
-            this.IDTalla.Name = "IDTalla";
-            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDTalla.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Pedido
             // 

@@ -60,6 +60,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -196,7 +197,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(92, 67);
+            this.label1.Location = new System.Drawing.Point(51, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 24);
             this.label1.TabIndex = 57;
@@ -206,7 +207,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.Location = new System.Drawing.Point(59, 28);
+            this.label2.Location = new System.Drawing.Point(18, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 24);
             this.label2.TabIndex = 58;
@@ -221,7 +222,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.groupBox1.Location = new System.Drawing.Point(12, 489);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 102);
+            this.groupBox1.Size = new System.Drawing.Size(227, 102);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Venta";
@@ -230,7 +231,7 @@
             // 
             this.lbTotal.AutoSize = true;
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lbTotal.Location = new System.Drawing.Point(159, 67);
+            this.lbTotal.Location = new System.Drawing.Point(118, 69);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(55, 24);
             this.lbTotal.TabIndex = 60;
@@ -240,7 +241,7 @@
             // 
             this.lbCantidad.AutoSize = true;
             this.lbCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lbCantidad.Location = new System.Drawing.Point(159, 28);
+            this.lbCantidad.Location = new System.Drawing.Point(118, 30);
             this.lbCantidad.Name = "lbCantidad";
             this.lbCantidad.Size = new System.Drawing.Size(20, 24);
             this.lbCantidad.TabIndex = 59;
@@ -250,7 +251,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.Location = new System.Drawing.Point(498, 99);
+            this.label3.Location = new System.Drawing.Point(498, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 24);
             this.label3.TabIndex = 54;
@@ -259,7 +260,7 @@
             // txtFolio
             // 
             this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtFolio.Location = new System.Drawing.Point(561, 96);
+            this.txtFolio.Location = new System.Drawing.Point(561, 70);
             this.txtFolio.Name = "txtFolio";
             this.txtFolio.Size = new System.Drawing.Size(248, 29);
             this.txtFolio.TabIndex = 63;
@@ -336,7 +337,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(280, 501);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(502, 114);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -411,6 +412,21 @@
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Seleccionado";
             // 
+            // rbtnAplicarDevolucion
+            // 
+            this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(487, 489);
+            this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
+            this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnAplicarDevolucion.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnAplicarDevolucion.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnAplicarDevolucion.Size = new System.Drawing.Size(179, 39);
+            this.rbtnAplicarDevolucion.TabIndex = 73;
+            this.rbtnAplicarDevolucion.Text = "Apl. Devolucion";
+            this.rbtnAplicarDevolucion.TextColor = System.Drawing.Color.White;
+            this.rbtnAplicarDevolucion.UseVisualStyleBackColor = true;
+            // 
             // UCBarraSuperior
             // 
             this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
@@ -427,6 +443,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(821, 596);
+            this.Controls.Add(this.rbtnAplicarDevolucion);
             this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.rbtnAgregarModelo);
@@ -490,5 +507,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private RoundButton.RoundButton rbtnAplicarDevolucion;
     }
 }

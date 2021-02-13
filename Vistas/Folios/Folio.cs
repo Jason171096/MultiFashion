@@ -11,7 +11,7 @@ namespace MultimodeSales.Vistas
 {
     public partial class Folio : Form
     {
-        CFolio cFolio = new CFolio();
+        CFolioBD cFolio = new CFolioBD();
         CVenta cVenta = new CVenta();
         CCliente cCliente = new CCliente();
         private bool ventanaDevolucion;

@@ -1,5 +1,4 @@
 ﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Cliente;
 using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
 using MultimodeSales.Vistas.Modelos;
@@ -12,9 +11,8 @@ namespace MultimodeSales.Vistas
 {
     public partial class Pedido : Form
     {
-        CClienteDB cliente = new CClienteDB();
         CModelosDB modelos = new CModelosDB();
-        CPedido pedido = new CPedido();
+        CPedidoBD pedido = new CPedidoBD();
         CColoresyTallas ColoresyTallas = new CColoresyTallas();
         DataTable DataModels = new DataTable();
         private bool CellValueChange = false;
@@ -56,13 +54,19 @@ namespace MultimodeSales.Vistas
         {
             DataTable dt = ColoresyTallas.VerColores();
             IDColor.DisplayMember = "Nombre";
-            IDColor.DataSource = dt;
+            foreach (DataRow rows in dt.Rows)
+            {
+                IDColor.Items.Add(rows[1]);
+            }
         }
         private void Tallas()
         {
             DataTable dt = ColoresyTallas.VerTallas();
             IDTalla.DisplayMember = "Numero";
-            IDTalla.DataSource = dt;
+            foreach (DataRow rows in dt.Rows)
+            {
+                IDTalla.Items.Add(rows[1]);
+            }
         }
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)
         {
@@ -163,6 +167,20 @@ namespace MultimodeSales.Vistas
             dgvPedido.Rows[pRowIndex].Cells[5].Value = Properties.Resources.basura24px;
         }
 
+        private void dgvPedido_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 3:
+                    IDColor.Items.Add(dgvPedido.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                    break;
+                case 4:
+                    IDTalla.Items.Add(dgvPedido.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                    break;
+                default:
+                    break;
+            }
+        }
         #region Panel Barra
         private void minimizedClick(object sender, EventArgs e)
         {

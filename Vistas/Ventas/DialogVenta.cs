@@ -16,6 +16,7 @@ namespace MultimodeSales.Vistas.Ventas
             InitializeComponent();
             CRoundButton.FormattedRoundButtonAceptar(rbtnVender);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
+            rbtnVender.FlatAppearance.BorderColor = Color.Green;
             total = pTotal;
             idfolio = pIDFolio;
             idcliente = pIDCliente;

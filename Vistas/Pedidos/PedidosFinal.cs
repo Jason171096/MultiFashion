@@ -116,22 +116,23 @@ namespace MultimodeSales.Vistas
             dgvPedidosFinal.Columns[0].Visible = false;//IDPedido
             dgvPedidosFinal.Columns[9].Visible = false;//Llego
             dgvPedidosFinal.Columns[10].Visible = false;//Vendido
+            dgvPedidosFinal.Columns[11].Visible = false;//Devuelto
         }
         private void dgvPedidosFinal_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor != Color.OrangeRed)
+                if (dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor != Color.OrangeRed && dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
                 {
-                    if (dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor == Color.YellowGreen)
+                    if (dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor == Color.Green)
                     {
                         dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
                         dgvPedidosFinal.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
                     }
                     else
                     {
-                        dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
-                        dgvPedidosFinal.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                        dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor = Color.Green;
+                        dgvPedidosFinal.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
                     }
                 }
             }
@@ -140,7 +141,7 @@ namespace MultimodeSales.Vistas
         {
             foreach (DataGridViewRow rows in dgvPedidosFinal.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                if (rows.DefaultCellStyle.BackColor == Color.Green)
                     listaPedidosFinal.UpdatePedidoLlego(rows.Cells[0].Value.ToString(), "1");
                 else
                     listaPedidosFinal.UpdatePedidoLlego(rows.Cells[0].Value.ToString(), "0");
@@ -229,13 +230,18 @@ namespace MultimodeSales.Vistas
             {
                 if (rows.Cells[9].Value.ToString() == "1" && rows.Cells[10].Value.ToString() == "0")
                 {
-                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.YellowGreen;
-                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Green;
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
                 }
                 if(rows.Cells[10].Value.ToString() == "1")
                 {
                     dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.OrangeRed;
                     dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.DarkOrange;
+                }
+                if (rows.Cells[11].Value.ToString() == "1")
+                {
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Blue;
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
                 }
             }
         }

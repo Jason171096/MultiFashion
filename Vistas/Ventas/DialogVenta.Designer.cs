@@ -181,6 +181,7 @@ namespace MultimodeSales.Vistas.Ventas
             // 
             this.rbtnVender.BorderColor = System.Drawing.Color.Silver;
             this.rbtnVender.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnVender.FlatAppearance.BorderSize = 0;
             this.rbtnVender.Location = new System.Drawing.Point(341, 307);
             this.rbtnVender.Name = "rbtnVender";
             this.rbtnVender.OnHoverBorderColor = System.Drawing.Color.Gray;

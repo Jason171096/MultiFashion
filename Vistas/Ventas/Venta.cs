@@ -23,6 +23,7 @@ namespace MultimodeSales.Vistas.Ventas
             CDataGridView.FormattedDataGridView(dgvVentasPedido);
             CRoundButton.FormattedRoundButtonAceptar(rbtnSelTodo);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarModelo);
+            CRoundButton.FormattedRoundButtonAceptar(rbtnAplicarDevolucion);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarPedido);
             CRoundButton.FormattedRoundButtonCancelar(rbtnVender);
 
@@ -126,12 +127,12 @@ namespace MultimodeSales.Vistas.Ventas
             }
             if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
             {
-                if (txtFolio.Text != "")
+                if (!string.IsNullOrWhiteSpace(txtFolio.Text))
                 {
-                    if (cont >= 1)
+                    if (cont > 0)
                     {
-                        int idfolio = venta.verificarFolioExistente(txtFolio.Text);
-                        if (idfolio == 1)
+                        bool verificarIDFolio = venta.verificarFolioExistente(txtFolio.Text);
+                        if (verificarIDFolio == true)
                             CMsgBox.DisplayWarning("Folio existente");
                         else
                         {
@@ -146,7 +147,7 @@ namespace MultimodeSales.Vistas.Ventas
                                     {
                                         if (rows.Cells[0].Value == null)
                                         {
-                                            CPedido pedido = new CPedido();
+                                            CPedidoBD pedido = new CPedidoBD();
                                             rows.Cells[0].Value = pedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
                                         }
                                         venta.ventaPedido(txtFolio.Text, rows.Cells[0].Value.ToString());
@@ -162,7 +163,7 @@ namespace MultimodeSales.Vistas.Ventas
                         CMsgBox.DisplayWarning("Seleccionar un articulo");
                 }
                 else
-                    CMsgBox.DisplayWarning("No dejar el folio vacio");
+                    CMsgBox.DisplayWarning("No dejar el Folio vacio");
             }
             else
                 CMsgBox.DisplayWarning("Seleccionar un cliente");

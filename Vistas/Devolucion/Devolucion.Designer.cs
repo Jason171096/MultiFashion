@@ -29,17 +29,20 @@ namespace MultimodeSales.Vistas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolucion));
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDFolio = new System.Windows.Forms.TextBox();
             this.mtDivider = new MaterialSkin.Controls.MaterialDivider();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBuscarFolio = new MaterialSkin.Controls.MaterialCheckBox();
+            this.txtFolioVenta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.UCcomboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.rbtnBuscarFolio = new RoundButton.RoundButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,9 +76,6 @@ namespace MultimodeSales.Vistas
             this.rbtnAceptar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFolioVenta = new System.Windows.Forms.TextBox();
-            this.checkBuscarFolio = new MaterialSkin.Controls.MaterialCheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();
@@ -132,6 +132,42 @@ namespace MultimodeSales.Vistas
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
+            // 
+            // checkBuscarFolio
+            // 
+            this.checkBuscarFolio.AutoSize = true;
+            this.checkBuscarFolio.Depth = 0;
+            this.checkBuscarFolio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.checkBuscarFolio.Location = new System.Drawing.Point(14, 62);
+            this.checkBuscarFolio.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBuscarFolio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.checkBuscarFolio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.checkBuscarFolio.Name = "checkBuscarFolio";
+            this.checkBuscarFolio.Ripple = true;
+            this.checkBuscarFolio.Size = new System.Drawing.Size(106, 30);
+            this.checkBuscarFolio.TabIndex = 68;
+            this.checkBuscarFolio.Text = "Buscar Folio";
+            this.checkBuscarFolio.UseVisualStyleBackColor = true;
+            this.checkBuscarFolio.CheckedChanged += new System.EventHandler(this.checkBuscarFolio_CheckedChanged);
+            // 
+            // txtFolioVenta
+            // 
+            this.txtFolioVenta.Enabled = false;
+            this.txtFolioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtFolioVenta.Location = new System.Drawing.Point(123, 89);
+            this.txtFolioVenta.Name = "txtFolioVenta";
+            this.txtFolioVenta.Size = new System.Drawing.Size(137, 29);
+            this.txtFolioVenta.TabIndex = 67;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label3.Location = new System.Drawing.Point(6, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 24);
+            this.label3.TabIndex = 66;
+            this.label3.Text = "Folio Venta:";
             // 
             // UCcomboBox
             // 
@@ -192,14 +228,14 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevolucion.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDevolucion.ColumnHeadersHeight = 50;
             this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDevolucion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -215,22 +251,22 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.Location = new System.Drawing.Point(8, 62);
             this.dgvDevolucion.Name = "dgvDevolucion";
             this.dgvDevolucion.ReadOnly = true;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDevolucion.RowHeadersVisible = false;
             this.dgvDevolucion.RowHeadersWidth = 30;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.MidnightBlue;
-            this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
+            this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDevolucion.RowTemplate.Height = 30;
             this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
@@ -423,14 +459,14 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevolucion2.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvDevolucion2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDevolucion2.ColumnHeadersHeight = 50;
             this.dgvDevolucion2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDevolucion2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -446,22 +482,22 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion2.Location = new System.Drawing.Point(5, 62);
             this.dgvDevolucion2.Name = "dgvDevolucion2";
             this.dgvDevolucion2.ReadOnly = true;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDevolucion2.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion2.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDevolucion2.RowHeadersVisible = false;
             this.dgvDevolucion2.RowHeadersWidth = 30;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.MidnightBlue;
-            this.dgvDevolucion2.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MidnightBlue;
+            this.dgvDevolucion2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDevolucion2.RowTemplate.Height = 30;
             this.dgvDevolucion2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion2.Size = new System.Drawing.Size(850, 150);
@@ -531,6 +567,7 @@ namespace MultimodeSales.Vistas
             this.rbtnAceptar.Text = "Aceptar";
             this.rbtnAceptar.TextColor = System.Drawing.Color.White;
             this.rbtnAceptar.UseVisualStyleBackColor = true;
+            this.rbtnAceptar.Click += new System.EventHandler(this.rbtnAceptar_Click);
             // 
             // rbtnCancelar
             // 
@@ -555,42 +592,6 @@ namespace MultimodeSales.Vistas
             this.UCBarraSuperior.Name = "UCBarraSuperior";
             this.UCBarraSuperior.Size = new System.Drawing.Size(880, 48);
             this.UCBarraSuperior.TabIndex = 69;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.Location = new System.Drawing.Point(6, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 24);
-            this.label3.TabIndex = 66;
-            this.label3.Text = "Folio Venta:";
-            // 
-            // txtFolioVenta
-            // 
-            this.txtFolioVenta.Enabled = false;
-            this.txtFolioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtFolioVenta.Location = new System.Drawing.Point(123, 89);
-            this.txtFolioVenta.Name = "txtFolioVenta";
-            this.txtFolioVenta.Size = new System.Drawing.Size(137, 29);
-            this.txtFolioVenta.TabIndex = 67;
-            // 
-            // checkBuscarFolio
-            // 
-            this.checkBuscarFolio.AutoSize = true;
-            this.checkBuscarFolio.Depth = 0;
-            this.checkBuscarFolio.Font = new System.Drawing.Font("Roboto", 10F);
-            this.checkBuscarFolio.Location = new System.Drawing.Point(14, 62);
-            this.checkBuscarFolio.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBuscarFolio.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.checkBuscarFolio.MouseState = MaterialSkin.MouseState.HOVER;
-            this.checkBuscarFolio.Name = "checkBuscarFolio";
-            this.checkBuscarFolio.Ripple = true;
-            this.checkBuscarFolio.Size = new System.Drawing.Size(106, 30);
-            this.checkBuscarFolio.TabIndex = 68;
-            this.checkBuscarFolio.Text = "Buscar Folio";
-            this.checkBuscarFolio.UseVisualStyleBackColor = true;
-            this.checkBuscarFolio.CheckedChanged += new System.EventHandler(this.checkBuscarFolio_CheckedChanged);
             // 
             // Devolucion
             // 

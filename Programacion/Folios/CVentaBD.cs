@@ -31,7 +31,7 @@ namespace MultimodeSales
             cmd.Connection.Close();
         }
 
-        public int verificarFolioExistente(string pIDFolio)
+        public bool verificarFolioExistente(string pIDFolio)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("FolioExistente", conexion.GetConnection());
@@ -39,9 +39,7 @@ namespace MultimodeSales
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             object existeFolio = cmd.ExecuteScalar();
             cmd.Connection.Close();
-            if (Convert.ToInt32(existeFolio) == 1)
-                return 1;
-            return 0;
+            return Boolean.Parse(existeFolio.ToString());
         }
 
         public void ventaPedido(string pIDFolio, string pIDPedido)

@@ -7,11 +7,13 @@ using MultimodeSales.Programacion;
 using MultimodeSales.Programacion.Cliente;
 using MultimodeSales.Vistas;
 using MultimodeSales.Programacion.Modelo;
+using MultimodeSales.Programacion.Devolucion;
 
 namespace MultimodeSales.Vistas
 {
     public partial class Devolucion : Form
     {
+        CDevolucionBD cDevolucion = new CDevolucionBD();
         CVenta cVenta = new CVenta();
         CCliente cCliente = new CCliente();
         DataTable dt = new DataTable();
@@ -136,7 +138,7 @@ namespace MultimodeSales.Vistas
                 totalDev2 += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
             }
             lbTotalDevolucion2.Text = string.Format("{0:C}", totalDev2);
-            if(totalDev2 > totalDev1)
+            if (totalDev2 > totalDev1)
             {
                 lbTotalDevolucion2.ForeColor = Color.Red;
             }
@@ -170,16 +172,49 @@ namespace MultimodeSales.Vistas
 
         private void checkBuscarFolio_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBuscarFolio.Checked)
+            if (checkBuscarFolio.Checked)
             {
                 borrarTodo();
                 rbtnBuscarFolio.Enabled = true;
+                UCcomboBox.cboxCliente.Enabled = false;
             }
             else
             {
                 borrarTodo();
                 rbtnBuscarFolio.Enabled = false;
+                UCcomboBox.cboxCliente.Enabled = true;
             }
+        }
+
+        private void rbtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtIDFolio.Text))
+            {
+                if (dgvDevolucion.Rows.Count > 0)
+                {
+                    if (!checkCambioModelo.Checked)
+                    {
+                        foreach (DataGridViewRow rows in dgvDevolucion.Rows)
+                        {
+                            cDevolucion.agregarDevolucionFolio(txtIDFolio.Text, UCcomboBox.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
+                            cDevolucion.agregarDevolucionPedido(txtIDFolio.Text, rows.Cells[0].Value.ToString());
+                        }
+                        CMsgBox.DisplayInfo("Devolucion confirmada");
+                        borrarTodo();
+                    }
+                    else
+                    {
+                        if (UCcomboBox.cboxCliente.SelectedIndex != UCcomboBox.cboxCliente.Items.Count - 1)
+                        {
+
+                        }
+                    }
+                }
+                else
+                    CMsgBox.DisplayWarning("Seleccionar un articulo");
+            }
+            else
+                CMsgBox.DisplayWarning("No dejar Folio vacio");
         }
     }
 }

@@ -181,10 +181,11 @@
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Programacion\Cliente\CCliente.cs" />
+    <Compile Include="Programacion\Devolucion\CDevolucionBD.cs" />
     <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />
-    <Compile Include="Programacion\CVenta.cs" />
-    <Compile Include="Programacion\ColoresyTallas\CColoresyTallas.cs" />
-    <Compile Include="Programacion\Folios\CFolio.cs" />
+    <Compile Include="Programacion\Folios\CVentaBD.cs" />
+    <Compile Include="Programacion\ColoresyTallas\CColoresyTallasBD.cs" />
+    <Compile Include="Programacion\Folios\CFolioBD.cs" />
     <Compile Include="Programacion\Modelo\CModelo.cs" />
     <Compile Include="Programacion\Utilerias\CFormBorder.cs" />
     <Compile Include="Programacion\Cliente\CClienteDB.cs" />
@@ -196,7 +197,7 @@
     <Compile Include="Programacion\CListaPedidosFinal.cs" />
     <Compile Include="Programacion\Marca\CMarcaBD.cs" />
     <Compile Include="Programacion\Modelo\CModelosDB.cs" />
-    <Compile Include="Programacion\CPedido.cs" />
+    <Compile Include="Programacion\Pedido\CPedidoBD.cs" />
     <Compile Include="Programacion\Utilerias\CRoundButton.cs" />
     <Compile Include="Programacion\Utilerias\CValidaciones.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

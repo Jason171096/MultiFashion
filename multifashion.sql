@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2021 a las 00:23:32
+-- Tiempo de generación: 13-02-2021 a las 20:42:06
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -89,6 +89,17 @@ BEGIN
         	DELETE FROM talla WHERE talla.IDTalla = id;
         END IF;
     END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionFolio` (IN `idfolio` BIGINT, IN `idcliente` BIGINT, IN `fecha` DATETIME, IN `total` DECIMAL(10,2))  NO SQL
+BEGIN
+	INSERT INTO devolucion(devolucion.IDFolio, devolucion.IDCliente, devolucion.Fecha, devolucion.Total) VALUES(idfolio, idcliente, fecha, total);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionPedido` (IN `idfolio` BIGINT, IN `idpedido` BIGINT)  NO SQL
+BEGIN
+	UPDATE pedidos SET pedidos.Devuelto = 1 WHERE pedidos.IDPedido = idpedido;
+    INSERT INTO devolucion_pedidos(devolucion_pedidos.IDFolio, devolucion_pedidos.IDPedido) VALUES(idfolio, idpedido);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `EditarCliente` (IN `idclienteActual` BIGINT, IN `idcliente` BIGINT, IN `nombre` VARCHAR(50))  NO SQL
@@ -178,7 +189,7 @@ SELECT color.IDColor, color.Nombre FROM color$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
 BEGIN
-	SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC;
+	SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido, p.Devuelto FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerMarcas` ()  BEGIN
@@ -357,9 +368,15 @@ CREATE TABLE `devolucion` (
   `IDFolio` bigint(20) NOT NULL,
   `IDCliente` bigint(20) NOT NULL,
   `Fecha` datetime NOT NULL,
-  `TotalDevuelto` decimal(10,2) NOT NULL,
-  `TotalAceptado` decimal(10,2) NOT NULL
+  `Total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `devolucion`
+--
+
+INSERT INTO `devolucion` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
+(1, 100, '2021-02-13 12:05:42', '460.50');
 
 -- --------------------------------------------------------
 
@@ -372,6 +389,13 @@ CREATE TABLE `devolucion_pedidos` (
   `IDFolio` bigint(20) NOT NULL,
   `IDPedido` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `devolucion_pedidos`
+--
+
+INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`) VALUES
+(1, 1, 105);
 
 -- --------------------------------------------------------
 
@@ -749,21 +773,21 @@ CREATE TABLE `pedidos` (
   `Talla` varchar(50) DEFAULT NULL,
   `Fecha` datetime NOT NULL,
   `Llego` bit(1) NOT NULL,
-  `Vendido` bit(1) NOT NULL
+  `Vendido` bit(1) NOT NULL,
+  `Devuelto` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`) VALUES
-(96, '8', 100, 'RUBY', '18', '2021-02-10 13:46:33', b'0', b'1'),
-(97, '119', 100, 'RUBY', '22', '2021-02-10 13:46:33', b'0', b'1'),
-(98, '135', 100, 'MORADO', 'XG', '2021-02-10 13:46:33', b'0', b'1'),
-(99, '138', 100, 'TURQUESA', '17', '2021-02-10 13:46:33', b'0', b'1'),
-(100, '118', 100, 'NEGRO', '24', '2021-02-10 13:47:49', b'0', b'1'),
-(101, '12', 101, 'RUBY', 'XG', '2021-02-10 17:00:55', b'1', b'1'),
-(102, '118', 101, 'NEGRO', '24', '2021-02-10 17:01:25', b'0', b'1');
+INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`, `Devuelto`) VALUES
+(103, '290', 101, 'AZUL', '22', '2021-02-13 13:18:50', b'0', b'1', b'0'),
+(104, '118', 101, 'NEGRO', '24', '2021-02-13 13:18:50', b'0', b'1', b'0'),
+(105, '10002', 100, 'AMARILLLO', 'G', '2021-02-13 09:01:43', b'0', b'1', b'1'),
+(106, '123', 100, 'RUBY', 'M', '2021-02-13 09:01:43', b'1', b'0', b'0'),
+(107, '109', 101, 'AMARILLLO', '22', '2021-02-13 13:18:50', b'1', b'0', b'0'),
+(108, '8050', 101, 'AZUL', 'G', '2021-02-13 13:18:50', b'1', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -827,8 +851,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
-(1, 100, '2021-02-10 13:47:48', '4814.45'),
-(2, 101, '2021-02-10 17:01:24', '4950.00');
+(1, 101, '2021-02-12 09:54:09', '4000.00'),
+(2, 100, '2021-02-13 09:02:04', '460.50');
 
 -- --------------------------------------------------------
 
@@ -847,13 +871,9 @@ CREATE TABLE `venta_pedidos` (
 --
 
 INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
-(36, 1, 96),
-(37, 1, 97),
-(38, 1, 98),
-(39, 1, 99),
-(40, 1, 100),
-(41, 2, 101),
-(42, 2, 102);
+(43, 1, 103),
+(44, 1, 104),
+(45, 2, 105);
 
 --
 -- Índices para tablas volcadas
@@ -953,19 +973,19 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion_pedidos`
 --
 ALTER TABLE `devolucion_pedidos`
-  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -983,7 +1003,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Restricciones para tablas volcadas

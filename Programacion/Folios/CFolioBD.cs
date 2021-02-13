@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MultimodeSales.Programacion.Folios
 {
     
-    class CFolio
+    class CFolioBD
     {
         Conexion conexion = new Conexion();
         MySqlDataAdapter da = new MySqlDataAdapter();

@@ -1,5 +1,5 @@
 ﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Cliente;
+using MultimodeSales.Programacion.Devolucion;
 using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
 using System;
@@ -13,6 +13,7 @@ namespace MultimodeSales.Vistas.Ventas
     {
         CListaPedidosFinal pedidosFinal = new CListaPedidosFinal();
         CModelo modelo = new CModelo();
+        CDevolucionBD cDevolucion = new CDevolucionBD();
         DataTable dtPedidos;
         private bool ventaCompleta;
         private string idcliente;
@@ -62,20 +63,17 @@ namespace MultimodeSales.Vistas.Ventas
                 //{
                     if (e.KeyCode == Keys.Enter)
                     {
-                        string lbprecioTotal = lbTotal.Text.Trim('$');
-                        string cantidad = lbCantidad.Text;
-                        string precioCliente = dgvVentasPedido.CurrentRow.Cells[5].Value.ToString();
                         if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor == Color.YellowGreen)
                         {
                             dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
                             dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
-                            ActualizarLabels(1, lbprecioTotal, cantidad, precioCliente);
+                            actualizarTotal();
                         }
                         else
                         {
                             dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
                             dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                            ActualizarLabels(2, lbprecioTotal, cantidad, precioCliente);
+                            actualizarTotal();
                         }
                     }
                 //}
@@ -85,24 +83,6 @@ namespace MultimodeSales.Vistas.Ventas
                 //CMsgBox.DisplayError($"Error al seleccionar un modelo \n Mensaje: \n {ex.Message}");
             //}
         }
-        private void ActualizarLabels(int pSumaoResta, string plbPrecio, string pCantidad, string pPrecioCliente)
-        {
-            int totalCantidad = int.Parse(pCantidad);
-            float precioCliente = float.Parse(pPrecioCliente.Trim('$'));
-            float totalPrecio;
-            if(pSumaoResta == 1)
-            {
-                totalPrecio = float.Parse(plbPrecio) - precioCliente;
-                totalCantidad--;
-            }
-            else
-            {    
-                totalPrecio = float.Parse(plbPrecio) + precioCliente;
-                totalCantidad++;
-            }
-            lbTotal.Text = string.Format("{0:C}", totalPrecio);
-            lbCantidad.Text = totalCantidad + "";
-        }
         private void rbtnSelTodo_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
@@ -111,7 +91,7 @@ namespace MultimodeSales.Vistas.Ventas
                 {
                     rows.DefaultCellStyle.BackColor = Color.YellowGreen;
                     rows.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                    ActualizarLabels(2, lbTotal.Text.ToString().Trim('$'), lbCantidad.Text, rows.Cells[5].Value.ToString());
+                    actualizarTotal();
                 }
             }
         }
@@ -202,11 +182,29 @@ namespace MultimodeSales.Vistas.Ventas
                 dgvVentasPedido.Rows.Add(modelo.IDPedido, modelo.IDModelo, modelo.IDMarca, modelo.Color, modelo.Talla, modelo.PrecioCliente);
             }
         }
+        private void actualizarTotal()
+        {
+            float total = 0;
+            int cantidad = 0;
+            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                {
+                    total += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
+                    cantidad++;
+                }
+            }
+            lbCantidad.Text = cantidad.ToString();
+            lbTotal.Text = string.Format("{0:C}", total);
+        }
+        private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            actualizarTotal();
+        }
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.SoloNumeros(e);
         }
-
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -220,8 +218,7 @@ namespace MultimodeSales.Vistas.Ventas
         {
             CBarraSuperior.GetInt = Handle;
         }
+
         #endregion
-
-
     }
 }

@@ -75,7 +75,6 @@
             // dgvVentasPedido
             // 
             this.dgvVentasPedido.AllowUserToAddRows = false;
-            this.dgvVentasPedido.AllowUserToDeleteRows = false;
             this.dgvVentasPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -124,6 +123,7 @@
             this.dgvVentasPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVentasPedido.Size = new System.Drawing.Size(798, 337);
             this.dgvVentasPedido.TabIndex = 31;
+            this.dgvVentasPedido.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvVentasPedido_UserDeletedRow);
             this.dgvVentasPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPedidosFinal_KeyDown);
             // 
             // Column1

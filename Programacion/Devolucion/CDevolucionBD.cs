@@ -33,5 +33,15 @@ namespace MultimodeSales.Programacion.Devolucion
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }
+        public void obtenerDevoluciones(string pIDCliente)
+        {
+            //conexion.OpenConnection();
+            //MySqlCommand cmd = new MySqlCommand("", conexion.GetConnection());
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
+            //cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            //cmd.ExecuteNonQuery();
+            //conexion.CloseConnection();
+        }
     }
 }

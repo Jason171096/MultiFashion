@@ -39,7 +39,9 @@ namespace MultimodeSales
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             object existeFolio = cmd.ExecuteScalar();
             cmd.Connection.Close();
-            return Boolean.Parse(existeFolio.ToString());
+            if (Convert.ToInt32(existeFolio) == 1)
+                return true;
+            return false;
         }
 
         public void ventaPedido(string pIDFolio, string pIDPedido)

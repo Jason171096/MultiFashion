@@ -41,12 +41,12 @@ namespace MultimodeSales.Vistas
             dtpFecha.MinDate = DateTime.Parse("01/01/2020");
             dtpFecha.MaxDate = DateTime.Now;
 
-            Data.Columns.Add("IDModelo");
+            Data.Columns.Add("Modelo");
             Data.Columns.Add("IDMarca");
-            Data.Columns.Add("Nombre");
+            Data.Columns.Add("Marca");
             Data.Columns.Add("Color");
             Data.Columns.Add("Talla");
-            Data.Columns.Add("PrecioCliente");
+            Data.Columns.Add("Precio Cliente");
             Data.Columns.Add("Fecha");
             CargarModelos();
             activateCellClick = pactiveCellClick;
@@ -84,13 +84,10 @@ namespace MultimodeSales.Vistas
             dgvModelos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvModelos.Columns[1].Visible = false;//IDMarca
             dgvModelos.Columns[0].Width = 175;//IDModelo
-            dgvModelos.Columns[0].HeaderText = "ID Modelo";//IDModelo
             dgvModelos.Columns[2].Width = 175;//NombreMarca
-            dgvModelos.Columns[2].HeaderText = "Marca";//NombreMarca
             dgvModelos.Columns[3].Width = 175;//Color
             dgvModelos.Columns[4].Width = 175;//Talla
             dgvModelos.Columns[5].Width = 175;//PrecioCliente
-            dgvModelos.Columns[5].HeaderText = "Precio Cliente";//PrecioCliente
             dgvModelos.Columns[6].Width = 300;//Fecha  
         }
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)

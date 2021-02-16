@@ -11,9 +11,9 @@ namespace MultimodeSales.Vistas
 {
     public partial class Pedido : Form
     {
-        CModelosDB modelos = new CModelosDB();
-        CPedidoBD pedido = new CPedidoBD();
-        CColoresyTallas ColoresyTallas = new CColoresyTallas();
+        CModelosDB cModelos = new CModelosDB();
+        CPedidoBD cPedido = new CPedidoBD();
+        CColoresyTallas cColoresyTallas = new CColoresyTallas();
         DataTable DataModels = new DataTable();
         private bool CellValueChange = false;
 
@@ -45,14 +45,14 @@ namespace MultimodeSales.Vistas
         }
         private void Modelos()
         {
-            DataTable dt = modelos.ObtenerModelos2();
+            DataTable dt = cModelos.ObtenerModelos2();
             IDModelo.DisplayMember = "IDModelo";
             IDModelo.DataSource = dt;
             DataModels = dt;
         }
         private void Colores()
         {
-            DataTable dt = ColoresyTallas.VerColores();
+            DataTable dt = cColoresyTallas.VerColores();
             IDColor.DisplayMember = "Nombre";
             foreach (DataRow rows in dt.Rows)
             {
@@ -61,7 +61,7 @@ namespace MultimodeSales.Vistas
         }
         private void Tallas()
         {
-            DataTable dt = ColoresyTallas.VerTallas();
+            DataTable dt = cColoresyTallas.VerTallas();
             IDTalla.DisplayMember = "Numero";
             foreach (DataRow rows in dt.Rows)
             {
@@ -91,7 +91,7 @@ namespace MultimodeSales.Vistas
                 { 
                     if (rows.Cells[1].Value != null)
                     {
-                        pedido.AgregarPedido(rows.Cells[0].Value + "", rows.Cells[1].Value + "", UCcboxCliente.cboxCliente.SelectedValue + "", rows.Cells[3].Value + "", rows.Cells[4].Value + "");
+                        cPedido.AgregarPedido(rows.Cells[0].Value + "", rows.Cells[1].Value + "", UCcboxCliente.cboxCliente.SelectedValue + "", rows.Cells[3].Value + "", rows.Cells[4].Value + "");
                     }
                 }
                 CMsgBox.DisplayInfo("Pedido ingresado correctamente");
@@ -129,19 +129,25 @@ namespace MultimodeSales.Vistas
         }
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (e.ColumnIndex == 5)
                 {
                     if (dgvPedido.Rows[e.RowIndex].Cells[0].Value != null)
-                        pedido.EliminarPedido(dgvPedido.Rows[e.RowIndex].Cells[0].Value + "");
+                    {
+                        bool confirmaPedidoEliminar = cPedido.confirmacionPedidoEliminar(dgvPedido.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        if (confirmaPedidoEliminar)
+                            CMsgBox.DisplayWarning("No se puede eliminar un pedido que se vendio o que llego");
+                        else
+                            cPedido.EliminarPedido(dgvPedido.Rows[e.RowIndex].Cells[0].Value + "");
+                    }
                     dgvPedido.Rows.Remove(dgvPedido.Rows[e.RowIndex]);
                 }
-            }
-            catch
-            {
-                CMsgBox.DisplayWarning("No se puede eliminar");
-            }
+            //}
+            //catch
+            //{
+            //    CMsgBox.DisplayWarning("No se puede eliminar");
+            //}
         }
         private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -150,7 +156,7 @@ namespace MultimodeSales.Vistas
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvPedido.Rows.Clear();
-            DataTable dt = pedido.CargarPedido(UCcboxCliente.cboxCliente.SelectedValue + "");
+            DataTable dt = cPedido.CargarPedido(UCcboxCliente.cboxCliente.SelectedValue + "");
             int i = 0;
             foreach (DataRow rows in dt.Rows)
             {

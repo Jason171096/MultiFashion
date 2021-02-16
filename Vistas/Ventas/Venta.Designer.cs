@@ -40,7 +40,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -174,14 +174,6 @@
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
-            // 
-            // UCcboxCliente
-            // 
-            this.UCcboxCliente.Location = new System.Drawing.Point(87, 44);
-            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
-            this.UCcboxCliente.Name = "UCcboxCliente";
-            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
-            this.UCcboxCliente.TabIndex = 42;
             // 
             // label4
             // 
@@ -369,12 +361,12 @@
             this.lbLeyenda1.AutoSize = true;
             this.lbLeyenda1.Depth = 0;
             this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbLeyenda1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLeyenda1.Location = new System.Drawing.Point(20, 0);
+            this.lbLeyenda1.Location = new System.Drawing.Point(22, 0);
             this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbLeyenda1.Name = "lbLeyenda1";
-            this.lbLeyenda1.Size = new System.Drawing.Size(124, 19);
+            this.lbLeyenda1.Size = new System.Drawing.Size(122, 18);
             this.lbLeyenda1.TabIndex = 39;
             this.lbLeyenda1.Text = "No Seleccionado";
             // 
@@ -403,12 +395,12 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(24, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(26, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(100, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(98, 18);
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Seleccionado";
             // 
@@ -416,7 +408,8 @@
             // 
             this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(487, 489);
+            this.rbtnAplicarDevolucion.Image = global::MultimodeSales.Properties.Resources.circle24px;
+            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(487, 488);
             this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
             this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAplicarDevolucion.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -427,6 +420,7 @@
             this.rbtnAplicarDevolucion.TextColor = System.Drawing.Color.White;
             this.rbtnAplicarDevolucion.UseVisualStyleBackColor = true;
             this.rbtnAplicarDevolucion.Visible = false;
+            this.rbtnAplicarDevolucion.Click += new System.EventHandler(this.rbtnAplicarDevolucion_Click);
             // 
             // UCBarraSuperior
             // 
@@ -436,6 +430,14 @@
             this.UCBarraSuperior.Name = "UCBarraSuperior";
             this.UCBarraSuperior.Size = new System.Drawing.Size(821, 48);
             this.UCBarraSuperior.TabIndex = 72;
+            // 
+            // UCcboxCliente
+            // 
+            this.UCcboxCliente.Location = new System.Drawing.Point(87, 44);
+            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
+            this.UCcboxCliente.TabIndex = 42;
             // 
             // Venta
             // 

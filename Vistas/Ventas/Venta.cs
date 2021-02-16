@@ -11,9 +11,11 @@ namespace MultimodeSales.Vistas.Ventas
 {
     public partial class Venta : Form
     {
+        CDevolucionBD cDevolucion = new CDevolucionBD();
         CListaPedidosFinal pedidosFinal = new CListaPedidosFinal();
         CModelo cModelo = new CModelo();
         DataTable dtPedidos;
+        DataTable dtPedidosDevueltos;
         private bool ventaCompleta;
         private string idcliente;
 
@@ -40,8 +42,10 @@ namespace MultimodeSales.Vistas.Ventas
         
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
+            rbtnAplicarDevolucion.Enabled = true;
             idcliente = UCcboxCliente.cboxCliente.SelectedValue + "";
             CargarPedidos(idcliente);
+            CargaPedidosDevueltos(idcliente);
             borrarLabels();
         }
         private void CargarPedidos(string pIDCliente)
@@ -51,6 +55,19 @@ namespace MultimodeSales.Vistas.Ventas
             foreach (DataRow rows in dtPedidos.Rows)
             {
                 dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
+            }
+        }
+        private void CargaPedidosDevueltos(string pIDCliente)
+        {
+            dtPedidosDevueltos = cDevolucion.obtenerDevoluciones(pIDCliente);
+            int countPedidosDevueltos = dtPedidosDevueltos.Rows.Count;
+            if (countPedidosDevueltos > 0)
+            {
+                rbtnAplicarDevolucion.Visible = true;
+            }
+            else
+            {
+                rbtnAplicarDevolucion.Visible = false;
             }
         }
 
@@ -86,7 +103,7 @@ namespace MultimodeSales.Vistas.Ventas
         {
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor != Color.YellowGreen)
+                if (rows.DefaultCellStyle.BackColor != Color.YellowGreen && rows.DefaultCellStyle.BackColor != Color.Blue)
                 {
                     rows.DefaultCellStyle.BackColor = Color.YellowGreen;
                     rows.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
@@ -192,6 +209,10 @@ namespace MultimodeSales.Vistas.Ventas
                     total += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
                     cantidad++;
                 }
+                else if(rows.DefaultCellStyle.BackColor == Color.Blue)
+                {
+                    total -= float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
+                }
             }
             lbCantidad.Text = cantidad.ToString();
             lbTotal.Text = string.Format("{0:C}", total);
@@ -219,5 +240,18 @@ namespace MultimodeSales.Vistas.Ventas
         }
 
         #endregion
+
+        private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
+        {
+            foreach (DataRow rows in dtPedidosDevueltos.Rows)
+            {
+                dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
+                int dgvTheLastRow = dgvVentasPedido.Rows.Count - 1;
+                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.BackColor = Color.Blue;
+                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            }
+            actualizarTotal();
+            rbtnAplicarDevolucion.Enabled = false;
+        }
     }
 }

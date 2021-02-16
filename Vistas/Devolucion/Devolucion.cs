@@ -79,7 +79,7 @@ namespace MultimodeSales.Vistas
             {
                 dgvDevolucion.Rows.Add(rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString());
             }
-            totalLabels();
+            actualizarTotal();
         }
         private void darFormatoTabla()
         {
@@ -96,7 +96,7 @@ namespace MultimodeSales.Vistas
             pedidosFinal.ShowDialog();
             cModelo = pedidosFinal.returnModelo();
             dgvDevolucion.Rows.Add(cModelo.IDPedido, cModelo.IDModelo, cModelo.IDMarca, cModelo.Color, cModelo.Talla, cModelo.PrecioCliente);
-            totalLabels();
+            actualizarTotal();
         }
 
         private void rbtnSelModelo_Click(object sender, EventArgs e)
@@ -105,27 +105,9 @@ namespace MultimodeSales.Vistas
             modelos.ShowDialog();
             cModelo = modelos.returnModelo();
             dgvDevolucion2.Rows.Add(cModelo.IDPedido, cModelo.IDModelo, cModelo.IDMarca, cModelo.Color, cModelo.Talla, cModelo.PrecioCliente);
-            totalLabels();
+            actualizarTotal();
         }
-
-        private void dgvDevolucion_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 6)
-            {
-                dgvDevolucion.Rows.Remove(dgvDevolucion.Rows[e.RowIndex]);
-                totalLabels();
-            }
-        }
-
-        private void dgvDevolucion2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 6)
-            {
-                dgvDevolucion2.Rows.Remove(dgvDevolucion2.Rows[e.RowIndex]);
-                totalLabels();
-            }
-        }
-        private void totalLabels()
+        private void actualizarTotal()
         {
             float totalDev1 = 0, totalDev2 = 0;
             foreach (DataGridViewRow rows in dgvDevolucion.Rows)
@@ -152,7 +134,7 @@ namespace MultimodeSales.Vistas
             dgvDevolucion.Rows.Clear();
             dgvDevolucion2.Rows.Clear();
             txtFolioVenta.Text = "";
-            totalLabels();
+            actualizarTotal();
         }
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
@@ -221,6 +203,11 @@ namespace MultimodeSales.Vistas
             }
             else
                 CMsgBox.DisplayWarning("No dejar Folio vacio");
+        }
+
+        private void dgvDevolucion_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            actualizarTotal();
         }
     }
 }

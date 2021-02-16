@@ -10,6 +10,7 @@ namespace MultimodeSales.Programacion.Devolucion
 {
     class CDevolucionBD
     {
+        MySqlDataAdapter da = new MySqlDataAdapter();
         Conexion conexion = new Conexion();
         public void agregarDevolucionFolio(string pIDFolio, string pIDCliente, DateTime pFecha, string pTotal)
         {
@@ -45,16 +46,18 @@ namespace MultimodeSales.Programacion.Devolucion
             result = Convert.ToInt32(existeFolio) == 1 ? true : false;
             return result;
         }
-        public void obtenerDevoluciones(string pIDCliente)
+        public DataTable obtenerDevoluciones(string pIDCliente)
         {
-            //conexion.OpenConnection();
-            //MySqlCommand cmd = new MySqlCommand("", conexion.GetConnection());
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
-            //cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
-            //cmd.ExecuteNonQuery();
-            //conexion.CloseConnection();
+            DataTable dt = new DataTable();
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("VerDevolucionesPedido", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            da.SelectCommand = cmd;
+            dt.Clear();
+            da.Fill(dt);
+            conexion.CloseConnection();
+            return dt;
         }
-
     }
 }

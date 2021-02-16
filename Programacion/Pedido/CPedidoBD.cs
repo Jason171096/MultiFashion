@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 
 namespace MultimodeSales.Programacion
@@ -55,6 +56,15 @@ namespace MultimodeSales.Programacion
             string IDPedido = cmd.ExecuteScalar().ToString();
             conexion.CloseConnection();
             return IDPedido;
+        }
+        public bool confirmacionPedidoEliminar(string pIDPedido)
+        {
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("ConfirmacionPedidoEliminar", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            bool confirmacionPedido = Convert.ToBoolean(cmd.ExecuteScalar().ToString());
+            return confirmacionPedido;
         }
     }
 }

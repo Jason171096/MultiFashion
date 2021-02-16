@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 16-02-2021 a las 07:35:53
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-02-2021 a las 20:36:36
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,6 +89,11 @@ BEGIN
         	DELETE FROM talla WHERE talla.IDTalla = id;
         END IF;
     END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConfirmacionPedidoEliminar` (IN `idpedido` INT)  NO SQL
+BEGIN
+	SELECT pedidos.Vendido FROM pedidos WHERE pedidos.IDPedido = idpedido;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionFolio` (IN `idfolio` BIGINT, IN `idcliente` BIGINT, IN `fecha` DATETIME, IN `total` DECIMAL(10,2))  NO SQL
@@ -197,9 +202,9 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerColores` ()  READS SQL DATA
 SELECT color.IDColor, color.Nombre FROM color$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VerDevoluciones` (IN `idcliente` BIGINT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerDevolucionesPedido` (IN `idcliente` BIGINT)  NO SQL
 BEGIN
-	SELECT p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla FROM modelos m LEFT JOIN pedidos p ON m.IDModelo = p.IDModelo WHERE p.IDCliente = idcliente;
+	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
@@ -393,7 +398,9 @@ CREATE TABLE `devolucion` (
 
 INSERT INTO `devolucion` (`IDFolio`, `IDCliente`, `Fecha`, `Total`, `Completo`) VALUES
 (1, 100, '2021-02-13 12:05:42', '460.50', b'0'),
-(2, 86, '2021-02-15 10:52:46', '2601.85', b'0');
+(2, 86, '2021-02-15 10:52:46', '2601.85', b'0'),
+(4, 58, '2021-02-16 11:04:16', '950.00', b'0'),
+(5, 58, '2021-02-16 11:05:05', '1261.30', b'0');
 
 -- --------------------------------------------------------
 
@@ -413,7 +420,9 @@ CREATE TABLE `devolucion_pedidos` (
 
 INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`) VALUES
 (1, 1, 105),
-(2, 2, 120);
+(2, 2, 120),
+(3, 4, 122),
+(4, 5, 123);
 
 -- --------------------------------------------------------
 
@@ -813,11 +822,18 @@ INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `F
 (113, '100', 86, 'ROJO', '', '2021-02-15 10:40:15', b'1', b'0', b'0'),
 (114, '102', 86, '', '', '2021-02-15 10:40:15', b'1', b'0', b'0'),
 (115, '117', 86, '', '', '2021-02-15 10:40:15', b'1', b'0', b'0'),
-(116, '139', 86, '', '', '2021-02-15 10:40:15', b'1', b'1', b'0'),
-(117, '160', 86, '', '', '2021-02-15 10:40:15', b'1', b'1', b'0'),
-(118, '180', 86, '', '', '2021-02-15 10:40:15', b'1', b'1', b'0'),
-(119, '203', 86, '', '', '2021-02-15 10:40:15', b'1', b'1', b'0'),
-(120, '227', 86, '', '', '2021-02-15 10:40:15', b'1', b'1', b'1');
+(116, '139', 86, '', '', '2021-02-15 10:40:15', b'0', b'1', b'0'),
+(117, '160', 86, '', '', '2021-02-15 10:40:15', b'0', b'1', b'0'),
+(118, '180', 86, '', '', '2021-02-15 10:40:15', b'0', b'1', b'0'),
+(119, '203', 86, '', '', '2021-02-15 10:40:15', b'0', b'1', b'0'),
+(120, '227', 86, '', '', '2021-02-15 10:40:15', b'0', b'1', b'1'),
+(121, '1', 58, 'RUBY', 'XG', '2021-02-16 11:03:05', b'1', b'1', b'0'),
+(122, '12', 58, 'ROJO', '18', '2021-02-16 11:03:05', b'1', b'1', b'1'),
+(123, '146', 58, 'ROJO', '17', '2021-02-16 11:03:05', b'1', b'1', b'1'),
+(124, '201', 58, 'TURQUESA', 'XG', '2021-02-16 11:03:05', b'1', b'1', b'0'),
+(125, '252', 58, 'RUBY', 'XG', '2021-02-16 11:03:05', b'1', b'0', b'0'),
+(126, '285', 58, 'MORADO', '22', '2021-02-16 11:03:05', b'1', b'0', b'0'),
+(127, '349', 58, 'MORADO', '17', '2021-02-16 11:03:05', b'1', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -883,7 +899,8 @@ CREATE TABLE `venta` (
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
 (1, 101, '2021-02-12 09:54:09', '4000.00'),
 (2, 100, '2021-02-13 09:02:04', '460.50'),
-(3, 86, '2021-02-15 10:51:02', '9268.95');
+(3, 86, '2021-02-15 10:51:02', '9268.95'),
+(4, 58, '2021-02-16 11:03:48', '4482.85');
 
 -- --------------------------------------------------------
 
@@ -909,7 +926,11 @@ INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
 (47, 3, 117),
 (48, 3, 118),
 (49, 3, 119),
-(50, 3, 120);
+(50, 3, 120),
+(51, 4, 121),
+(52, 4, 122),
+(53, 4, 123),
+(54, 4, 124);
 
 --
 -- Índices para tablas volcadas
@@ -1009,19 +1030,19 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion_pedidos`
 --
 ALTER TABLE `devolucion_pedidos`
-  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -1039,7 +1060,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Restricciones para tablas volcadas

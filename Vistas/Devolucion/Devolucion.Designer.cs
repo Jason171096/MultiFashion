@@ -54,7 +54,6 @@ namespace MultimodeSales.Vistas
             this.IDColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDTalla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.gBoxCambiar = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTotalDevolucion = new System.Windows.Forms.Label();
@@ -72,7 +71,6 @@ namespace MultimodeSales.Vistas
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.rbtnAceptar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
@@ -224,7 +222,6 @@ namespace MultimodeSales.Vistas
             // dgvDevolucion
             // 
             this.dgvDevolucion.AllowUserToAddRows = false;
-            this.dgvDevolucion.AllowUserToDeleteRows = false;
             this.dgvDevolucion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevolucion.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -244,8 +241,7 @@ namespace MultimodeSales.Vistas
             this.IDMarca,
             this.IDColor,
             this.IDTalla,
-            this.Column1,
-            this.Eliminar});
+            this.Column1});
             this.dgvDevolucion.EnableHeadersVisualStyles = false;
             this.dgvDevolucion.GridColor = System.Drawing.Color.DarkSlateBlue;
             this.dgvDevolucion.Location = new System.Drawing.Point(8, 62);
@@ -271,7 +267,7 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion.TabIndex = 63;
-            this.dgvDevolucion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellClick);
+            this.dgvDevolucion.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDevolucion_UserDeletedRow);
             // 
             // IDPedido
             // 
@@ -312,15 +308,6 @@ namespace MultimodeSales.Vistas
             this.Column1.HeaderText = "Precio Cliente";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // gBoxCambiar
             // 
@@ -455,7 +442,6 @@ namespace MultimodeSales.Vistas
             // dgvDevolucion2
             // 
             this.dgvDevolucion2.AllowUserToAddRows = false;
-            this.dgvDevolucion2.AllowUserToDeleteRows = false;
             this.dgvDevolucion2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDevolucion2.BackgroundColor = System.Drawing.Color.DimGray;
             this.dgvDevolucion2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -475,8 +461,7 @@ namespace MultimodeSales.Vistas
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewComboBoxColumn2,
             this.dataGridViewComboBoxColumn3,
-            this.Column2,
-            this.dataGridViewImageColumn1});
+            this.Column2});
             this.dgvDevolucion2.EnableHeadersVisualStyles = false;
             this.dgvDevolucion2.GridColor = System.Drawing.Color.DarkSlateBlue;
             this.dgvDevolucion2.Location = new System.Drawing.Point(5, 62);
@@ -502,7 +487,6 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucion2.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion2.TabIndex = 64;
-            this.dgvDevolucion2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion2_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -543,15 +527,6 @@ namespace MultimodeSales.Vistas
             this.Column2.HeaderText = "Precio Cliente";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Image = global::MultimodeSales.Properties.Resources.basura24px;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // rbtnAceptar
             // 
@@ -644,20 +619,6 @@ namespace MultimodeSales.Vistas
         private RoundButton.RoundButton rbtnBuscarFolio;
         private Componentes.UCcomboBoxCliente UCcomboBox;
         private Componentes.UCBarraSuperior UCBarraSuperior;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDColor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDTalla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lbTotalDevolucion;
         private System.Windows.Forms.Label label2;
@@ -667,5 +628,17 @@ namespace MultimodeSales.Vistas
         private MaterialSkin.Controls.MaterialCheckBox checkBuscarFolio;
         private System.Windows.Forms.TextBox txtFolioVenta;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDTalla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

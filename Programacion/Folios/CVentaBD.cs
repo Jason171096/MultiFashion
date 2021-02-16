@@ -31,17 +31,17 @@ namespace MultimodeSales
             cmd.Connection.Close();
         }
 
-        public bool verificarFolioExistente(string pIDFolio)
+        public bool verificarFolioVentaExistente(string pIDFolio)
         {
+            bool result;
             conexion.OpenConnection();
-            MySqlCommand cmd = new MySqlCommand("FolioExistente", conexion.GetConnection());
+            MySqlCommand cmd = new MySqlCommand("FolioVentaExistente", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             object existeFolio = cmd.ExecuteScalar();
             cmd.Connection.Close();
-            if (Convert.ToInt32(existeFolio) == 1)
-                return true;
-            return false;
+            result = Convert.ToInt32(existeFolio) == 1 ? true : false;
+            return result;
         }
 
         public void ventaPedido(string pIDFolio, string pIDPedido)

@@ -33,6 +33,18 @@ namespace MultimodeSales.Programacion.Devolucion
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }
+        public bool verificarFolioDevolucionExistente(string pIDFolio)
+        {
+            bool result;
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("FolioDevolucionExistente", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
+            object existeFolio = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            result = Convert.ToInt32(existeFolio) == 1 ? true : false;
+            return result;
+        }
         public void obtenerDevoluciones(string pIDCliente)
         {
             //conexion.OpenConnection();
@@ -43,5 +55,6 @@ namespace MultimodeSales.Programacion.Devolucion
             //cmd.ExecuteNonQuery();
             //conexion.CloseConnection();
         }
+
     }
 }

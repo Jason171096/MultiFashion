@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2021 a las 20:29:31
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.0
+-- Servidor: localhost:3306
+-- Tiempo de generación: 16-02-2021 a las 07:35:53
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -142,9 +142,9 @@ BEGIN
 	DELETE FROM pedidos WHERE pedidos.IDPedido = idpedido;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `FolioExistente` (IN `idfolio` BIGINT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `FolioDevolucionExistente` (IN `idfolio` BIGINT)  NO SQL
 BEGIN
-	SET @var := (SELECT venta.IDFolio FROM venta WHERE venta.IDFolio = idfolio);
+	SET @var := (SELECT devolucion.IDFolio FROM devolucion WHERE devolucion.IDFolio = idfolio);
     IF(@var = idfolio) THEN
     	SELECT true;
     ELSE
@@ -155,6 +155,16 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FoliosVentas` ()  NO SQL
 BEGIN
 	SELECT venta.IDFolio as "ID Folio", venta.IDCliente as "ID Cliente", venta.Fecha,  CONCAT('$', FORMAT(venta.Total, 2)) as "Total" FROM venta;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `FolioVentaExistente` (IN `idfolio` BIGINT)  NO SQL
+BEGIN
+	SET @var := (SELECT venta.IDFolio FROM venta WHERE venta.IDFolio = idfolio);
+    IF(@var = idfolio) THEN
+    	SELECT true;
+    ELSE
+    	SELECT false;
+    END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaFolio` (IN `idfolio` BIGINT, IN `idcliente` BIGINT, IN `fecha` DATETIME, IN `total` DECIMAL(10,2))  NO SQL
@@ -187,9 +197,9 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerColores` ()  READS SQL DATA
 SELECT color.IDColor, color.Nombre FROM color$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VerDevoluciones` (IN `idcliente` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerDevoluciones` (IN `idcliente` BIGINT)  NO SQL
 BEGIN
-	SELECT p.IDModelo, `NombreMarca`(), p.Color, p.Talla, d.Total FROM devolucion_pedidos dp RIGHT JOIN pedidos p ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
+	SELECT p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla FROM modelos m LEFT JOIN pedidos p ON m.IDModelo = p.IDModelo WHERE p.IDCliente = idcliente;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA

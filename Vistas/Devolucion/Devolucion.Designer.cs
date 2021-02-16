@@ -37,7 +37,7 @@ namespace MultimodeSales.Vistas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolucion));
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIDFolio = new System.Windows.Forms.TextBox();
+            this.txtFolioDevolucion = new System.Windows.Forms.TextBox();
             this.mtDivider = new MaterialSkin.Controls.MaterialDivider();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBuscarFolio = new MaterialSkin.Controls.MaterialCheckBox();
@@ -95,13 +95,13 @@ namespace MultimodeSales.Vistas
             this.label1.TabIndex = 21;
             this.label1.Text = "Folio:";
             // 
-            // txtIDFolio
+            // txtFolioDevolucion
             // 
-            this.txtIDFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtIDFolio.Location = new System.Drawing.Point(607, 25);
-            this.txtIDFolio.Name = "txtIDFolio";
-            this.txtIDFolio.Size = new System.Drawing.Size(190, 29);
-            this.txtIDFolio.TabIndex = 20;
+            this.txtFolioDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtFolioDevolucion.Location = new System.Drawing.Point(607, 25);
+            this.txtFolioDevolucion.Name = "txtFolioDevolucion";
+            this.txtFolioDevolucion.Size = new System.Drawing.Size(190, 29);
+            this.txtFolioDevolucion.TabIndex = 20;
             // 
             // mtDivider
             // 
@@ -122,7 +122,7 @@ namespace MultimodeSales.Vistas
             this.groupBox2.Controls.Add(this.UCcomboBox);
             this.groupBox2.Controls.Add(this.rbtnBuscarFolio);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtIDFolio);
+            this.groupBox2.Controls.Add(this.txtFolioDevolucion);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.checkCambioModelo);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
@@ -628,7 +628,7 @@ namespace MultimodeSales.Vistas
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIDFolio;
+        private System.Windows.Forms.TextBox txtFolioDevolucion;
         private MaterialSkin.Controls.MaterialDivider mtDivider;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;

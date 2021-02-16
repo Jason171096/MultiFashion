@@ -48,7 +48,7 @@
             this.lbTotal = new System.Windows.Forms.Label();
             this.lbCantidad = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtFolio = new System.Windows.Forms.TextBox();
+            this.txtFolioVenta = new System.Windows.Forms.TextBox();
             this.rbtnSelTodo = new RoundButton.RoundButton();
             this.rbtnVender = new RoundButton.RoundButton();
             this.rbtnAgregarPedido = new RoundButton.RoundButton();
@@ -257,14 +257,14 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Folio:";
             // 
-            // txtFolio
+            // txtFolioVenta
             // 
-            this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtFolio.Location = new System.Drawing.Point(561, 70);
-            this.txtFolio.Name = "txtFolio";
-            this.txtFolio.Size = new System.Drawing.Size(248, 29);
-            this.txtFolio.TabIndex = 63;
-            this.txtFolio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFolio_KeyPress);
+            this.txtFolioVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtFolioVenta.Location = new System.Drawing.Point(561, 70);
+            this.txtFolioVenta.Name = "txtFolioVenta";
+            this.txtFolioVenta.Size = new System.Drawing.Size(248, 29);
+            this.txtFolioVenta.TabIndex = 63;
+            this.txtFolioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFolio_KeyPress);
             // 
             // rbtnSelTodo
             // 
@@ -426,6 +426,7 @@
             this.rbtnAplicarDevolucion.Text = "Apl. Devolucion";
             this.rbtnAplicarDevolucion.TextColor = System.Drawing.Color.White;
             this.rbtnAplicarDevolucion.UseVisualStyleBackColor = true;
+            this.rbtnAplicarDevolucion.Visible = false;
             // 
             // UCBarraSuperior
             // 
@@ -450,7 +451,7 @@
             this.Controls.Add(this.rbtnAgregarPedido);
             this.Controls.Add(this.rbtnVender);
             this.Controls.Add(this.rbtnSelTodo);
-            this.Controls.Add(this.txtFolio);
+            this.Controls.Add(this.txtFolioVenta);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -487,7 +488,7 @@
         private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.Label lbCantidad;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtFolio;
+        private System.Windows.Forms.TextBox txtFolioVenta;
         private RoundButton.RoundButton rbtnSelTodo;
         private RoundButton.RoundButton rbtnVender;
         private RoundButton.RoundButton rbtnAgregarPedido;

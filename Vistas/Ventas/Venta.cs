@@ -12,8 +12,7 @@ namespace MultimodeSales.Vistas.Ventas
     public partial class Venta : Form
     {
         CListaPedidosFinal pedidosFinal = new CListaPedidosFinal();
-        CModelo modelo = new CModelo();
-        CDevolucionBD cDevolucion = new CDevolucionBD();
+        CModelo cModelo = new CModelo();
         DataTable dtPedidos;
         private bool ventaCompleta;
         private string idcliente;
@@ -107,16 +106,16 @@ namespace MultimodeSales.Vistas.Ventas
             }
             if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
             {
-                if (!string.IsNullOrWhiteSpace(txtFolio.Text))
+                if (!string.IsNullOrWhiteSpace(txtFolioVenta.Text))
                 {
                     if (cont > 0)
                     {
-                        bool verificarIDFolio = venta.verificarFolioExistente(txtFolio.Text);
+                        bool verificarIDFolio = venta.verificarFolioVentaExistente(txtFolioVenta.Text);
                         if (verificarIDFolio == true)
                             CMsgBox.DisplayWarning("Folio existente");
                         else
                         {
-                            DialogVenta dialog = new DialogVenta(txtFolio.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
+                            DialogVenta dialog = new DialogVenta(txtFolioVenta.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
                             dialog.ShowDialog();
                             ventaCompleta = dialog.ventaCompletada();
                             if(ventaCompleta)
@@ -127,13 +126,13 @@ namespace MultimodeSales.Vistas.Ventas
                                     {
                                         if (rows.Cells[0].Value == null)
                                         {
-                                            CPedidoBD pedido = new CPedidoBD();
-                                            rows.Cells[0].Value = pedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                                            CPedidoBD cPedido = new CPedidoBD();
+                                            rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
                                         }
-                                        venta.ventaPedido(txtFolio.Text, rows.Cells[0].Value.ToString());
+                                        venta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
                                     }
                                 }
-                                txtFolio.Text = "";
+                                txtFolioVenta.Text = "";
                                 borrarLabels();
                                 CargarPedidos(idcliente); 
                             }
@@ -155,7 +154,7 @@ namespace MultimodeSales.Vistas.Ventas
             {
                 PedidosFinal final = new PedidosFinal(true);
                 final.ShowDialog();
-                modelo = final.returnModelo();
+                cModelo = final.returnModelo();
                 agregarModelo();
             }
         }
@@ -166,7 +165,7 @@ namespace MultimodeSales.Vistas.Ventas
             {
                 Modeloss modelos = new Modeloss(true);
                 modelos.ShowDialog();
-                modelo = modelos.returnModelo();
+                cModelo = modelos.returnModelo();
                 agregarModelo();
             }
         }
@@ -177,9 +176,9 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void agregarModelo()
         {
-            if (modelo.IDModelo != null)
+            if (cModelo.IDModelo != null)
             {
-                dgvVentasPedido.Rows.Add(modelo.IDPedido, modelo.IDModelo, modelo.IDMarca, modelo.Color, modelo.Talla, modelo.PrecioCliente);
+                dgvVentasPedido.Rows.Add(cModelo.IDPedido, cModelo.IDModelo, cModelo.IDMarca, cModelo.Color, cModelo.Talla, cModelo.PrecioCliente);
             }
         }
         private void actualizarTotal()

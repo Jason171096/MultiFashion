@@ -188,30 +188,36 @@ namespace MultimodeSales.Vistas
 
         private void rbtnAceptar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtIDFolio.Text))
+            if (!string.IsNullOrWhiteSpace(txtFolioDevolucion.Text))
             {
-                if (dgvDevolucion.Rows.Count > 0)
+                bool verificarIDFolio = cDevolucion.verificarFolioDevolucionExistente(txtFolioDevolucion.Text);
+                if (verificarIDFolio == true)
+                    CMsgBox.DisplayWarning("Folio existente");
+                else
                 {
-                    if (!checkCambioModelo.Checked)
+                    if (dgvDevolucion.Rows.Count > 0)
                     {
-                        foreach (DataGridViewRow rows in dgvDevolucion.Rows)
+                        if (!checkCambioModelo.Checked)
                         {
-                            cDevolucion.agregarDevolucionFolio(txtIDFolio.Text, UCcomboBox.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
-                            cDevolucion.agregarDevolucionPedido(txtIDFolio.Text, rows.Cells[0].Value.ToString());
+                            foreach (DataGridViewRow rows in dgvDevolucion.Rows)
+                            {
+                                cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcomboBox.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
+                                cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString());
+                            }
+                            CMsgBox.DisplayInfo("Devolucion confirmada");
+                            borrarTodo();
                         }
-                        CMsgBox.DisplayInfo("Devolucion confirmada");
-                        borrarTodo();
+                        else
+                        {
+                            if (UCcomboBox.cboxCliente.SelectedIndex != UCcomboBox.cboxCliente.Items.Count - 1)
+                            {
+
+                            }
+                        }
                     }
                     else
-                    {
-                        if (UCcomboBox.cboxCliente.SelectedIndex != UCcomboBox.cboxCliente.Items.Count - 1)
-                        {
-
-                        }
-                    }
+                        CMsgBox.DisplayWarning("Seleccionar un articulo");
                 }
-                else
-                    CMsgBox.DisplayWarning("Seleccionar un articulo");
             }
             else
                 CMsgBox.DisplayWarning("No dejar Folio vacio");

@@ -129,8 +129,8 @@ namespace MultimodeSales.Vistas
         }
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 if (e.ColumnIndex == 5)
                 {
                     if (dgvPedido.Rows[e.RowIndex].Cells[0].Value != null)
@@ -141,14 +141,15 @@ namespace MultimodeSales.Vistas
                         else
                             cPedido.EliminarPedido(dgvPedido.Rows[e.RowIndex].Cells[0].Value + "");
                     }
-                    dgvPedido.Rows.Remove(dgvPedido.Rows[e.RowIndex]);
+                    else
+                        dgvPedido.Rows.Remove(dgvPedido.Rows[e.RowIndex]);
                 }
-            //}
-            //catch
-            //{
-            //    CMsgBox.DisplayWarning("No se puede eliminar");
-            //}
-        }
+            }
+            catch
+            {
+                CMsgBox.DisplayWarning("No se puede eliminar");
+            }
+}
         private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             agregarIconoBasura(e.RowIndex);

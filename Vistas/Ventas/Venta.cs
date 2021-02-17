@@ -14,6 +14,8 @@ namespace MultimodeSales.Vistas.Ventas
         CDevolucionBD cDevolucion = new CDevolucionBD();
         CListaPedidosFinal pedidosFinal = new CListaPedidosFinal();
         CModelo cModelo = new CModelo();
+        CVenta cVenta = new CVenta();
+        CPedidoBD cPedido = new CPedidoBD();
         DataTable dtPedidos;
         DataTable dtPedidosDevueltos;
         private bool ventaCompleta;
@@ -114,60 +116,25 @@ namespace MultimodeSales.Vistas.Ventas
 
         private void rbtnVender_Click(object sender, EventArgs e)
         {
-            CVenta venta = new CVenta();
-            int cont = 0;
-            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            if (seleccioneCliente())
             {
-                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
-                    cont++;
-            }
-            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
-            {
-                if (!string.IsNullOrWhiteSpace(txtFolioVenta.Text))
+                if(folioVacio())
                 {
-                    if (cont > 0)
+                    if (articulosVacios())
                     {
-                        bool verificarIDFolio = venta.verificarFolioVentaExistente(txtFolioVenta.Text);
-                        if (verificarIDFolio == true)
-                            CMsgBox.DisplayWarning("Folio existente");
-                        else
+                        if(!verificarFolioExistente())
                         {
-                            DialogVenta dialog = new DialogVenta(txtFolioVenta.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
-                            dialog.ShowDialog();
-                            ventaCompleta = dialog.ventaCompletada();
-                            if(ventaCompleta)
-                            {
-                                foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
-                                {
-                                    if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
-                                    {
-                                        if (rows.Cells[0].Value == null)
-                                        {
-                                            CPedidoBD cPedido = new CPedidoBD();
-                                            rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
-                                        }
-                                        venta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
-                                    }
-                                }
-                                txtFolioVenta.Text = "";
-                                borrarLabels();
-                                CargarPedidos(idcliente); 
-                            }
+                            dialogVenta();
+                            ventaConcreta();
                         }
                     }
-                    else
-                        CMsgBox.DisplayWarning("Seleccionar un articulo");
                 }
-                else
-                    CMsgBox.DisplayWarning("No dejar el Folio vacio");
             }
-            else
-                CMsgBox.DisplayWarning("Seleccionar un cliente");
         }
 
         private void rbtnAgregarPedido_Click(object sender, EventArgs e)
         {
-            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+            if (seleccioneCliente())
             {
                 PedidosFinal final = new PedidosFinal(true);
                 final.ShowDialog();
@@ -178,7 +145,7 @@ namespace MultimodeSales.Vistas.Ventas
 
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)
         {
-            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+            if (seleccioneCliente())
             {
                 Modeloss modelos = new Modeloss(true);
                 modelos.ShowDialog();
@@ -209,13 +176,102 @@ namespace MultimodeSales.Vistas.Ventas
                     total += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
                     cantidad++;
                 }
-                else if(rows.DefaultCellStyle.BackColor == Color.Blue)
-                {
+                else if (rows.DefaultCellStyle.BackColor == Color.Blue)
                     total -= float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
-                }
             }
             lbCantidad.Text = cantidad.ToString();
             lbTotal.Text = string.Format("{0:C}", total);
+        }
+        private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
+        {
+            foreach (DataRow rows in dtPedidosDevueltos.Rows)
+            {
+                dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
+                int dgvTheLastRow = dgvVentasPedido.Rows.Count - 1;
+                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.BackColor = Color.Blue;
+                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            }
+            actualizarTotal();
+            rbtnAplicarDevolucion.Enabled = false;
+        }
+        private bool seleccioneCliente()
+        {
+            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("Selecciona un cliente");
+                return false;
+            }
+
+        }
+        private bool folioVacio()
+        {
+            if (!string.IsNullOrWhiteSpace(txtFolioVenta.Text))
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("No dejar el Folio vacio");
+                return false;
+            }
+        }
+        private bool articulosVacios()
+        {
+            int cont = 0;
+            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                    cont++;
+            }
+            if (cont > 0)
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("Seleccionar un articulo");
+                return false;
+            }
+        }
+        private bool verificarFolioExistente()
+        {
+
+            bool verificarIDFolio = cVenta.verificarFolioVentaExistente(txtFolioVenta.Text);
+            if (verificarIDFolio)
+            {
+                CMsgBox.DisplayWarning("Folio existente");
+                return true;
+            }
+            else
+                return false;
+        }
+        private void dialogVenta()
+        {
+            DialogVenta dialog = new DialogVenta(txtFolioVenta.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), lbTotal.Text);
+            dialog.ShowDialog();
+            ventaCompleta = dialog.ventaCompletada();
+        }
+        private void agregarPedidoProvisional()
+        {
+            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                {
+                    if (rows.Cells[0].Value == null)
+                    {
+                        rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                    }
+                    cVenta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
+                }
+            }
+        }
+        private void ventaConcreta()
+        {
+            if (ventaCompleta)
+            {
+                agregarPedidoProvisional();
+                txtFolioVenta.Text = "";
+                borrarLabels();
+                CargarPedidos(idcliente);
+            }
         }
         private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
@@ -225,6 +281,7 @@ namespace MultimodeSales.Vistas.Ventas
         {
             Validaciones.SoloNumeros(e);
         }
+
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -240,18 +297,5 @@ namespace MultimodeSales.Vistas.Ventas
         }
 
         #endregion
-
-        private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
-        {
-            foreach (DataRow rows in dtPedidosDevueltos.Rows)
-            {
-                dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
-                int dgvTheLastRow = dgvVentasPedido.Rows.Count - 1;
-                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.BackColor = Color.Blue;
-                dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
-            }
-            actualizarTotal();
-            rbtnAplicarDevolucion.Enabled = false;
-        }
     }
 }

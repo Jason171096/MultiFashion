@@ -63,7 +63,7 @@ namespace MultimodeSales.Programacion
             MySqlCommand cmd = new MySqlCommand("ConfirmacionPedidoEliminar", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
-            bool confirmacionPedido = Convert.ToBoolean(cmd.ExecuteScalar().ToString());
+            bool confirmacionPedido = Convert.ToBoolean(cmd.ExecuteScalar());
             return confirmacionPedido;
         }
     }

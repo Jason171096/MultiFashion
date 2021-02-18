@@ -65,6 +65,10 @@ namespace MultimodeSales.Vistas
                 darFormatoForm();
             }
         }
+        private void darFormatoForm()
+        {
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
         private void rbtnBuscarFolio_Click(object sender, EventArgs e)
         {
             borrarTodo();
@@ -73,22 +77,14 @@ namespace MultimodeSales.Vistas
             cVenta = folio.returnVenta();
             cCliente = folio.returnCliente();
             txtFolioVenta.Text = cVenta.IDVenta;
-            UCcomboBox.cboxCliente.SelectedValue = Convert.ToInt32(cCliente.IDCliente);
+            UCcboxCliente.cboxCliente.SelectedValue = Convert.ToInt32(cCliente.IDCliente);
             dt = cVenta.verVentaPedidoModelo(cVenta.IDVenta);
             foreach (DataRow rows in dt.Rows)
             {
-                dgvDevolucion.Rows.Add(rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString());
+                if(rows[8].ToString() != "1")
+                    dgvDevolucion.Rows.Add(rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString());
             }
             actualizarTotal();
-        }
-        private void darFormatoTabla()
-        {
-
-        }
-
-        private void darFormatoForm()
-        {
-            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
         private void rbtnSelPedido_Click(object sender, EventArgs e)
         {
@@ -136,6 +132,95 @@ namespace MultimodeSales.Vistas
             txtFolioVenta.Text = "";
             actualizarTotal();
         }
+        private void checkBuscarFolio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBuscarFolio.Checked)
+            {
+                borrarTodo();
+                rbtnBuscarFolio.Enabled = true;
+                UCcboxCliente.cboxCliente.Enabled = false;
+            }
+            else
+            {
+                borrarTodo();
+                rbtnBuscarFolio.Enabled = false;
+                UCcboxCliente.cboxCliente.Enabled = true;
+            }
+        }
+
+        private void rbtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (seleccioneCliente())
+                if (folioVacio())
+                    if (articulosVacios())
+                        if (!verificarFolioExistente())
+                        {
+                            checarCambioModelo();
+                        }
+        }
+        private void dgvDevolucion_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            actualizarTotal();
+        }
+        private bool seleccioneCliente()
+        {
+            if (UCcboxCliente.cboxCliente.SelectedIndex != UCcboxCliente.cboxCliente.Items.Count - 1)
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("Selecciona un cliente");
+                return false;
+            }
+        }
+        private bool folioVacio()
+        {
+            if (!string.IsNullOrWhiteSpace(txtFolioDevolucion.Text))
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("No dejar el Folio vacio");
+                return false;
+            }
+        }
+        private bool articulosVacios()
+        {
+            if (dgvDevolucion.Rows.Count > 0)
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("Seleccionar un articulo");
+                return false;
+            }
+        }
+        private bool verificarFolioExistente()
+        {
+            bool verificarIDFolio = cDevolucion.verificarFolioDevolucionExistente(txtFolioDevolucion.Text);
+            if (verificarIDFolio)
+            {
+                CMsgBox.DisplayWarning("Folio existente");
+                return true;
+            }
+            else
+                return false;
+        }
+        private void checarCambioModelo()
+        {
+            if (!checkCambioModelo.Checked)
+            {
+                agregarDevolucion();
+            }
+
+        }
+        private void agregarDevolucion()
+        {
+            foreach (DataGridViewRow rows in dgvDevolucion.Rows)
+            {
+                cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
+                cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString());
+            }
+            CMsgBox.DisplayInfo("Devolucion confirmada");
+            borrarTodo();
+        }
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -151,63 +236,5 @@ namespace MultimodeSales.Vistas
         }
 
         #endregion
-
-        private void checkBuscarFolio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBuscarFolio.Checked)
-            {
-                borrarTodo();
-                rbtnBuscarFolio.Enabled = true;
-                UCcomboBox.cboxCliente.Enabled = false;
-            }
-            else
-            {
-                borrarTodo();
-                rbtnBuscarFolio.Enabled = false;
-                UCcomboBox.cboxCliente.Enabled = true;
-            }
-        }
-
-        private void rbtnAceptar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtFolioDevolucion.Text))
-            {
-                bool verificarIDFolio = cDevolucion.verificarFolioDevolucionExistente(txtFolioDevolucion.Text);
-                if (verificarIDFolio == true)
-                    CMsgBox.DisplayWarning("Folio existente");
-                else
-                {
-                    if (dgvDevolucion.Rows.Count > 0)
-                    {
-                        if (!checkCambioModelo.Checked)
-                        {
-                            foreach (DataGridViewRow rows in dgvDevolucion.Rows)
-                            {
-                                cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcomboBox.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
-                                cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString());
-                            }
-                            CMsgBox.DisplayInfo("Devolucion confirmada");
-                            borrarTodo();
-                        }
-                        else
-                        {
-                            if (UCcomboBox.cboxCliente.SelectedIndex != UCcomboBox.cboxCliente.Items.Count - 1)
-                            {
-
-                            }
-                        }
-                    }
-                    else
-                        CMsgBox.DisplayWarning("Seleccionar un articulo");
-                }
-            }
-            else
-                CMsgBox.DisplayWarning("No dejar Folio vacio");
-        }
-
-        private void dgvDevolucion_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            actualizarTotal();
-        }
     }
 }

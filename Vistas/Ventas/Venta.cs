@@ -117,19 +117,13 @@ namespace MultimodeSales.Vistas.Ventas
         private void rbtnVender_Click(object sender, EventArgs e)
         {
             if (seleccioneCliente())
-            {
                 if(folioVacio())
-                {
                     if (articulosVacios())
-                    {
                         if(!verificarFolioExistente())
                         {
                             dialogVenta();
                             ventaConcreta();
                         }
-                    }
-                }
-            }
         }
 
         private void rbtnAgregarPedido_Click(object sender, EventArgs e)
@@ -203,7 +197,6 @@ namespace MultimodeSales.Vistas.Ventas
                 CMsgBox.DisplayWarning("Selecciona un cliente");
                 return false;
             }
-
         }
         private bool folioVacio()
         {

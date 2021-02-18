@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2021 a las 20:36:36
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.0
+-- Servidor: localhost:3306
+-- Tiempo de generación: 18-02-2021 a las 06:42:50
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -235,7 +235,7 @@ SELECT talla.IDTalla, talla.Numero FROM talla$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerVentaPedidoModelo` (IN `idfolio` INT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente, p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
 END$$
 
 --
@@ -813,8 +813,8 @@ INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `F
 (104, '118', 101, 'NEGRO', '24', '2021-02-13 13:18:50', b'0', b'1', b'0'),
 (105, '10002', 100, 'AMARILLLO', 'G', '2021-02-13 09:01:43', b'0', b'1', b'1'),
 (106, '123', 100, 'RUBY', 'M', '2021-02-13 09:01:43', b'1', b'0', b'0'),
-(107, '109', 101, 'AMARILLLO', '22', '2021-02-13 13:18:50', b'1', b'0', b'0'),
-(108, '8050', 101, 'AZUL', 'G', '2021-02-13 13:18:50', b'1', b'0', b'0'),
+(107, '109', 101, 'AMARILLLO', '22', '2021-02-13 13:18:50', b'1', b'1', b'0'),
+(108, '8050', 101, 'AZUL', 'G', '2021-02-13 13:18:50', b'1', b'1', b'0'),
 (109, '2', 86, 'AZUL', '', '2021-02-15 10:40:14', b'1', b'0', b'0'),
 (110, '4', 86, 'RUBY', '', '2021-02-15 10:40:14', b'1', b'0', b'0'),
 (111, '3', 86, 'TURQUESA', '', '2021-02-15 10:40:15', b'1', b'0', b'0'),
@@ -900,7 +900,8 @@ INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
 (1, 101, '2021-02-12 09:54:09', '4000.00'),
 (2, 100, '2021-02-13 09:02:04', '460.50'),
 (3, 86, '2021-02-15 10:51:02', '9268.95'),
-(4, 58, '2021-02-16 11:03:48', '4482.85');
+(4, 58, '2021-02-16 11:03:48', '4482.85'),
+(10, 101, '2021-02-16 23:56:54', '1223.45');
 
 -- --------------------------------------------------------
 
@@ -930,7 +931,9 @@ INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
 (51, 4, 121),
 (52, 4, 122),
 (53, 4, 123),
-(54, 4, 124);
+(54, 4, 124),
+(55, 10, 107),
+(56, 10, 108);
 
 --
 -- Índices para tablas volcadas
@@ -1060,7 +1063,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Restricciones para tablas volcadas

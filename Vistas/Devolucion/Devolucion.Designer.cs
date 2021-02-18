@@ -43,7 +43,7 @@ namespace MultimodeSales.Vistas
             this.checkBuscarFolio = new MaterialSkin.Controls.MaterialCheckBox();
             this.txtFolioVenta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.UCcomboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.rbtnBuscarFolio = new RoundButton.RoundButton();
             this.label4 = new System.Windows.Forms.Label();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
@@ -117,7 +117,7 @@ namespace MultimodeSales.Vistas
             this.groupBox2.Controls.Add(this.checkBuscarFolio);
             this.groupBox2.Controls.Add(this.txtFolioVenta);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.UCcomboBox);
+            this.groupBox2.Controls.Add(this.UCcboxCliente);
             this.groupBox2.Controls.Add(this.rbtnBuscarFolio);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtFolioDevolucion);
@@ -167,13 +167,13 @@ namespace MultimodeSales.Vistas
             this.label3.TabIndex = 66;
             this.label3.Text = "Folio Venta:";
             // 
-            // UCcomboBox
+            // UCcboxCliente
             // 
-            this.UCcomboBox.Location = new System.Drawing.Point(88, 25);
-            this.UCcomboBox.Margin = new System.Windows.Forms.Padding(6);
-            this.UCcomboBox.Name = "UCcomboBox";
-            this.UCcomboBox.Size = new System.Drawing.Size(433, 34);
-            this.UCcomboBox.TabIndex = 42;
+            this.UCcboxCliente.Location = new System.Drawing.Point(88, 25);
+            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(433, 34);
+            this.UCcboxCliente.TabIndex = 42;
             // 
             // rbtnBuscarFolio
             // 
@@ -617,7 +617,7 @@ namespace MultimodeSales.Vistas
         private RoundButton.RoundButton rbtnAceptar;
         private RoundButton.RoundButton rbtnCancelar;
         private RoundButton.RoundButton rbtnBuscarFolio;
-        private Componentes.UCcomboBoxCliente UCcomboBox;
+        private Componentes.UCcomboBoxCliente UCcboxCliente;
         private Componentes.UCBarraSuperior UCBarraSuperior;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lbTotalDevolucion;

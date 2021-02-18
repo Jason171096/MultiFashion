@@ -39,7 +39,8 @@ namespace MultimodeSales.Vistas
             rbtnTodos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnLlegaron.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnNoLlegaron.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
-            rbtnVendido.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
+            rbtnVendidos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
+            rbtnDevueltos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             activeCellClick = pactiveCellClick;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
@@ -67,24 +68,35 @@ namespace MultimodeSales.Vistas
             if (rb.Checked && rb.TabIndex == 20)
             {//RadioButtonTodos
                 CargarLista();
+                activarButtomFinalizarPedido(true);
             }
             else if (rb.Checked && rb.TabIndex == 25)
             {//RadioButtonLlegaron
-                dv.RowFilter = "Llego = 1";
+                dv.RowFilter = "Llego = 1 AND Vendido = 0 AND Devuelto = 0";
                 dgvPedidosFinal.DataSource = dv;
                 DarFormatoTabla();
+                activarButtomFinalizarPedido(false);
             }
             else if (rb.Checked && rb.TabIndex == 30)
             {//RadioButtonNoLlegaron
-                dv.RowFilter = "Llego = 0";
+                dv.RowFilter = "Llego = 0 AND Vendido = 0 AND Devuelto = 0";
                 dgvPedidosFinal.DataSource = dv;
                 DarFormatoTabla();
+                activarButtomFinalizarPedido(false);
             }
             else if(rb.Checked && rb.TabIndex == 35)
             {//RadioButtonVendieron
-                dv.RowFilter = "Vendido = 1";
+                dv.RowFilter = "Llego = 1 AND Vendido = 1 AND Devuelto = 0";
                 dgvPedidosFinal.DataSource = dv;
                 DarFormatoTabla();
+                activarButtomFinalizarPedido(false);
+            }
+            else if(rb.Checked && rb.TabIndex == 40)
+            {//RadioButtonDevueltos
+                dv.RowFilter = "Llego = 1 AND Vendido = 0 AND Devuelto = 1";
+                dgvPedidosFinal.DataSource = dv;
+                DarFormatoTabla();
+                activarButtomFinalizarPedido(false);
             }
         }
 
@@ -95,8 +107,6 @@ namespace MultimodeSales.Vistas
             dgvPedidosFinal.DataSource = dt;
             paintRows();
             DarFormatoTabla();
-           //if(dgvPedidosFinal.RowCount >= 1)
-                //dgvPedidosFinal.Rows[0].DefaultCellStyle.BackColor = Color.YellowGreen;
         }
 
         private void DarFormatoTabla()
@@ -209,21 +219,39 @@ namespace MultimodeSales.Vistas
         {
             if (activeCellClick)
             {
-                if (dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.OrangeRed)
-                {
-                    modelo.IDPedido = dgvPedidosFinal.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    modelo.IDModelo = dgvPedidosFinal.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    modelo.IDMarca = dgvPedidosFinal.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    modelo.Color = dgvPedidosFinal.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    modelo.Talla = dgvPedidosFinal.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    modelo.PrecioCliente = dgvPedidosFinal.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    Close();
-                }
-                else
-                    CMsgBox.DisplayWarning("No puede vender un pedido que ya esta vendido");
+                asignarModeloNoVendido(e);
             } 
         }
-
+        private void asignarModeloNoVendido(DataGridViewCellEventArgs e)
+        {
+            if (dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.OrangeRed)
+            {
+                asignarModeloClase(e);
+                Close();
+            }
+            else
+                CMsgBox.DisplayWarning("No puede vender un pedido que ya esta vendido");
+        }
+        private void asignarModeloDevolucion(DataGridViewCellEventArgs e)
+        {
+            if(dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.Blue && dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.Indigo)
+            {
+                asignarModeloClase(e);
+                Close();
+            }
+            else
+                CMsgBox.DisplayWarning("No puede devolver un pedido que no llego o ya devuelto");
+        }
+        private void asignarModeloClase(DataGridViewCellEventArgs e)
+        {
+            modelo.IDPedido = dgvPedidosFinal.Rows[e.RowIndex].Cells[0].Value.ToString();
+            modelo.IDModelo = dgvPedidosFinal.Rows[e.RowIndex].Cells[3].Value.ToString();
+            modelo.IDMarca = dgvPedidosFinal.Rows[e.RowIndex].Cells[4].Value.ToString();
+            modelo.Color = dgvPedidosFinal.Rows[e.RowIndex].Cells[5].Value.ToString();
+            modelo.Talla = dgvPedidosFinal.Rows[e.RowIndex].Cells[6].Value.ToString();
+            modelo.PrecioCliente = dgvPedidosFinal.Rows[e.RowIndex].Cells[7].Value.ToString();
+            Close();
+        }
         private void paintRows()
         {
             foreach (DataGridViewRow rows in dgvPedidosFinal.Rows)
@@ -253,6 +281,13 @@ namespace MultimodeSales.Vistas
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarLista();
+        }
+        private void activarButtomFinalizarPedido(bool pActivo)
+        {
+            if (pActivo)
+                rbtnFinalizar.Enabled = true;
+            else
+                rbtnFinalizar.Enabled = false;
         }
         #region Barra Superior
         private void minimizedClick(object sender, EventArgs e)

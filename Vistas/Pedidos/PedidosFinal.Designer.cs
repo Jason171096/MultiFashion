@@ -44,13 +44,6 @@
             this.rbtnNumPedido = new System.Windows.Forms.RadioButton();
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.rbtnTodos = new System.Windows.Forms.RadioButton();
-            this.rbtnVendido = new System.Windows.Forms.RadioButton();
-            this.rbtnLlegaron = new System.Windows.Forms.RadioButton();
-            this.rbtnNoLlegaron = new System.Windows.Forms.RadioButton();
-            this.rbtnCancelar = new RoundButton.RoundButton();
-            this.rbtnFinalizar = new RoundButton.RoundButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -64,12 +57,19 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.rbtnTodos = new System.Windows.Forms.RadioButton();
+            this.rbtnVendidos = new System.Windows.Forms.RadioButton();
+            this.rbtnLlegaron = new System.Windows.Forms.RadioButton();
+            this.rbtnNoLlegaron = new System.Windows.Forms.RadioButton();
+            this.rbtnCancelar = new RoundButton.RoundButton();
+            this.rbtnFinalizar = new RoundButton.RoundButton();
+            this.rbtnDevueltos = new System.Windows.Forms.RadioButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -79,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPedidosFinal
@@ -268,113 +269,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ordenar";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel1.Controls.Add(this.rbtnTodos, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtnVendido, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtnLlegaron, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtnNoLlegaron, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 31);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 44);
-            this.tableLayoutPanel1.TabIndex = 37;
-            // 
-            // rbtnTodos
-            // 
-            this.rbtnTodos.AutoSize = true;
-            this.rbtnTodos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbtnTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.rbtnTodos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnTodos.Location = new System.Drawing.Point(3, 3);
-            this.rbtnTodos.Name = "rbtnTodos";
-            this.rbtnTodos.Size = new System.Drawing.Size(94, 38);
-            this.rbtnTodos.TabIndex = 20;
-            this.rbtnTodos.TabStop = true;
-            this.rbtnTodos.Text = "Todos";
-            this.rbtnTodos.UseVisualStyleBackColor = true;
-            // 
-            // rbtnVendido
-            // 
-            this.rbtnVendido.AutoSize = true;
-            this.rbtnVendido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbtnVendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.rbtnVendido.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnVendido.Location = new System.Drawing.Point(363, 3);
-            this.rbtnVendido.Name = "rbtnVendido";
-            this.rbtnVendido.Size = new System.Drawing.Size(104, 38);
-            this.rbtnVendido.TabIndex = 35;
-            this.rbtnVendido.TabStop = true;
-            this.rbtnVendido.Text = "Vendido";
-            this.rbtnVendido.UseVisualStyleBackColor = true;
-            // 
-            // rbtnLlegaron
-            // 
-            this.rbtnLlegaron.AutoSize = true;
-            this.rbtnLlegaron.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbtnLlegaron.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.rbtnLlegaron.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnLlegaron.Location = new System.Drawing.Point(103, 3);
-            this.rbtnLlegaron.Name = "rbtnLlegaron";
-            this.rbtnLlegaron.Size = new System.Drawing.Size(114, 38);
-            this.rbtnLlegaron.TabIndex = 25;
-            this.rbtnLlegaron.TabStop = true;
-            this.rbtnLlegaron.Text = "Llegaron";
-            this.rbtnLlegaron.UseVisualStyleBackColor = true;
-            // 
-            // rbtnNoLlegaron
-            // 
-            this.rbtnNoLlegaron.AutoSize = true;
-            this.rbtnNoLlegaron.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbtnNoLlegaron.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.rbtnNoLlegaron.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnNoLlegaron.Location = new System.Drawing.Point(223, 3);
-            this.rbtnNoLlegaron.Name = "rbtnNoLlegaron";
-            this.rbtnNoLlegaron.Size = new System.Drawing.Size(134, 38);
-            this.rbtnNoLlegaron.TabIndex = 30;
-            this.rbtnNoLlegaron.TabStop = true;
-            this.rbtnNoLlegaron.Text = "No Llegaron";
-            this.rbtnNoLlegaron.UseVisualStyleBackColor = true;
-            // 
-            // rbtnCancelar
-            // 
-            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.rbtnCancelar.Location = new System.Drawing.Point(12, 605);
-            this.rbtnCancelar.Name = "rbtnCancelar";
-            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.Size = new System.Drawing.Size(180, 41);
-            this.rbtnCancelar.TabIndex = 38;
-            this.rbtnCancelar.Text = "Cancelar(Esc)";
-            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
-            this.rbtnCancelar.UseVisualStyleBackColor = true;
-            this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
-            // 
-            // rbtnFinalizar
-            // 
-            this.rbtnFinalizar.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnFinalizar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnFinalizar.Location = new System.Drawing.Point(1067, 594);
-            this.rbtnFinalizar.Name = "rbtnFinalizar";
-            this.rbtnFinalizar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnFinalizar.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnFinalizar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnFinalizar.Size = new System.Drawing.Size(153, 52);
-            this.rbtnFinalizar.TabIndex = 39;
-            this.rbtnFinalizar.Text = "Finalizar \r\nPedido";
-            this.rbtnFinalizar.TextColor = System.Drawing.Color.White;
-            this.rbtnFinalizar.UseVisualStyleBackColor = true;
-            this.rbtnFinalizar.Click += new System.EventHandler(this.rbtnFinalizar_Click);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -528,6 +422,129 @@
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Llegaron";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.Controls.Add(this.rbtnDevueltos, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbtnTodos, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbtnVendidos, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbtnLlegaron, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbtnNoLlegaron, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 31);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(598, 44);
+            this.tableLayoutPanel1.TabIndex = 37;
+            // 
+            // rbtnTodos
+            // 
+            this.rbtnTodos.AutoSize = true;
+            this.rbtnTodos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnTodos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnTodos.Location = new System.Drawing.Point(3, 3);
+            this.rbtnTodos.Name = "rbtnTodos";
+            this.rbtnTodos.Size = new System.Drawing.Size(94, 38);
+            this.rbtnTodos.TabIndex = 20;
+            this.rbtnTodos.TabStop = true;
+            this.rbtnTodos.Text = "Todos";
+            this.rbtnTodos.UseVisualStyleBackColor = true;
+            // 
+            // rbtnVendidos
+            // 
+            this.rbtnVendidos.AutoSize = true;
+            this.rbtnVendidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnVendidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnVendidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnVendidos.Location = new System.Drawing.Point(363, 3);
+            this.rbtnVendidos.Name = "rbtnVendidos";
+            this.rbtnVendidos.Size = new System.Drawing.Size(114, 38);
+            this.rbtnVendidos.TabIndex = 35;
+            this.rbtnVendidos.TabStop = true;
+            this.rbtnVendidos.Text = "Vendidos";
+            this.rbtnVendidos.UseVisualStyleBackColor = true;
+            // 
+            // rbtnLlegaron
+            // 
+            this.rbtnLlegaron.AutoSize = true;
+            this.rbtnLlegaron.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnLlegaron.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnLlegaron.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnLlegaron.Location = new System.Drawing.Point(103, 3);
+            this.rbtnLlegaron.Name = "rbtnLlegaron";
+            this.rbtnLlegaron.Size = new System.Drawing.Size(114, 38);
+            this.rbtnLlegaron.TabIndex = 25;
+            this.rbtnLlegaron.TabStop = true;
+            this.rbtnLlegaron.Text = "Llegaron";
+            this.rbtnLlegaron.UseVisualStyleBackColor = true;
+            // 
+            // rbtnNoLlegaron
+            // 
+            this.rbtnNoLlegaron.AutoSize = true;
+            this.rbtnNoLlegaron.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnNoLlegaron.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnNoLlegaron.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnNoLlegaron.Location = new System.Drawing.Point(223, 3);
+            this.rbtnNoLlegaron.Name = "rbtnNoLlegaron";
+            this.rbtnNoLlegaron.Size = new System.Drawing.Size(134, 38);
+            this.rbtnNoLlegaron.TabIndex = 30;
+            this.rbtnNoLlegaron.TabStop = true;
+            this.rbtnNoLlegaron.Text = "No Llegaron";
+            this.rbtnNoLlegaron.UseVisualStyleBackColor = true;
+            // 
+            // rbtnCancelar
+            // 
+            this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.rbtnCancelar.Location = new System.Drawing.Point(12, 605);
+            this.rbtnCancelar.Name = "rbtnCancelar";
+            this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnCancelar.Size = new System.Drawing.Size(180, 41);
+            this.rbtnCancelar.TabIndex = 38;
+            this.rbtnCancelar.Text = "Cancelar(Esc)";
+            this.rbtnCancelar.TextColor = System.Drawing.Color.White;
+            this.rbtnCancelar.UseVisualStyleBackColor = true;
+            this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
+            // 
+            // rbtnFinalizar
+            // 
+            this.rbtnFinalizar.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnFinalizar.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnFinalizar.Location = new System.Drawing.Point(1067, 594);
+            this.rbtnFinalizar.Name = "rbtnFinalizar";
+            this.rbtnFinalizar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnFinalizar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnFinalizar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnFinalizar.Size = new System.Drawing.Size(153, 52);
+            this.rbtnFinalizar.TabIndex = 39;
+            this.rbtnFinalizar.Text = "Finalizar \r\nPedido";
+            this.rbtnFinalizar.TextColor = System.Drawing.Color.White;
+            this.rbtnFinalizar.UseVisualStyleBackColor = true;
+            this.rbtnFinalizar.Click += new System.EventHandler(this.rbtnFinalizar_Click);
+            // 
+            // rbtnDevueltos
+            // 
+            this.rbtnDevueltos.AutoSize = true;
+            this.rbtnDevueltos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnDevueltos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnDevueltos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnDevueltos.Location = new System.Drawing.Point(483, 3);
+            this.rbtnDevueltos.Name = "rbtnDevueltos";
+            this.rbtnDevueltos.Size = new System.Drawing.Size(112, 38);
+            this.rbtnDevueltos.TabIndex = 40;
+            this.rbtnDevueltos.TabStop = true;
+            this.rbtnDevueltos.Text = "Devueltos";
+            this.rbtnDevueltos.UseVisualStyleBackColor = true;
+            // 
             // UCBarraSuperior
             // 
             this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
@@ -564,8 +581,6 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -579,6 +594,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -593,7 +610,7 @@
         private System.Windows.Forms.RadioButton rbtnNumPedido;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbtnVendido;
+        private System.Windows.Forms.RadioButton rbtnVendidos;
         private System.Windows.Forms.RadioButton rbtnLlegaron;
         private System.Windows.Forms.RadioButton rbtnTodos;
         private System.Windows.Forms.RadioButton rbtnNoLlegaron;
@@ -618,5 +635,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.RadioButton rbtnDevueltos;
     }
 }

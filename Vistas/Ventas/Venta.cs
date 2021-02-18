@@ -41,7 +41,7 @@ namespace MultimodeSales.Vistas.Ventas
 
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
-        
+
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             rbtnAplicarDevolucion.Enabled = true;
@@ -77,29 +77,22 @@ namespace MultimodeSales.Vistas.Ventas
         {
             if (dgvVentasPedido.SelectedRows.Count >= 1)
             {
-                //try
-                //{
-                    if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor == Color.YellowGreen)
                     {
-                        if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor == Color.YellowGreen)
-                        {
-                            dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
-                            dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
-                            actualizarTotal();
-                        }
-                        else
-                        {
-                            dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
-                            dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
-                            actualizarTotal();
-                        }
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
+                        actualizarTotal();
                     }
-                //}
+                    else
+                    {
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                        actualizarTotal();
+                    }
+                }
             }
-            //catch(Exception ex)
-            //{
-                //CMsgBox.DisplayError($"Error al seleccionar un modelo \n Mensaje: \n {ex.Message}");
-            //}
         }
         private void rbtnSelTodo_Click(object sender, EventArgs e)
         {
@@ -117,9 +110,9 @@ namespace MultimodeSales.Vistas.Ventas
         private void rbtnVender_Click(object sender, EventArgs e)
         {
             if (seleccioneCliente())
-                if(folioVacio())
+                if (folioVacio())
                     if (articulosVacios())
-                        if(!verificarFolioExistente())
+                        if (!verificarFolioExistente())
                         {
                             dialogVenta();
                             ventaConcreta();

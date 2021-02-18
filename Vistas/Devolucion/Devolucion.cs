@@ -78,10 +78,14 @@ namespace MultimodeSales.Vistas
             cCliente = folio.returnCliente();
             txtFolioVenta.Text = cVenta.IDVenta;
             UCcboxCliente.cboxCliente.SelectedValue = Convert.ToInt32(cCliente.IDCliente);
+            agregarFolioDatagridview();
+        }
+        private void agregarFolioDatagridview()
+        {
             dt = cVenta.verVentaPedidoModelo(cVenta.IDVenta);
             foreach (DataRow rows in dt.Rows)
             {
-                if(rows[8].ToString() != "1")
+                if (rows[8].ToString() != "1")
                     dgvDevolucion.Rows.Add(rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString());
             }
             actualizarTotal();
@@ -91,10 +95,16 @@ namespace MultimodeSales.Vistas
             PedidosFinal pedidosFinal = new PedidosFinal(true);
             pedidosFinal.ShowDialog();
             cModelo = pedidosFinal.returnModelo();
-            dgvDevolucion.Rows.Add(cModelo.IDPedido, cModelo.IDModelo, cModelo.IDMarca, cModelo.Color, cModelo.Talla, cModelo.PrecioCliente);
-            actualizarTotal();
+            agregarPedidoDatagridview();
         }
-
+        private void agregarPedidoDatagridview()
+        {
+            if (cModelo.IDPedido != null)
+            {
+                dgvDevolucion.Rows.Add(cModelo.IDPedido, cModelo.IDModelo, cModelo.IDMarca, cModelo.Color, cModelo.Talla, cModelo.PrecioCliente);
+                actualizarTotal();
+            }
+        }
         private void rbtnSelModelo_Click(object sender, EventArgs e)
         {
             Modeloss modelos = new Modeloss(true);
@@ -207,11 +217,11 @@ namespace MultimodeSales.Vistas
         {
             if (!checkCambioModelo.Checked)
             {
-                agregarDevolucion();
+                aceptarDevolucion();
             }
 
         }
-        private void agregarDevolucion()
+        private void aceptarDevolucion()
         {
             foreach (DataGridViewRow rows in dgvDevolucion.Rows)
             {

@@ -15,9 +15,9 @@ namespace MultimodeSales.Vistas
         DataTable dt;
         DataView dv;
         CModelo modelo = new CModelo();
-        bool activeCellClick = false;
+        int activeCellClick = 0;
 
-        public PedidosFinal(bool pactiveCellClick)
+        public PedidosFinal(int pActiveCellClick)
         {
             InitializeComponent();
             CDataGridView.FormattedDataGridView(dgvPedidosFinal);
@@ -41,7 +41,7 @@ namespace MultimodeSales.Vistas
             rbtnNoLlegaron.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnVendidos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnDevueltos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
-            activeCellClick = pactiveCellClick;
+            activeCellClick = pActiveCellClick;
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
         private void PedidosFinal_Load(object sender, EventArgs e)
@@ -54,11 +54,11 @@ namespace MultimodeSales.Vistas
             RadioButton rb = sender as RadioButton;
             if (rb.Checked && rb.TabIndex == 10)
             {
-                dtpFecha.Enabled = false;
+                dtpFechaInicial.Enabled = false;
             }
             else if (rb.Checked && rb.TabIndex == 12)
             {
-                dtpFecha.Enabled = true;
+                dtpFechaInicial.Enabled = true;
             }
         }
         private void radioButtonOrdenar_CheckedChanged(object sender, EventArgs e)
@@ -184,13 +184,9 @@ namespace MultimodeSales.Vistas
                     for (int j = 0; j < dgvPedidosFinal.Columns.Count; j++)
                     {
                         if (dgvPedidosFinal.Rows[i].Cells[j].Value != null)
-                        {
                             worksheet.Cells[i + 2, j + 1] = dgvPedidosFinal.Rows[i].Cells[j].Value.ToString();
-                        }
                         else
-                        {
                             worksheet.Cells[i + 2, j + 1] = "";
-                        }
                     }
                 }
             }
@@ -217,20 +213,20 @@ namespace MultimodeSales.Vistas
         }
         private void dgvPedidosFinal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (activeCellClick)
-            {
+            if (activeCellClick == 1)
                 asignarModeloNoVendido(e);
-            } 
+            else if (activeCellClick == 2)
+                asignarModeloDevolucion(e);
         }
         private void asignarModeloNoVendido(DataGridViewCellEventArgs e)
         {
-            if (dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.OrangeRed)
+            if (dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.Indigo && dgvPedidosFinal.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.OrangeRed)
             {
                 asignarModeloClase(e);
                 Close();
             }
             else
-                CMsgBox.DisplayWarning("No puede vender un pedido que ya esta vendido");
+                CMsgBox.DisplayWarning("No puede vender un pedido que ya esta vendido o que no llego");
         }
         private void asignarModeloDevolucion(DataGridViewCellEventArgs e)
         {
@@ -256,6 +252,11 @@ namespace MultimodeSales.Vistas
         {
             foreach (DataGridViewRow rows in dgvPedidosFinal.Rows)
             {
+                if (rows.Cells[9].Value.ToString() == "0")
+                {
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Indigo;
+                    dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
+                }
                 if (rows.Cells[9].Value.ToString() == "1" && rows.Cells[10].Value.ToString() == "0")
                 {
                     dgvPedidosFinal.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Green;

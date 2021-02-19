@@ -123,7 +123,7 @@ namespace MultimodeSales.Vistas.Ventas
         {
             if (seleccioneCliente())
             {
-                PedidosFinal final = new PedidosFinal(true);
+                PedidosFinal final = new PedidosFinal(1);
                 final.ShowDialog();
                 cModelo = final.returnModelo();
                 agregarModelo();

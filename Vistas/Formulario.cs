@@ -107,7 +107,7 @@ namespace MultimodeSales
         #region picPedidos Final
         private void picPedidosFinal_Click(object sender, EventArgs e)
         {
-            PedidosFinal pedidosFinal = new PedidosFinal(false);
+            PedidosFinal pedidosFinal = new PedidosFinal(0);
             pedidosFinal.Show();
         }
 

@@ -1,4 +1,5 @@
 ﻿using MultimodeSales.Vistas;
+using MultimodeSales.Vistas.Folios;
 using MultimodeSales.Vistas.Ventas;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace MultimodeSales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formulario());
+            Application.Run(new FolioVenta());
         }
     }
 }

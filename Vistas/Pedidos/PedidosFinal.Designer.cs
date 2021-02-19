@@ -37,8 +37,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.rbtnNumPedido = new System.Windows.Forms.RadioButton();
@@ -58,13 +58,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.rbtnDevueltos = new System.Windows.Forms.RadioButton();
             this.rbtnTodos = new System.Windows.Forms.RadioButton();
             this.rbtnVendidos = new System.Windows.Forms.RadioButton();
             this.rbtnLlegaron = new System.Windows.Forms.RadioButton();
             this.rbtnNoLlegaron = new System.Windows.Forms.RadioButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizar = new RoundButton.RoundButton();
-            this.rbtnDevueltos = new System.Windows.Forms.RadioButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -166,8 +166,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePicker1, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.dtpFecha, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dtpFechaFinal, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dtpFechaInicial, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(99, 74);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -179,40 +179,42 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(193, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 26);
+            this.label2.Size = new System.Drawing.Size(34, 35);
             this.label2.TabIndex = 46;
             this.label2.Text = "a";
             // 
-            // dateTimePicker1
+            // dtpFechaFinal
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(233, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 29);
-            this.dateTimePicker1.TabIndex = 44;
+            this.dtpFechaFinal.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.dtpFechaFinal.Enabled = false;
+            this.dtpFechaFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(233, 3);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(142, 29);
+            this.dtpFechaFinal.TabIndex = 44;
             // 
-            // dtpFecha
+            // dtpFechaInicial
             // 
-            this.dtpFecha.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.dtpFecha.Enabled = false;
-            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(63, 3);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(124, 29);
-            this.dtpFecha.TabIndex = 42;
+            this.dtpFechaInicial.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.dtpFechaInicial.Enabled = false;
+            this.dtpFechaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicial.Location = new System.Drawing.Point(63, 3);
+            this.dtpFechaInicial.Name = "dtpFechaInicial";
+            this.dtpFechaInicial.Size = new System.Drawing.Size(124, 29);
+            this.dtpFechaInicial.TabIndex = 42;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 26);
+            this.label1.Size = new System.Drawing.Size(54, 35);
             this.label1.TabIndex = 45;
             this.label1.Text = "De";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,12 +313,12 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(25, 0);
+            this.materialLabel4.Location = new System.Drawing.Point(23, 0);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(66, 18);
+            this.materialLabel4.Size = new System.Drawing.Size(68, 19);
             this.materialLabel4.TabIndex = 39;
             this.materialLabel4.Text = "Devuelto";
             // 
@@ -345,12 +347,12 @@
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(30, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(27, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(61, 18);
+            this.materialLabel2.Size = new System.Drawing.Size(64, 19);
             this.materialLabel2.TabIndex = 39;
             this.materialLabel2.Text = "Vendido";
             // 
@@ -379,12 +381,12 @@
             this.lbLeyenda1.AutoSize = true;
             this.lbLeyenda1.Depth = 0;
             this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLeyenda1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLeyenda1.Location = new System.Drawing.Point(30, 0);
+            this.lbLeyenda1.Location = new System.Drawing.Point(27, 0);
             this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbLeyenda1.Name = "lbLeyenda1";
-            this.lbLeyenda1.Size = new System.Drawing.Size(84, 18);
+            this.lbLeyenda1.Size = new System.Drawing.Size(87, 19);
             this.lbLeyenda1.TabIndex = 39;
             this.lbLeyenda1.Text = "No llegaron";
             // 
@@ -413,12 +415,12 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(29, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(27, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(65, 18);
+            this.materialLabel1.Size = new System.Drawing.Size(67, 19);
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Llegaron";
             // 
@@ -441,6 +443,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(598, 44);
             this.tableLayoutPanel1.TabIndex = 37;
+            // 
+            // rbtnDevueltos
+            // 
+            this.rbtnDevueltos.AutoSize = true;
+            this.rbtnDevueltos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbtnDevueltos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.rbtnDevueltos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rbtnDevueltos.Location = new System.Drawing.Point(483, 3);
+            this.rbtnDevueltos.Name = "rbtnDevueltos";
+            this.rbtnDevueltos.Size = new System.Drawing.Size(112, 38);
+            this.rbtnDevueltos.TabIndex = 40;
+            this.rbtnDevueltos.TabStop = true;
+            this.rbtnDevueltos.Text = "Devueltos";
+            this.rbtnDevueltos.UseVisualStyleBackColor = true;
             // 
             // rbtnTodos
             // 
@@ -531,20 +547,6 @@
             this.rbtnFinalizar.UseVisualStyleBackColor = true;
             this.rbtnFinalizar.Click += new System.EventHandler(this.rbtnFinalizar_Click);
             // 
-            // rbtnDevueltos
-            // 
-            this.rbtnDevueltos.AutoSize = true;
-            this.rbtnDevueltos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rbtnDevueltos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.rbtnDevueltos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnDevueltos.Location = new System.Drawing.Point(483, 3);
-            this.rbtnDevueltos.Name = "rbtnDevueltos";
-            this.rbtnDevueltos.Size = new System.Drawing.Size(112, 38);
-            this.rbtnDevueltos.TabIndex = 40;
-            this.rbtnDevueltos.TabStop = true;
-            this.rbtnDevueltos.Text = "Devueltos";
-            this.rbtnDevueltos.UseVisualStyleBackColor = true;
-            // 
             // UCBarraSuperior
             // 
             this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
@@ -605,7 +607,7 @@
         private System.Windows.Forms.DataGridView dgvPedidosFinal;
         private System.Windows.Forms.RadioButton rbtnFecha;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.RadioButton rbtnNumPedido;
         private System.Windows.Forms.Button btnExportExcel;
@@ -620,7 +622,7 @@
         private Componentes.UCBarraSuperior UCBarraSuperior;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel4;

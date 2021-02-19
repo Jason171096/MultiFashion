@@ -92,7 +92,7 @@ namespace MultimodeSales.Vistas
         }
         private void rbtnSelPedido_Click(object sender, EventArgs e)
         {
-            PedidosFinal pedidosFinal = new PedidosFinal(true);
+            PedidosFinal pedidosFinal = new PedidosFinal(2);
             pedidosFinal.ShowDialog();
             cModelo = pedidosFinal.returnModelo();
             agregarPedidoDatagridview();

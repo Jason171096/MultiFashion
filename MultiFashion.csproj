@@ -180,6 +180,12 @@
     <Compile Include="Componentes\UCcomboBoxCliente.Designer.cs">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Componentes\UCListViewItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UCListViewItem.Designer.cs">
+      <DependentUpon>UCListViewItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Programacion\Cliente\CCliente.cs" />
     <Compile Include="Programacion\Devolucion\CDevolucionBD.cs" />
     <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Componentes\UCcomboBoxCliente.resx">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UCListViewItem.resx">
+      <DependentUpon>UCListViewItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Cliente.resx">
       <DependentUpon>Cliente.cs</DependentUpon>
@@ -456,6 +465,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\circle24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit64px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

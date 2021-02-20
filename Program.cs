@@ -19,7 +19,7 @@ namespace MultimodeSales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FolioVenta());
+            Application.Run(new Formulario());
         }
     }
 }

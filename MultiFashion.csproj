@@ -386,9 +386,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\client64px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\client128px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -464,13 +461,10 @@
     <None Include="Resources\diagram128px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\circle24px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edit24px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\edit64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer64px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

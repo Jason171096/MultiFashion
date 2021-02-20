@@ -416,7 +416,6 @@
             // 
             this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAplicarDevolucion.Image = global::MultimodeSales.Properties.Resources.circle24px;
             this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(487, 488);
             this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
             this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;

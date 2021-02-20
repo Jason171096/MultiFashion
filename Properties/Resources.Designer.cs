@@ -143,29 +143,9 @@ namespace MultimodeSales.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap circle24px {
-            get {
-                object obj = ResourceManager.GetObject("circle24px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap client128px {
             get {
                 object obj = ResourceManager.GetObject("client128px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap client64px {
-            get {
-                object obj = ResourceManager.GetObject("client64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,16 +176,6 @@ namespace MultimodeSales.Properties {
         internal static System.Drawing.Bitmap diagram128px {
             get {
                 object obj = ResourceManager.GetObject("diagram128px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit24px {
-            get {
-                object obj = ResourceManager.GetObject("edit24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +236,16 @@ namespace MultimodeSales.Properties {
         internal static System.Drawing.Bitmap pencil128px {
             get {
                 object obj = ResourceManager.GetObject("pencil128px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printer64px {
+            get {
+                object obj = ResourceManager.GetObject("printer64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

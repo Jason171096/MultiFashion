@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2021 a las 20:41:05
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.0
+-- Servidor: localhost:3306
+-- Tiempo de generación: 22-02-2021 a las 05:48:22
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,11 +157,6 @@ BEGIN
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `FoliosVentas` ()  NO SQL
-BEGIN
-	SELECT venta.IDFolio as "ID Folio", venta.IDCliente as "ID Cliente", venta.Fecha,  CONCAT('$', FORMAT(venta.Total, 2)) as "Total" FROM venta;
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FolioVentaExistente` (IN `idfolio` BIGINT)  NO SQL
 BEGIN
 	SET @var := (SELECT venta.IDFolio FROM venta WHERE venta.IDFolio = idfolio);
@@ -207,6 +202,16 @@ BEGIN
 	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFoliosVentas` ()  NO SQL
+BEGIN
+	SELECT venta.IDFolio as "ID Folio", venta.IDCliente as "ID Cliente", venta.Fecha,  CONCAT('$', FORMAT(venta.Total, 2)) as "Total" FROM venta;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFolioVentaPedidoCliente` (IN `idfolio` INT)  NO SQL
+BEGIN
+	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente, p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
 BEGIN
 	SET @date := (SELECT `PrimerDiaSemana`());
@@ -233,11 +238,6 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerTallas` ()  READS SQL DATA
 SELECT talla.IDTalla, talla.Numero FROM talla$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VerVentaPedidoModelo` (IN `idfolio` INT)  NO SQL
-BEGIN
-	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente, p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
-END$$
 
 --
 -- Funciones
@@ -804,13 +804,13 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`, `Devuelto`) VALUES
-(128, '114', 101, '', '', '2021-02-18 10:22:37', b'1', b'0', b'0'),
-(129, '132', 101, '', '', '2021-02-18 10:22:37', b'1', b'0', b'0'),
-(130, '160', 101, '', '', '2021-02-18 10:22:37', b'1', b'0', b'0'),
-(131, '188', 101, '', '', '2021-02-18 10:22:37', b'1', b'1', b'0'),
-(132, '244', 101, '', '', '2021-02-18 10:22:37', b'1', b'1', b'0'),
-(133, '271', 101, '', '', '2021-02-18 10:22:37', b'1', b'0', b'1'),
-(134, '382', 101, '', '', '2021-02-18 10:22:37', b'0', b'0', b'0');
+(128, '114', 101, 'RUBY', 'CH', '2021-02-21 19:16:35', b'1', b'0', b'0'),
+(129, '132', 101, 'AZUL', 'G', '2021-02-21 19:16:35', b'1', b'0', b'0'),
+(130, '160', 101, 'MORADO', '18', '2021-02-21 19:16:35', b'1', b'0', b'0'),
+(131, '188', 101, 'TURQUESA', '22', '2021-02-21 19:16:35', b'1', b'1', b'0'),
+(132, '244', 101, 'AMARILLLO', '17', '2021-02-21 19:16:35', b'1', b'1', b'0'),
+(133, '271', 101, 'AMARILLLO', '18', '2021-02-21 19:16:35', b'1', b'0', b'1'),
+(134, '382', 101, 'ROJO', 'M', '2021-02-21 19:16:35', b'0', b'0', b'0');
 
 -- --------------------------------------------------------
 

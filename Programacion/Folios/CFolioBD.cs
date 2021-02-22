@@ -17,7 +17,7 @@ namespace MultimodeSales.Programacion.Folios
         {
             conexion.OpenConnection();
             DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("FoliosVentas", conexion.GetConnection());
+            MySqlCommand cmd = new MySqlCommand("VerFoliosVentas", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             da.SelectCommand = cmd;
             dt.Clear();
@@ -25,6 +25,5 @@ namespace MultimodeSales.Programacion.Folios
             conexion.CloseConnection();
             return dt;
         }
-       
     }
 }

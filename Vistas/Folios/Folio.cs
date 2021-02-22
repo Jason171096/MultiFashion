@@ -16,6 +16,7 @@ namespace MultimodeSales.Vistas
         CCliente cCliente = new CCliente();
         private bool ventanaDevolucion;
         private bool ventanaFolio;
+        private string IDFolio;
         public Folio(bool pFolio, bool ventanaDevolucion)
         {
             InitializeComponent();
@@ -52,15 +53,14 @@ namespace MultimodeSales.Vistas
         private void DarFormatoTabla()
         {
             dgvFolio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            //dgvFolio.Columns[0].HeaderText = "ID Folio";//IDFolio
-            dgvFolio.Columns[0].Width = 100;
-            //dgvFolio.Columns[1].HeaderText = "ID Cliente";//IDCliente
-            dgvFolio.Columns[1].Width = 125;
+            dgvFolio.Columns[0].Width = 100;//ID FOlio
+            dgvFolio.Columns[1].Width = 125;//ID Cliente
             dgvFolio.Columns[2].Width = 250;//Fecha
             dgvFolio.Columns[3].Width = 150;//Total
         }
         private void dgvFolio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            IDFolio = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
             if (ventanaDevolucion)
             {
                 cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -69,7 +69,7 @@ namespace MultimodeSales.Vistas
             }
             else if (ventanaFolio)
             {
-                FolioVenta folioVenta = new FolioVenta();
+                FolioVenta folioVenta = new FolioVenta(IDFolio);
                 folioVenta.ShowDialog();
             }
         }

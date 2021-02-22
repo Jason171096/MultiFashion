@@ -29,7 +29,7 @@ namespace MultimodeSales.Componentes
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.columnPedido = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnModelo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnMarca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,27 +38,28 @@ namespace MultimodeSales.Componentes
             this.columnPrecioCliente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // listView1
+            // listView
             // 
-            this.listView1.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
-            this.listView1.BackgroundImageTiled = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
+            this.listView.BackgroundImageTiled = true;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnPedido,
             this.columnModelo,
             this.columnMarca,
             this.columnColor,
             this.columnTalla,
             this.columnPrecioCliente});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(745, 205);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.listView.ForeColor = System.Drawing.SystemColors.Window;
+            this.listView.GridLines = true;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(0, 0);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(745, 205);
+            this.listView.TabIndex = 0;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // columnPedido
             // 
@@ -99,7 +100,7 @@ namespace MultimodeSales.Componentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listView);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "UCListViewItem";
             this.Size = new System.Drawing.Size(745, 205);
@@ -108,13 +109,12 @@ namespace MultimodeSales.Componentes
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnPedido;
         private System.Windows.Forms.ColumnHeader columnModelo;
         private System.Windows.Forms.ColumnHeader columnMarca;
         private System.Windows.Forms.ColumnHeader columnColor;
         private System.Windows.Forms.ColumnHeader columnTalla;
         private System.Windows.Forms.ColumnHeader columnPrecioCliente;
+        public System.Windows.Forms.ListView listView;
     }
 }

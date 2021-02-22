@@ -54,11 +54,11 @@ namespace MultimodeSales
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
-        public DataTable verVentaPedidoModelo(string pIDFolio)
+        public DataTable verFolioVentaPedidoCliente(string pIDFolio)
         {
             DataTable dt = new DataTable();
             conexion.OpenConnection();
-            MySqlCommand cmd = new MySqlCommand("VerVentaPedidoModelo", conexion.GetConnection());
+            MySqlCommand cmd = new MySqlCommand("VerFolioVentaPedidoCliente", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             da.SelectCommand = cmd;

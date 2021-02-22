@@ -82,7 +82,7 @@ namespace MultimodeSales.Vistas
         }
         private void agregarFolioDatagridview()
         {
-            dt = cVenta.verVentaPedidoModelo(cVenta.IDVenta);
+            dt = cVenta.verFolioVentaPedidoCliente(cVenta.IDVenta);
             foreach (DataRow rows in dt.Rows)
             {
                 if (rows[8].ToString() != "1")

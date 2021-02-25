@@ -11,12 +11,17 @@ namespace MultimodeSales.Vistas
 {
     public partial class Folio : Form
     {
-        CFolioBD cFolio = new CFolioBD();
+        CFolio cFolio = new CFolio();
+        CFolioBD cFolioBD = new CFolioBD();
         CVenta cVenta = new CVenta();
         CCliente cCliente = new CCliente();
         private bool ventanaDevolucion;
         private bool ventanaFolio;
         private string IDFolio;
+        private string IDCliente;
+        private DateTime Fecha;
+        private string Total;
+        public Folio(){ }
         public Folio(bool pFolio, bool ventanaDevolucion)
         {
             InitializeComponent();
@@ -41,11 +46,11 @@ namespace MultimodeSales.Vistas
             UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
         }
-
+        
         private void cargarFoliosVentas()
         {
             dgvFolio.DataSource = null;
-            DataTable dtVentas = cFolio.verFoliosVentas();
+            DataTable dtVentas = cFolioBD.verFoliosVentas();
             dgvFolio.DataSource = dtVentas;
             DarFormatoTabla();
         }
@@ -60,18 +65,33 @@ namespace MultimodeSales.Vistas
         }
         private void dgvFolio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            IDFolio = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+            asignarVariables(e);
             if (ventanaDevolucion)
             {
-                cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
-                cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
-                Close();
+                //cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+                //cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
+                //Close();
             }
             else if (ventanaFolio)
             {
-                FolioVenta folioVenta = new FolioVenta(IDFolio);
+                FolioVenta folioVenta = new FolioVenta(IDFolio, IDCliente, Fecha, Total);
                 folioVenta.ShowDialog();
             }
+        }
+        private void asignarVariables(DataGridViewCellEventArgs e)
+        {
+            IDFolio = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+            IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
+            Fecha = DateTime.Parse(dgvFolio.Rows[e.RowIndex].Cells[2].Value.ToString());
+            Total = dgvFolio.Rows[e.RowIndex].Cells[3].Value.ToString();
+            cFolio.IDFolio = IDFolio;
+            cFolio.IDCliente = IDCliente;
+            cFolio.Fecha = Fecha;
+            cFolio.Total = Total;
+        }
+        public CFolio returnFolioDetalles()
+        {
+            return cFolio;
         }
         public CVenta returnVenta()
         {

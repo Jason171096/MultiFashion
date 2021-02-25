@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Folios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,23 +14,51 @@ namespace MultimodeSales.Vistas.Folios
 {
     public partial class FolioVenta : Form
     {
-        CVenta cVenta = new CVenta();
-        private readonly string IDFolioVenta;
-        public FolioVenta(string pIDFolioVenta)
+        ToolTip tip = new ToolTip();
+        Folio folio = new Folio();
+        public FolioVenta(string pIDFolioVenta, string pIDCliente, DateTime pDate, string pTotal)
         {
             InitializeComponent();
-            IDFolioVenta = pIDFolioVenta;
-            cargarFolioVentaModelos();
+            CFolio cFolio = folio.returnFolioDetalles();
+            txtFolio.Text = cFolio.IDFolio;
+            UCdgvModelos.cargarFolioVentaModelos(pIDFolioVenta);
+
+            UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
+            UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
+            UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
+            UCBarraSuperior.lbTitle.Text = "Folio Venta";
+            UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
+
+            txtFolio.Text = pIDFolioVenta;
+            UCcboxCliente.cboxCliente.SelectedValue = pIDCliente;
+            dtpFecha.Value = pDate;
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
-        private void cargarFolioVentaModelos()
+
+        private void picEditFolio_MouseHover(object sender, EventArgs e)
         {
-            DataTable dt = cVenta.verFolioVentaPedidoCliente(IDFolioVenta);
-            foreach (DataRow rows in dt.Rows)
-            {
-                string[] row = { rows[0].ToString(), rows[1].ToString(), rows[2].ToString(), rows[3].ToString(), rows[4].ToString(), rows[5].ToString() };
-                var listViewItem = new ListViewItem(row);
-                UCListViewItem.listView.Items.Add(listViewItem);
-            }
+            tip.SetToolTip(picEditFolio, "Editar Folio");
         }
+
+        private void picImprimir_MouseHover(object sender, EventArgs e)
+        {
+            tip.SetToolTip(picImprimir, "Imprimir Folio");
+        }
+
+        #region Panel Barras
+        private void minimizedClick(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private void closeClick(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void FolioVenta_Activated(object sender, EventArgs e)
+        {
+            CBarraSuperior.GetInt = Handle;
+        }
+        #endregion
     }
 }

@@ -7,14 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MultimodeSales.Programacion;
 
 namespace MultimodeSales.Componentes
 {
     public partial class UCDataGridViewModelo : UserControl
     {
+        CVenta cVenta = new CVenta();
         public UCDataGridViewModelo()
         {
             InitializeComponent();
+            CDataGridView.FormattedDataGridView(dgvModelosCliente);
+        }
+        public void cargarFolioVentaModelos(string pIDFolioVenta)
+        {
+            DataTable dt = cVenta.verFolioVentaPedidoCliente(pIDFolioVenta);
+            dgvModelosCliente.DataSource = dt;
+            FormattedDataGridView();
+        }
+        private void FormattedDataGridView()
+        {
+            dgvModelosCliente.Columns[0].Visible = false;
+            dgvModelosCliente.Columns[6].Visible = false;
+            dgvModelosCliente.Columns[7].Visible = false;
+            dgvModelosCliente.Columns[8].Visible = false;
         }
     }
 }

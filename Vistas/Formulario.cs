@@ -296,8 +296,7 @@ namespace MultimodeSales
                 Top = Top + (e.Y - MY);
             }
         }
-        #endregion
 
-        
+        #endregion
     }
 }

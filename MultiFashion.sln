@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiFashion", "MultiFashion.csproj", "{4AE6F96F-ADDE-4DDE-B554-86FD7820FD43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestMultiFashion", "..\NUnitTest\NUnitTestMultiFashion.csproj", "{DBAE9B03-972A-49C1-8075-6434BDF3026F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,18 +27,6 @@ Global
 		{4AE6F96F-ADDE-4DDE-B554-86FD7820FD43}.Release|x64.Build.0 = Release|x64
 		{4AE6F96F-ADDE-4DDE-B554-86FD7820FD43}.Release|x86.ActiveCfg = Release|x86
 		{4AE6F96F-ADDE-4DDE-B554-86FD7820FD43}.Release|x86.Build.0 = Release|x86
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|x64.Build.0 = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Debug|x86.Build.0 = Debug|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|x64.ActiveCfg = Release|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|x64.Build.0 = Release|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|x86.ActiveCfg = Release|Any CPU
-		{DBAE9B03-972A-49C1-8075-6434BDF3026F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

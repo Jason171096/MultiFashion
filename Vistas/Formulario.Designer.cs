@@ -78,7 +78,7 @@
             this.lbFolio = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.picPrueba = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelBarra = new System.Windows.Forms.Panel();
             this.picClose = new System.Windows.Forms.PictureBox();
@@ -113,7 +113,7 @@
             this.content10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFolios)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPrueba)).BeginInit();
             this.panelBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -631,7 +631,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.panel7);
-            this.panel6.Controls.Add(this.pictureBox3);
+            this.panel6.Controls.Add(this.picPrueba);
             this.panel6.Controls.Add(this.label2);
             this.panel6.Location = new System.Drawing.Point(449, 377);
             this.panel6.Name = "panel6";
@@ -646,16 +646,16 @@
             this.panel7.Size = new System.Drawing.Size(150, 7);
             this.panel7.TabIndex = 30;
             // 
-            // pictureBox3
+            // picPrueba
             // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::MultimodeSales.Properties.Resources.packages_128px;
-            this.pictureBox3.Location = new System.Drawing.Point(35, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(150, 155);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 31;
-            this.pictureBox3.TabStop = false;
+            this.picPrueba.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPrueba.Image = global::MultimodeSales.Properties.Resources.packages_128px;
+            this.picPrueba.Location = new System.Drawing.Point(35, 0);
+            this.picPrueba.Name = "picPrueba";
+            this.picPrueba.Size = new System.Drawing.Size(150, 155);
+            this.picPrueba.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picPrueba.TabIndex = 31;
+            this.picPrueba.TabStop = false;
             // 
             // label2
             // 
@@ -840,7 +840,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picFolios)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPrueba)).EndInit();
             this.panelBarra.ResumeLayout(false);
             this.panelBarra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
@@ -907,7 +907,7 @@
         private System.Windows.Forms.Label lbGraph;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox picPrueba;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel content10;
         private System.Windows.Forms.Panel panelFolio;

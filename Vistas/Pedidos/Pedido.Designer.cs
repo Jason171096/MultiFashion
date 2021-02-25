@@ -309,7 +309,6 @@
         private RoundButton.RoundButton rbtnAgregarColorTalla;
         private RoundButton.RoundButton rbtnCancelar;
         private RoundButton.RoundButton rbtnFinalizarPedido;
-        private Componentes.UCcomboBoxCliente uCcomboBoxCliente;
         private Componentes.UCcomboBoxCliente UCcboxCliente;
         private Componentes.UCBarraSuperior UCBarraSuperior;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;

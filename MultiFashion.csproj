@@ -180,6 +180,12 @@
     <Compile Include="Componentes\UCcomboBoxCliente.Designer.cs">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Componentes\UCDataGridViewModelo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Componentes\UCDataGridViewModelo.Designer.cs">
+      <DependentUpon>UCDataGridViewModelo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Componentes\UCListViewItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +194,8 @@
     </Compile>
     <Compile Include="Programacion\Cliente\CCliente.cs" />
     <Compile Include="Programacion\Devolucion\CDevolucionBD.cs" />
+    <Compile Include="Programacion\Folios\CFolio.cs" />
+    <Compile Include="Programacion\Pruebas.cs" />
     <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />
     <Compile Include="Programacion\Folios\CVentaBD.cs" />
     <Compile Include="Programacion\ColoresyTallas\CColoresyTallasBD.cs" />
@@ -314,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Componentes\UCcomboBoxCliente.resx">
       <DependentUpon>UCcomboBoxCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Componentes\UCDataGridViewModelo.resx">
+      <DependentUpon>UCDataGridViewModelo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Componentes\UCListViewItem.resx">
       <DependentUpon>UCListViewItem.cs</DependentUpon>

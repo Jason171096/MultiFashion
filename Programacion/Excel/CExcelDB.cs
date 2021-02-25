@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MultimodeSales.Programacion.Utilerias;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,6 +28,7 @@ namespace MultimodeSales.Programacion.Excel
             catch (Exception ex)
             {
                 conexion.CloseConnection();
+                CMsgBox.DisplayError($"Error en la conexión del servidor \n Mensaje: \n {ex.Message}");
                 return false;
             }
         }

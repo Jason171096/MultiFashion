@@ -281,7 +281,6 @@ namespace MultimodeSales.Vistas.Ventas
         {
             CBarraSuperior.GetInt = Handle;
         }
-
         #endregion
     }
 }

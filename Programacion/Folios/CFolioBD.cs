@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MultimodeSales.Programacion.Folios
 {
-    
-    class CFolioBD
+    public class CFolioBD
     {
         Conexion conexion = new Conexion();
         MySqlDataAdapter da = new MySqlDataAdapter();
+        
         public DataTable verFoliosVentas()
         {
             conexion.OpenConnection();

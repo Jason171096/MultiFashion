@@ -59,5 +59,9 @@ namespace MultimodeSales.Programacion.Devolucion
             conexion.CloseConnection();
             return dt;
         }
+        public void devolucionCompleta()
+        {
+
+        }
     }
 }

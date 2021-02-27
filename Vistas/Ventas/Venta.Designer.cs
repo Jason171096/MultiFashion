@@ -40,7 +40,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,23 +52,31 @@
             this.rbtnVender = new RoundButton.RoundButton();
             this.rbtnAgregarPedido = new RoundButton.RoundButton();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
+            this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbLeyenda1 = new MaterialSkin.Controls.MaterialLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvVentasPedido
@@ -121,9 +128,10 @@
             this.dgvVentasPedido.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVentasPedido.RowTemplate.Height = 30;
             this.dgvVentasPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentasPedido.Size = new System.Drawing.Size(798, 337);
+            this.dgvVentasPedido.Size = new System.Drawing.Size(860, 337);
             this.dgvVentasPedido.TabIndex = 31;
             this.dgvVentasPedido.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvVentasPedido_UserDeletedRow);
+            this.dgvVentasPedido.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvVentasPedido_UserDeletingRow);
             this.dgvVentasPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPedidosFinal_KeyDown);
             // 
             // Column1
@@ -170,24 +178,16 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.groupBox2.Location = new System.Drawing.Point(11, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(468, 88);
+            this.groupBox2.Size = new System.Drawing.Size(465, 88);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
-            // 
-            // UCcboxCliente
-            // 
-            this.UCcboxCliente.Location = new System.Drawing.Point(87, 44);
-            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
-            this.UCcboxCliente.Name = "UCcboxCliente";
-            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
-            this.UCcboxCliente.TabIndex = 42;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label4.Location = new System.Drawing.Point(14, 47);
+            this.label4.Location = new System.Drawing.Point(8, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 24);
             this.label4.TabIndex = 41;
@@ -270,7 +270,7 @@
             // 
             this.rbtnSelTodo.BorderColor = System.Drawing.Color.Silver;
             this.rbtnSelTodo.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnSelTodo.Location = new System.Drawing.Point(672, 489);
+            this.rbtnSelTodo.Location = new System.Drawing.Point(324, 10);
             this.rbtnSelTodo.Name = "rbtnSelTodo";
             this.rbtnSelTodo.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnSelTodo.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -286,7 +286,7 @@
             // 
             this.rbtnVender.BorderColor = System.Drawing.Color.Silver;
             this.rbtnVender.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnVender.Location = new System.Drawing.Point(672, 551);
+            this.rbtnVender.Location = new System.Drawing.Point(324, 54);
             this.rbtnVender.Name = "rbtnVender";
             this.rbtnVender.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnVender.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -302,7 +302,7 @@
             // 
             this.rbtnAgregarPedido.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAgregarPedido.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAgregarPedido.Location = new System.Drawing.Point(515, 551);
+            this.rbtnAgregarPedido.Location = new System.Drawing.Point(167, 54);
             this.rbtnAgregarPedido.Name = "rbtnAgregarPedido";
             this.rbtnAgregarPedido.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAgregarPedido.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -318,7 +318,7 @@
             // 
             this.rbtnAgregarModelo.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAgregarModelo.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAgregarModelo.Location = new System.Drawing.Point(358, 551);
+            this.rbtnAgregarModelo.Location = new System.Drawing.Point(10, 54);
             this.rbtnAgregarModelo.Name = "rbtnAgregarModelo";
             this.rbtnAgregarModelo.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAgregarModelo.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -330,19 +330,88 @@
             this.rbtnAgregarModelo.UseVisualStyleBackColor = true;
             this.rbtnAgregarModelo.Click += new System.EventHandler(this.rbtnAgregarModelo_Click);
             // 
+            // rbtnAplicarDevolucion
+            // 
+            this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(139, 9);
+            this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
+            this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnAplicarDevolucion.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnAplicarDevolucion.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnAplicarDevolucion.Size = new System.Drawing.Size(179, 39);
+            this.rbtnAplicarDevolucion.TabIndex = 73;
+            this.rbtnAplicarDevolucion.Text = "Apl. Devolucion";
+            this.rbtnAplicarDevolucion.TextColor = System.Drawing.Color.White;
+            this.rbtnAplicarDevolucion.UseVisualStyleBackColor = true;
+            this.rbtnAplicarDevolucion.Visible = false;
+            this.rbtnAplicarDevolucion.Click += new System.EventHandler(this.rbtnAplicarDevolucion_Click);
+            // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(879, 48);
+            this.UCBarraSuperior.TabIndex = 72;
+            // 
+            // UCcboxCliente
+            // 
+            this.UCcboxCliente.Location = new System.Drawing.Point(81, 44);
+            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
+            this.UCcboxCliente.TabIndex = 42;
+            // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(502, 114);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(482, 114);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(280, 26);
-            this.tableLayoutPanel2.TabIndex = 71;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 26);
+            this.tableLayoutPanel2.TabIndex = 74;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.materialLabel2);
+            this.panel3.Location = new System.Drawing.Point(283, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(106, 20);
+            this.panel3.TabIndex = 73;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.TabIndex = 40;
+            this.pictureBox3.TabStop = false;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(22, 0);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(84, 19);
+            this.materialLabel2.TabIndex = 39;
+            this.materialLabel2.Text = "Devolución";
             // 
             // panel1
             // 
@@ -412,31 +481,18 @@
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Seleccionado";
             // 
-            // rbtnAplicarDevolucion
+            // groupBox3
             // 
-            this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
-            this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(487, 488);
-            this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
-            this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.rbtnAplicarDevolucion.OnHoverButtonColor = System.Drawing.Color.Yellow;
-            this.rbtnAplicarDevolucion.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnAplicarDevolucion.Size = new System.Drawing.Size(179, 39);
-            this.rbtnAplicarDevolucion.TabIndex = 73;
-            this.rbtnAplicarDevolucion.Text = "Apl. Devolucion";
-            this.rbtnAplicarDevolucion.TextColor = System.Drawing.Color.White;
-            this.rbtnAplicarDevolucion.UseVisualStyleBackColor = true;
-            this.rbtnAplicarDevolucion.Visible = false;
-            this.rbtnAplicarDevolucion.Click += new System.EventHandler(this.rbtnAplicarDevolucion_Click);
-            // 
-            // UCBarraSuperior
-            // 
-            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
-            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
-            this.UCBarraSuperior.Name = "UCBarraSuperior";
-            this.UCBarraSuperior.Size = new System.Drawing.Size(821, 48);
-            this.UCBarraSuperior.TabIndex = 72;
+            this.groupBox3.Controls.Add(this.rbtnAplicarDevolucion);
+            this.groupBox3.Controls.Add(this.rbtnSelTodo);
+            this.groupBox3.Controls.Add(this.rbtnVender);
+            this.groupBox3.Controls.Add(this.rbtnAgregarPedido);
+            this.groupBox3.Controls.Add(this.rbtnAgregarModelo);
+            this.groupBox3.Location = new System.Drawing.Point(401, 489);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(473, 100);
+            this.groupBox3.TabIndex = 75;
+            this.groupBox3.TabStop = false;
             // 
             // Venta
             // 
@@ -444,14 +500,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(821, 596);
-            this.Controls.Add(this.rbtnAplicarDevolucion);
-            this.Controls.Add(this.UCBarraSuperior);
+            this.ClientSize = new System.Drawing.Size(879, 596);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.rbtnAgregarModelo);
-            this.Controls.Add(this.rbtnAgregarPedido);
-            this.Controls.Add(this.rbtnVender);
-            this.Controls.Add(this.rbtnSelTodo);
+            this.Controls.Add(this.UCBarraSuperior);
             this.Controls.Add(this.txtFolioVenta);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
@@ -468,12 +520,16 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,13 +550,6 @@
         private RoundButton.RoundButton rbtnVender;
         private RoundButton.RoundButton rbtnAgregarPedido;
         private RoundButton.RoundButton rbtnAgregarModelo;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private Componentes.UCcomboBoxCliente UCcboxCliente;
         private Componentes.UCBarraSuperior UCBarraSuperior;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -510,5 +559,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private RoundButton.RoundButton rbtnAplicarDevolucion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

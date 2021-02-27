@@ -21,6 +21,19 @@ namespace MultimodeSales.Vistas
         public Devolucion()
         {
             InitializeComponent();
+            styles();
+            barraSuperior();
+            
+            Size = new Size(880, 450);
+            rbtnCancelar.Location = new Point(11, 407);
+            rbtnAceptar.Location = new Point(718, 407);
+            mtDivider.Visible = false;
+            gBoxCambio.Visible = false;
+            darFormatoForm();
+        }
+
+        private void styles()
+        {
             CDataGridView.FormattedDataGridView(dgvDevolucion);
             CDataGridView.FormattedDataGridView(dgvDevolucion2);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAceptar);
@@ -28,20 +41,15 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
             CRoundButton.FormattedRoundButtonAceptar(rbtnSelPedido);
             CRoundButton.FormattedRoundButtonAceptar(rbtnSelModelo);
-
+        }
+        private void barraSuperior()
+        {
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Devolución";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
-            Size = new Size(880, 450);
-            rbtnCancelar.Location = new Point(11, 407);
-            rbtnAceptar.Location = new Point(718, 407);
-            mtDivider.Visible = false;
-            gBoxCambio.Visible = false;
-            darFormatoForm();
         }
 
         private void checkCambioModelo_CheckedChanged(object sender, EventArgs e)
@@ -53,7 +61,6 @@ namespace MultimodeSales.Vistas
                 rbtnAceptar.Location = new Point(718, 650);
                 mtDivider.Visible = true;
                 gBoxCambio.Visible = true;
-                darFormatoForm();
             }
             else
             {
@@ -62,8 +69,8 @@ namespace MultimodeSales.Vistas
                 rbtnAceptar.Location = new Point(718, 407);
                 mtDivider.Visible = false;
                 gBoxCambio.Visible = false;
-                darFormatoForm();
             }
+            darFormatoForm();
         }
         private void darFormatoForm()
         {
@@ -117,23 +124,15 @@ namespace MultimodeSales.Vistas
         {
             float totalDev1 = 0, totalDev2 = 0;
             foreach (DataGridViewRow rows in dgvDevolucion.Rows)
-            {
                 totalDev1 += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
-            }
             lbTotalDevolucion.Text = string.Format("{0:C}", totalDev1);
             foreach (DataGridViewRow rows in dgvDevolucion2.Rows)
-            {
                 totalDev2 += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
-            }
             lbTotalDevolucion2.Text = string.Format("{0:C}", totalDev2);
             if (totalDev2 > totalDev1)
-            {
                 lbTotalDevolucion2.ForeColor = Color.Red;
-            }
             else
-            {
                 lbTotalDevolucion2.ForeColor = Color.Black;
-            }
         }
         private void borrarTodo()
         {
@@ -167,6 +166,10 @@ namespace MultimodeSales.Vistas
                         {
                             checarCambioModelo();
                         }
+        }
+        private void devolucionConfirmada()
+        {
+
         }
         private void dgvDevolucion_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {

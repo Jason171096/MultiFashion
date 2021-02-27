@@ -24,13 +24,21 @@ namespace MultimodeSales.Vistas.Ventas
         public Venta()
         {
             InitializeComponent();
+            styles();
+            barraSuperior();
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+        private void styles()
+        {
             CDataGridView.FormattedDataGridView(dgvVentasPedido);
             CRoundButton.FormattedRoundButtonAceptar(rbtnSelTodo);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarModelo);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAplicarDevolucion);
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarPedido);
             CRoundButton.FormattedRoundButtonCancelar(rbtnVender);
-
+        }
+        private void barraSuperior()
+        {
             UCcboxCliente.cboxCliente.SelectedIndexChanged += new EventHandler(cboxCliente_SelectedIndexChanged);
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
@@ -38,13 +46,11 @@ namespace MultimodeSales.Vistas.Ventas
             UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Venta";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
-            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void cboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rbtnAplicarDevolucion.Enabled = true;
+            pushButtonAplicarDevolucionEliminar();
             idcliente = UCcboxCliente.cboxCliente.SelectedValue + "";
             CargarPedidos(idcliente);
             CargaPedidosDevueltos(idcliente);
@@ -72,10 +78,9 @@ namespace MultimodeSales.Vistas.Ventas
                 rbtnAplicarDevolucion.Visible = false;
             }
         }
-
         private void dgvPedidosFinal_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dgvVentasPedido.SelectedRows.Count >= 1)
+            if (dgvVentasPedido.SelectedRows.Count > 0)
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -85,7 +90,7 @@ namespace MultimodeSales.Vistas.Ventas
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
                         actualizarTotal();
                     }
-                    else
+                    else if(dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
                     {
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
@@ -171,6 +176,14 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
         {
+            if (rbtnAplicarDevolucion.Text == "Apl. Devolucion")
+                pushButtonAplicarDevolucionAgregar();
+            else
+                pushButtonAplicarDevolucionEliminar();
+            actualizarTotal();
+        }
+        private void agregarDevoluciones()
+        {
             foreach (DataRow rows in dtPedidosDevueltos.Rows)
             {
                 dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
@@ -178,8 +191,24 @@ namespace MultimodeSales.Vistas.Ventas
                 dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.BackColor = Color.Blue;
                 dgvVentasPedido.Rows[dgvTheLastRow].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             }
-            actualizarTotal();
-            rbtnAplicarDevolucion.Enabled = false;
+        }
+        private void eliminarDevoluciones()
+        {
+            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.Blue)
+                    dgvVentasPedido.Rows.RemoveAt(rows.Index);
+            }
+        }
+        private void pushButtonAplicarDevolucionEliminar()
+        {
+            rbtnAplicarDevolucion.Text = "Apl. Devolucion";
+            eliminarDevoluciones();
+        }
+        private void pushButtonAplicarDevolucionAgregar()
+        {
+            rbtnAplicarDevolucion.Text = "Eli. Devolucion";
+            agregarDevoluciones();
         }
         private bool seleccioneCliente()
         {
@@ -263,6 +292,14 @@ namespace MultimodeSales.Vistas.Ventas
         {
             actualizarTotal();
         }
+        private void dgvVentasPedido_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if(dgvVentasPedido.Rows[e.Row.Index].DefaultCellStyle.BackColor == Color.Blue)
+            {
+                CMsgBox.DisplayWarning("Si quiere eliminar la Devolucion presione el boton de Eli. Devolucion");
+                e.Cancel = true;
+            }
+        }
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.SoloNumeros(e);
@@ -282,5 +319,7 @@ namespace MultimodeSales.Vistas.Ventas
             CBarraSuperior.GetInt = Handle;
         }
         #endregion
+
+       
     }
 }

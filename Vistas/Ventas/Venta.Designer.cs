@@ -40,6 +40,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -66,6 +66,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtFolioDevolucion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -183,6 +184,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
             // 
+            // UCcboxCliente
+            // 
+            this.UCcboxCliente.Location = new System.Drawing.Point(81, 44);
+            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
+            this.UCcboxCliente.TabIndex = 42;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -270,7 +279,7 @@
             // 
             this.rbtnSelTodo.BorderColor = System.Drawing.Color.Silver;
             this.rbtnSelTodo.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnSelTodo.Location = new System.Drawing.Point(324, 10);
+            this.rbtnSelTodo.Location = new System.Drawing.Point(344, 11);
             this.rbtnSelTodo.Name = "rbtnSelTodo";
             this.rbtnSelTodo.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnSelTodo.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -286,7 +295,7 @@
             // 
             this.rbtnVender.BorderColor = System.Drawing.Color.Silver;
             this.rbtnVender.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnVender.Location = new System.Drawing.Point(324, 54);
+            this.rbtnVender.Location = new System.Drawing.Point(344, 55);
             this.rbtnVender.Name = "rbtnVender";
             this.rbtnVender.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnVender.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -302,7 +311,7 @@
             // 
             this.rbtnAgregarPedido.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAgregarPedido.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAgregarPedido.Location = new System.Drawing.Point(167, 54);
+            this.rbtnAgregarPedido.Location = new System.Drawing.Point(187, 55);
             this.rbtnAgregarPedido.Name = "rbtnAgregarPedido";
             this.rbtnAgregarPedido.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAgregarPedido.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -318,7 +327,7 @@
             // 
             this.rbtnAgregarModelo.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAgregarModelo.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAgregarModelo.Location = new System.Drawing.Point(10, 54);
+            this.rbtnAgregarModelo.Location = new System.Drawing.Point(30, 55);
             this.rbtnAgregarModelo.Name = "rbtnAgregarModelo";
             this.rbtnAgregarModelo.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAgregarModelo.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -334,7 +343,7 @@
             // 
             this.rbtnAplicarDevolucion.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAplicarDevolucion.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(139, 9);
+            this.rbtnAplicarDevolucion.Location = new System.Drawing.Point(159, 10);
             this.rbtnAplicarDevolucion.Name = "rbtnAplicarDevolucion";
             this.rbtnAplicarDevolucion.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAplicarDevolucion.OnHoverButtonColor = System.Drawing.Color.Yellow;
@@ -356,20 +365,12 @@
             this.UCBarraSuperior.Size = new System.Drawing.Size(879, 48);
             this.UCBarraSuperior.TabIndex = 72;
             // 
-            // UCcboxCliente
-            // 
-            this.UCcboxCliente.Location = new System.Drawing.Point(81, 44);
-            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
-            this.UCcboxCliente.Name = "UCcboxCliente";
-            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
-            this.UCcboxCliente.TabIndex = 42;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel2.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
@@ -483,16 +484,26 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtFolioDevolucion);
             this.groupBox3.Controls.Add(this.rbtnAplicarDevolucion);
             this.groupBox3.Controls.Add(this.rbtnSelTodo);
             this.groupBox3.Controls.Add(this.rbtnVender);
             this.groupBox3.Controls.Add(this.rbtnAgregarPedido);
             this.groupBox3.Controls.Add(this.rbtnAgregarModelo);
-            this.groupBox3.Location = new System.Drawing.Point(401, 489);
+            this.groupBox3.Location = new System.Drawing.Point(387, 489);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(473, 100);
+            this.groupBox3.Size = new System.Drawing.Size(487, 100);
             this.groupBox3.TabIndex = 75;
             this.groupBox3.TabStop = false;
+            // 
+            // txtFolioDevolucion
+            // 
+            this.txtFolioDevolucion.Enabled = false;
+            this.txtFolioDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtFolioDevolucion.Location = new System.Drawing.Point(6, 13);
+            this.txtFolioDevolucion.Name = "txtFolioDevolucion";
+            this.txtFolioDevolucion.Size = new System.Drawing.Size(147, 29);
+            this.txtFolioDevolucion.TabIndex = 74;
             // 
             // Venta
             // 
@@ -530,6 +541,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,5 +582,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtFolioDevolucion;
     }
 }

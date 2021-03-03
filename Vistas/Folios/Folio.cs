@@ -39,7 +39,11 @@ namespace MultimodeSales.Vistas
             {
                 UCBarraSuperior.lbTitle.Text = "Folios Devoluciones";
             }
-
+            barraSuperior();
+            
+        }
+        private void barraSuperior()
+        {
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
@@ -58,7 +62,7 @@ namespace MultimodeSales.Vistas
         private void DarFormatoTabla()
         {
             dgvFolio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            dgvFolio.Columns[0].Width = 100;//ID FOlio
+            dgvFolio.Columns[0].Width = 100;//ID Folio
             dgvFolio.Columns[1].Width = 125;//ID Cliente
             dgvFolio.Columns[2].Width = 250;//Fecha
             dgvFolio.Columns[3].Width = 150;//Total
@@ -68,9 +72,9 @@ namespace MultimodeSales.Vistas
             asignarVariables(e);
             if (ventanaDevolucion)
             {
-                //cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
-                //cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
-                //Close();
+                cVenta.IDVenta = dgvFolio.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cCliente.IDCliente = dgvFolio.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Close();
             }
             else if (ventanaFolio)
             {
@@ -121,7 +125,5 @@ namespace MultimodeSales.Vistas
             CBarraSuperior.GetInt = Handle;
         }
         #endregion
-
-
     }
 }

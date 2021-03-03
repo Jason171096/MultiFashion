@@ -46,6 +46,10 @@ namespace MultimodeSales.Programacion.Devolucion
             result = Convert.ToInt32(existeFolio) == 1 ? true : false;
             return result;
         }
+        //public string obtenerFolioDevoluciones()
+        //{
+
+        //}
         public DataTable obtenerDevoluciones(string pIDCliente)
         {
             DataTable dt = new DataTable();

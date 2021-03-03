@@ -60,7 +60,7 @@ namespace MultimodeSales.Programacion.Modelo
                 CMsgBox.DisplayError($"Error en subir el modelo {pIDModelo} ya existe en la BASE de DATOS");
         }
 
-        public void EditarModelo(string pIDModeloActual, string pIDModelo, string pIDMarca, string pColor, string pTalla, string pPrecioCliente)
+        public void EditarModelo(string pIDModeloActual, string pIDModelo, string pIDMarca, string pColor, string pTalla, decimal pPrecioCliente)
         {
                 conexion.OpenConnection();
                 MySqlCommand cmd = new MySqlCommand("EditarModelo", conexion.GetConnection());

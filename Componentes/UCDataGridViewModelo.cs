@@ -27,10 +27,10 @@ namespace MultimodeSales.Componentes
         }
         private void FormattedDataGridView()
         {
-            dgvModelosCliente.Columns[0].Visible = false;
-            dgvModelosCliente.Columns[6].Visible = false;
-            dgvModelosCliente.Columns[7].Visible = false;
-            dgvModelosCliente.Columns[8].Visible = false;
+            dgvModelosCliente.Columns[0].Visible = false;//IDPedido
+            dgvModelosCliente.Columns[6].Visible = false;//Llego
+            dgvModelosCliente.Columns[7].Visible = false;//Vendido
+            dgvModelosCliente.Columns[8].Visible = false;//DEvolucion
         }
     }
 }

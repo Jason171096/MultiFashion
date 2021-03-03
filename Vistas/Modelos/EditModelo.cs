@@ -40,7 +40,11 @@ namespace MultimodeSales.Vistas.Modelos
                 txtTalla.Text = talla;
                 txtPrecioCliente.Text = precioCliente;
             }
-
+            barraSuperior();
+            
+        }
+        private void barraSuperior()
+        {
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
@@ -71,27 +75,47 @@ namespace MultimodeSales.Vistas.Modelos
         }
         private void rbtnAgregarModelo_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtIDModelo.Text) && !string.IsNullOrWhiteSpace(txtColor.Text)
-               && !string.IsNullOrWhiteSpace(txtTalla.Text) && !string.IsNullOrWhiteSpace(txtPrecioCliente.Text))
+            if (verificarTextosVacios())
             {
-                if (cobxMarca.SelectedIndex != 0)
+                if (verificarCboxMarcaVacio())
                     if (Bandera)
-                    {
-                        modelo.AgregarModelo(txtIDModelo.Text, cobxMarca.SelectedValue + "", txtColor.Text, txtTalla.Text, txtPrecioPublico.Text);
-                        BorrarDatos();
-                    }
+                        agregarModelo();
                     else
-                    {
-                        modelo.EditarModelo(txtIDModelo.Tag + "", txtIDModelo.Text, cobxMarca.SelectedValue + "", txtColor.Text, txtTalla.Text, txtPrecioCliente.Text.Trim('$'));
-                        CMsgBox.DisplayInfo("Modelo editado correctamente");
-                        BorrarDatos();
-                        Close();
-                    }
-                else
-                    CMsgBox.DisplayWarning("Por favor de escoger la marca para el modelo");
-            }
+                        modificarModelo();
+            }  
+        }
+        private bool verificarTextosVacios()
+        {
+            if(!string.IsNullOrWhiteSpace(txtIDModelo.Text) && !string.IsNullOrWhiteSpace(txtColor.Text) 
+                && !string.IsNullOrWhiteSpace(txtTalla.Text) && !string.IsNullOrWhiteSpace(txtPrecioCliente.Text))
+                return true;
             else
+            {
                 CMsgBox.DisplayWarning("Por favor de rellenar los espacios");
+                return false;
+            }
+        }
+        private bool verificarCboxMarcaVacio()
+        {
+            if (cobxMarca.SelectedIndex != 0)
+                return true;
+            else
+            {
+                CMsgBox.DisplayWarning("Por favor de escoger la marca para el modelo");
+                return false;
+            }
+        }
+        private void agregarModelo()
+        {
+            modelo.AgregarModelo(txtIDModelo.Text, cobxMarca.SelectedValue + "", txtColor.Text, txtTalla.Text, txtPrecioPublico.Text);
+            BorrarDatos();
+        }
+        private void modificarModelo()
+        {
+            modelo.EditarModelo(txtIDModelo.Tag + "", txtIDModelo.Text, cobxMarca.SelectedValue + "", txtColor.Text, txtTalla.Text, decimal.Parse(txtPrecioCliente.Text.Trim('$')));
+            CMsgBox.DisplayInfo("Modelo editado correctamente");
+            BorrarDatos();
+            Close();
         }
 
         private void rbtnCancelar_Click(object sender, EventArgs e)

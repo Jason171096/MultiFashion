@@ -17,9 +17,10 @@ namespace MultimodeSales.Vistas.Ventas
         CVenta cVenta = new CVenta();
         CPedidoBD cPedido = new CPedidoBD();
         DataTable dtPedidos;
-        DataTable dtPedidosDevueltos;
-        private bool ventaCompleta;
-        private string idcliente;
+        DataTable dtPedidosDevoluciones;
+        DataTable dtIdFolioDevoluciones;
+        private bool ventaCompleta, cambiodeCliente = false;
+        private string idcliente, idfoliodevolucion;
 
         public Venta()
         {
@@ -52,11 +53,12 @@ namespace MultimodeSales.Vistas.Ventas
         {
             pushButtonAplicarDevolucionEliminar();
             idcliente = UCcboxCliente.cboxCliente.SelectedValue + "";
-            CargarPedidos(idcliente);
-            CargaPedidosDevueltos(idcliente);
+            cargarPedidos(idcliente);
+            cargaIdFoliosDevoluciones(idcliente);
+            //cargaPedidosDevueltos(idcliente);
             borrarLabels();
         }
-        private void CargarPedidos(string pIDCliente)
+        private void cargarPedidos(string pIDCliente)
         {
             dgvVentasPedido.Rows.Clear();
             dtPedidos = pedidosFinal.ObtenerPedidoFinalLlego(pIDCliente);
@@ -65,18 +67,28 @@ namespace MultimodeSales.Vistas.Ventas
                 dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
             }
         }
-        private void CargaPedidosDevueltos(string pIDCliente)
+        private void cargaIdFoliosDevoluciones(string pIDCliente)
         {
-            dtPedidosDevueltos = cDevolucion.obtenerDevoluciones(pIDCliente);
-            int countPedidosDevueltos = dtPedidosDevueltos.Rows.Count;
-            if (countPedidosDevueltos > 0)
+            dtIdFolioDevoluciones = cDevolucion.obtenerIdFolioDevoluciones(pIDCliente);
+            if (dtIdFolioDevoluciones != null)
             {
-                rbtnAplicarDevolucion.Visible = true;
+                string txtIdFolio = "";
+                foreach (DataRow rows in dtIdFolioDevoluciones.Rows)
+                {
+                    txtIdFolio += rows[0].ToString() + " ,";
+                    cargaPedidosDevueltos(rows[0].ToString());
+                }
+                txtFolioDevolucion.Text = txtIdFolio;
             }
-            else
-            {
-                rbtnAplicarDevolucion.Visible = false;
-            }
+        }
+        private void cargaPedidosDevueltos(string pIDFolioDevolucion)
+        {
+            //dtPedidosDevoluciones = cDevolucion.obtenerDevoluciones(pIDFolioDevolucion);
+            //int countPedidosDevueltos = dtPedidosDevoluciones.Rows.Count;
+            //if (countPedidosDevueltos > 0)
+            //    rbtnAplicarDevolucion.Visible = true;
+            //else
+            //    rbtnAplicarDevolucion.Visible = false;
         }
         private void dgvPedidosFinal_KeyDown(object sender, KeyEventArgs e)
         {
@@ -184,7 +196,7 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void agregarDevoluciones()
         {
-            foreach (DataRow rows in dtPedidosDevueltos.Rows)
+            foreach (DataRow rows in dtPedidosDevoluciones.Rows)
             {
                 dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
                 int dgvTheLastRow = dgvVentasPedido.Rows.Count - 1;
@@ -285,7 +297,7 @@ namespace MultimodeSales.Vistas.Ventas
                 agregarPedidoProvisional();
                 txtFolioVenta.Text = "";
                 borrarLabels();
-                CargarPedidos(idcliente);
+                cargarPedidos(idcliente);
             }
         }
         private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)

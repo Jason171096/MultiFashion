@@ -46,17 +46,26 @@ namespace MultimodeSales.Programacion.Devolucion
             result = Convert.ToInt32(existeFolio) == 1 ? true : false;
             return result;
         }
-        //public string obtenerFolioDevoluciones()
-        //{
-
-        //}
-        public DataTable obtenerDevoluciones(string pIDCliente)
+        public DataTable obtenerIdFolioDevoluciones(string pIDCliente)
+        {
+            DataTable dt = new DataTable();
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("ObtenerFolioDevolucionesClientes", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            da.SelectCommand = cmd;
+            dt.Clear();
+            da.Fill(dt);
+            conexion.CloseConnection();
+            return dt;
+        }
+        public DataTable obtenerDevoluciones(string pIDFolio, bool cambiodeCliente)
         {
             DataTable dt = new DataTable();
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("VerDevolucionesPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             da.SelectCommand = cmd;
             dt.Clear();
             da.Fill(dt);

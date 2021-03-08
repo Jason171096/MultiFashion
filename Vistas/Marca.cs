@@ -21,19 +21,21 @@ namespace MultimodeSales.Vistas
             CRoundButton.FormattedRoundButtonAceptar(rbtnAgregarMarca);
             CRoundButton.FormattedRoundButtonAceptar(rbtnEditarMarca);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
-
+            barraSuperior();
+            llenarDataGridViewMarca();
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+        private void barraSuperior()
+        {
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Marcas";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
-            LlenarDataGridViewMarca();
-            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        private void LlenarDataGridViewMarca()
+        private void llenarDataGridViewMarca()
         {
             dgvMarcas.DataSource = null;
             dt.Clear();
@@ -61,7 +63,7 @@ namespace MultimodeSales.Vistas
                 {
                     marca.AgregarMarca(txtIDMarca.Text, txtNombreMarca.Text);
                     CMsgBox.DisplayConfirmation("Se agrego nueva marca");
-                    LlenarDataGridViewMarca();
+                    llenarDataGridViewMarca();
                 }
             }
         }
@@ -85,7 +87,7 @@ namespace MultimodeSales.Vistas
                 marca.EditarMarca(txtIDMarca.Tag + "", txtIDMarca.Text, txtNombreMarca.Text);
                 CMsgBox.DisplayInfo("Se edito la marca correctamente");
                 BorrarDatos();
-                LlenarDataGridViewMarca();
+                llenarDataGridViewMarca();
             }
         }
 

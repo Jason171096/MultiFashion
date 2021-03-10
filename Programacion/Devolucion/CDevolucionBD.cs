@@ -46,6 +46,18 @@ namespace MultimodeSales.Programacion.Devolucion
             result = Convert.ToInt32(existeFolio) == 1 ? true : false;
             return result;
         }
+        public bool existenFoliosDevolucionesPendientes(string pIDCliente)
+        {
+            bool result;
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("ExistenFoliosDevolucionesClientes", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDCliente));
+            object existenFoliosDevoluciones = cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            result = Convert.ToInt32(existenFoliosDevoluciones) == 1 ? true : false;
+            return result;
+        }
         public DataTable obtenerIdFolioDevoluciones(string pIDCliente)
         {
             DataTable dt = new DataTable();
@@ -59,13 +71,13 @@ namespace MultimodeSales.Programacion.Devolucion
             conexion.CloseConnection();
             return dt;
         }
-        public DataTable obtenerDevoluciones(string pIDFolio, bool cambiodeCliente)
+        public DataTable obtenerDevoluciones(string pIDFolio)
         {
             DataTable dt = new DataTable();
             conexion.OpenConnection();
-            MySqlCommand cmd = new MySqlCommand("VerDevolucionesPedido", conexion.GetConnection());
+            MySqlCommand cmd = new MySqlCommand("ObtenerDevolucionesPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
+            cmd.Parameters.Add(new MySqlParameter("idcliente", pIDFolio));
             da.SelectCommand = cmd;
             dt.Clear();
             da.Fill(dt);

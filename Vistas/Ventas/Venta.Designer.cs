@@ -40,7 +40,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCComboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,7 +66,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtFolioDevolucion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -174,7 +173,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.UCcboxCliente);
+            this.groupBox2.Controls.Add(this.UCComboBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.groupBox2.Location = new System.Drawing.Point(11, 52);
@@ -184,13 +183,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
             // 
-            // UCcboxCliente
+            // UCComboBox
             // 
-            this.UCcboxCliente.Location = new System.Drawing.Point(81, 44);
-            this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
-            this.UCcboxCliente.Name = "UCcboxCliente";
-            this.UCcboxCliente.Size = new System.Drawing.Size(372, 34);
-            this.UCcboxCliente.TabIndex = 42;
+            this.UCComboBox.Location = new System.Drawing.Point(81, 44);
+            this.UCComboBox.Margin = new System.Windows.Forms.Padding(6);
+            this.UCComboBox.Name = "UCComboBox";
+            this.UCComboBox.Size = new System.Drawing.Size(375, 35);
+            this.UCComboBox.TabIndex = 42;
             // 
             // label4
             // 
@@ -484,7 +483,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtFolioDevolucion);
             this.groupBox3.Controls.Add(this.rbtnAplicarDevolucion);
             this.groupBox3.Controls.Add(this.rbtnSelTodo);
             this.groupBox3.Controls.Add(this.rbtnVender);
@@ -495,15 +493,6 @@
             this.groupBox3.Size = new System.Drawing.Size(487, 100);
             this.groupBox3.TabIndex = 75;
             this.groupBox3.TabStop = false;
-            // 
-            // txtFolioDevolucion
-            // 
-            this.txtFolioDevolucion.Enabled = false;
-            this.txtFolioDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtFolioDevolucion.Location = new System.Drawing.Point(6, 13);
-            this.txtFolioDevolucion.Name = "txtFolioDevolucion";
-            this.txtFolioDevolucion.Size = new System.Drawing.Size(147, 29);
-            this.txtFolioDevolucion.TabIndex = 74;
             // 
             // Venta
             // 
@@ -541,7 +530,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,6 +570,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtFolioDevolucion;
+        private Componentes.UCcomboBoxCliente UCComboBox;
     }
 }

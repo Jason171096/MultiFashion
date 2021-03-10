@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 22-02-2021 a las 05:48:22
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-03-2021 a las 00:10:08
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -147,6 +147,16 @@ BEGIN
 	DELETE FROM pedidos WHERE pedidos.IDPedido = idpedido;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ExistenFoliosDevolucionesClientes` (IN `idcliente` INT)  NO SQL
+BEGIN
+	SET @cantidad := (SELECT COUNT(dp.IDFolio) FROM devolucion_pedidos dp INNER JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente AND dp.Aceptado = 0);
+    IF (@cantidad > 0) THEN
+    	SELECT true;
+    ELSE
+        SELECT false;
+   	END IF;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FolioDevolucionExistente` (IN `idfolio` BIGINT)  NO SQL
 BEGIN
 	SET @var := (SELECT devolucion.IDFolio FROM devolucion WHERE devolucion.IDFolio = idfolio);
@@ -165,6 +175,16 @@ BEGIN
     ELSE
     	SELECT false;
     END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerDevolucionesPedido` (IN `idcliente` BIGINT)  NO SQL
+BEGIN
+	SELECT p.IDPedido, dp.IDFolio, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerFolioDevolucionesClientes` (IN `idcliente` INT)  NO SQL
+BEGIN
+	SELECT d.IDFolio FROM devolucion d WHERE d.IDCliente AND d.Completo = 0;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaFolio` (IN `idfolio` BIGINT, IN `idcliente` BIGINT, IN `fecha` DATETIME, IN `total` DECIMAL(10,2))  NO SQL
@@ -197,9 +217,9 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerColores` ()  READS SQL DATA
 SELECT color.IDColor, color.Nombre FROM color$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VerDevolucionesPedido` (IN `idcliente` BIGINT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFolioDevolucion` (IN `idcliente` BIGINT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
+	SELECT * FROM devolucion d WHERE d.Completo = 0 AND d.IDCliente = idcliente;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFoliosVentas` ()  NO SQL
@@ -209,7 +229,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFolioVentaPedidoCliente` (IN `idfolio` INT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, p.IDModelo, `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, m.PrecioCliente, p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
@@ -409,15 +429,16 @@ INSERT INTO `devolucion` (`IDFolio`, `IDCliente`, `Fecha`, `Total`, `Completo`) 
 CREATE TABLE `devolucion_pedidos` (
   `IDDevolucionPedido` bigint(20) NOT NULL,
   `IDFolio` bigint(20) NOT NULL,
-  `IDPedido` bigint(20) NOT NULL
+  `IDPedido` bigint(20) NOT NULL,
+  `Aceptado` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `devolucion_pedidos`
 --
 
-INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`) VALUES
-(5, 1, 133);
+INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`, `Aceptado`) VALUES
+(5, 1, 133, b'0');
 
 -- --------------------------------------------------------
 
@@ -511,7 +532,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('141', 7, 'AMARILLO', '23', '1178.55', NULL, '2020-10-13 23:35:16'),
 ('142', 7, 'NEGRO', '24', '1195.10', NULL, '2020-10-13 23:35:16'),
 ('143', 7, 'VIOLETA', '25', '1211.65', NULL, '2020-10-13 23:35:16'),
-('144', 7, 'AZUL', 'M', '1228.20', NULL, '2020-10-13 23:35:16'),
+('144', 7, 'AZUL', 'M', '8550.30', NULL, '2020-10-13 23:35:16'),
 ('145', 7, 'AMARILLO', 'CH', '1244.75', NULL, '2020-10-13 23:35:16'),
 ('146', 7, 'NEGRO', 'T', '1261.30', NULL, '2020-10-13 23:35:16'),
 ('147', 7, 'VIOLETA', 'XG', '1277.85', NULL, '2020-10-13 23:35:17'),
@@ -655,7 +676,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('283', 7, 'VIOLETA', 'XG', '3528.65', NULL, '2020-10-13 23:35:27'),
 ('284', 7, 'AZUL', '22', '3545.20', NULL, '2020-10-13 23:35:27'),
 ('285', 7, 'AMARILLO', '23', '3561.75', NULL, '2020-10-13 23:35:27'),
-('286', 7, 'NEGRO', '24', '3578.30', NULL, '2020-10-13 23:35:27'),
+('286', 7, 'NEGRO', '24', '4150.00', NULL, '2020-10-13 23:35:27'),
 ('287', 7, 'VIOLETA', '25', '3594.85', NULL, '2020-10-13 23:35:27'),
 ('288', 7, 'AZUL', 'M', '3611.40', NULL, '2020-10-13 23:35:27'),
 ('289', 7, 'AMARILLO', 'CH', '3627.95', NULL, '2020-10-13 23:35:27'),
@@ -664,7 +685,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('292', 7, 'AZUL', '22', '3677.60', NULL, '2020-10-13 23:35:27'),
 ('293', 7, 'AMARILLO', '23', '3694.15', NULL, '2020-10-13 23:35:27'),
 ('294', 7, 'NEGRO', '24', '3710.70', NULL, '2020-10-13 23:35:28'),
-('295', 7, 'VIOLETA', '25', '3727.25', NULL, '2020-10-13 23:35:28'),
+('295', 7, 'VIOLETA', '25', '3728.25', NULL, '2020-10-13 23:35:28'),
 ('296', 7, 'AZUL', 'M', '3743.80', NULL, '2020-10-13 23:35:28'),
 ('297', 7, 'AMARILLO', 'CH', '3760.35', NULL, '2020-10-13 23:35:28'),
 ('298', 7, 'NEGRO', 'T', '3776.90', NULL, '2020-10-13 23:35:28'),

@@ -17,6 +17,7 @@ namespace MultimodeSales.Vistas.Ventas
         CVenta cVenta = new CVenta();
         CPedidoBD cPedido = new CPedidoBD();
         DataTable dtPedidos;
+        DataTable dtDevoluciones;
         private bool ventaCompleta;
         private string IDCLIENTE;
 
@@ -167,11 +168,38 @@ namespace MultimodeSales.Vistas.Ventas
             lbCantidad.Text = cantidad.ToString();
             lbTotal.Text = string.Format("{0:C}", total);
         }
+        private void agregarPedidosADatatable()
+        {
+            if (dtDevoluciones != null)
+            {
+                dtDevoluciones.Rows.Clear();
+                foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+                {
+                    if (rows.DefaultCellStyle.BackColor == Color.Blue)
+                    {
+                        dtDevoluciones.Rows.Add(rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(),
+                            rows.Cells[2].Value.ToString(), rows.Cells[3].Value.ToString(), 
+                            rows.Cells[4].Value.ToString(), rows.Cells[5].Value.ToString());
+                    }
+                }
+            }
+        }
         private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
         {
-            AplicarFolioDevoluciones aplicarFolio = new AplicarFolioDevoluciones(IDCLIENTE);
+            agregarPedidosADatatable();
+            AplicarFolioDevoluciones aplicarFolio = new AplicarFolioDevoluciones(IDCLIENTE, dtDevoluciones);
             aplicarFolio.ShowDialog();
             actualizarTotal();
+            dtDevoluciones = aplicarFolio.returnsModelos();
+            agregarDevoluciones();
+        }
+        private void agregarDevoluciones()
+        {
+            foreach (DataRow rows in dtDevoluciones.Rows)
+            {
+                int rowIndex = dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
+                dgvVentasPedido.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Blue;
+            }
         }
         private bool seleccioneCliente()
         {

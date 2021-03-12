@@ -44,7 +44,11 @@ namespace MultimodeSales.Vistas.Ventas
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rbtnAceptar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
+            this.rbtnSelTodo = new RoundButton.RoundButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbLeyenda1 = new MaterialSkin.Controls.MaterialLabel();
@@ -53,6 +57,8 @@ namespace MultimodeSales.Vistas.Ventas
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevoluciones)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -170,45 +176,97 @@ namespace MultimodeSales.Vistas.Ventas
             // 
             this.rbtnAceptar.BorderColor = System.Drawing.Color.Silver;
             this.rbtnAceptar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnAceptar.Location = new System.Drawing.Point(647, 452);
+            this.rbtnAceptar.Location = new System.Drawing.Point(647, 453);
             this.rbtnAceptar.Name = "rbtnAceptar";
             this.rbtnAceptar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnAceptar.OnHoverButtonColor = System.Drawing.Color.Yellow;
             this.rbtnAceptar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnAceptar.Size = new System.Drawing.Size(179, 39);
+            this.rbtnAceptar.Size = new System.Drawing.Size(179, 38);
             this.rbtnAceptar.TabIndex = 74;
             this.rbtnAceptar.Text = "Aceptar(Enter)";
             this.rbtnAceptar.TextColor = System.Drawing.Color.White;
             this.rbtnAceptar.UseVisualStyleBackColor = true;
+            this.rbtnAceptar.Click += new System.EventHandler(this.rbtnAceptar_Click);
             // 
             // rbtnCancelar
             // 
             this.rbtnCancelar.BorderColor = System.Drawing.Color.Silver;
             this.rbtnCancelar.ButtonColor = System.Drawing.Color.Red;
-            this.rbtnCancelar.Location = new System.Drawing.Point(12, 452);
+            this.rbtnCancelar.Location = new System.Drawing.Point(12, 453);
             this.rbtnCancelar.Name = "rbtnCancelar";
             this.rbtnCancelar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.rbtnCancelar.OnHoverButtonColor = System.Drawing.Color.Yellow;
             this.rbtnCancelar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.rbtnCancelar.Size = new System.Drawing.Size(179, 39);
+            this.rbtnCancelar.Size = new System.Drawing.Size(179, 38);
             this.rbtnCancelar.TabIndex = 75;
             this.rbtnCancelar.Text = "Cancelar(Esc)";
             this.rbtnCancelar.TextColor = System.Drawing.Color.White;
             this.rbtnCancelar.UseVisualStyleBackColor = true;
+            this.rbtnCancelar.Click += new System.EventHandler(this.rbtnCancelar_Click);
+            // 
+            // rbtnSelTodo
+            // 
+            this.rbtnSelTodo.BorderColor = System.Drawing.Color.Silver;
+            this.rbtnSelTodo.ButtonColor = System.Drawing.Color.Red;
+            this.rbtnSelTodo.Location = new System.Drawing.Point(504, 453);
+            this.rbtnSelTodo.Name = "rbtnSelTodo";
+            this.rbtnSelTodo.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.rbtnSelTodo.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.rbtnSelTodo.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.rbtnSelTodo.Size = new System.Drawing.Size(137, 38);
+            this.rbtnSelTodo.TabIndex = 77;
+            this.rbtnSelTodo.Text = "Sel. Todo";
+            this.rbtnSelTodo.TextColor = System.Drawing.Color.White;
+            this.rbtnSelTodo.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(548, 67);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(384, 81);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(278, 26);
-            this.tableLayoutPanel2.TabIndex = 76;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(442, 26);
+            this.tableLayoutPanel2.TabIndex = 78;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.materialLabel2);
+            this.panel3.Location = new System.Drawing.Point(283, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(158, 20);
+            this.panel3.TabIndex = 73;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.TabIndex = 40;
+            this.pictureBox3.TabStop = false;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(26, 0);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(132, 19);
+            this.materialLabel2.TabIndex = 39;
+            this.materialLabel2.Text = "Añadido a la venta";
             // 
             // panel1
             // 
@@ -285,6 +343,7 @@ namespace MultimodeSales.Vistas.Ventas
             this.BackColor = System.Drawing.Color.NavajoWhite;
             this.ClientSize = new System.Drawing.Size(838, 503);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.rbtnSelTodo);
             this.Controls.Add(this.rbtnCancelar);
             this.Controls.Add(this.rbtnAceptar);
             this.Controls.Add(this.dgvDevoluciones);
@@ -296,6 +355,9 @@ namespace MultimodeSales.Vistas.Ventas
             this.Activated += new System.EventHandler(this.AplicarFolioDevoluciones_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevoluciones)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -312,13 +374,6 @@ namespace MultimodeSales.Vistas.Ventas
         private System.Windows.Forms.DataGridView dgvDevoluciones;
         private RoundButton.RoundButton rbtnAceptar;
         private RoundButton.RoundButton rbtnCancelar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Folio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -326,5 +381,16 @@ namespace MultimodeSales.Vistas.Ventas
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private RoundButton.RoundButton rbtnSelTodo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialLabel lbLeyenda1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

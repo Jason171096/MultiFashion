@@ -1,8 +1,10 @@
 ﻿using MultimodeSales.Programacion;
 using MultimodeSales.Programacion.Devolucion;
+using MultimodeSales.Programacion.Folios;
 using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,8 +18,9 @@ namespace MultimodeSales.Vistas.Ventas
         CModelo cModelo = new CModelo();
         CVenta cVenta = new CVenta();
         CPedidoBD cPedido = new CPedidoBD();
+        List<string> listIDPedidosDevoluciones = new List<string>();
         DataTable dtPedidos;
-        DataTable dtDevoluciones;
+        DataTable dtAuxiliar;
         private bool ventaCompleta;
         private string IDCLIENTE;
 
@@ -168,38 +171,39 @@ namespace MultimodeSales.Vistas.Ventas
             lbCantidad.Text = cantidad.ToString();
             lbTotal.Text = string.Format("{0:C}", total);
         }
-        private void agregarPedidosADatatable()
+        private void agregarListIDPedidosDevoluciones()
         {
-            if (dtDevoluciones != null)
-            {
-                dtDevoluciones.Rows.Clear();
+            //if (dtAuxiliar != null)
+            //{
+                listIDPedidosDevoluciones.Clear();
                 foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
                 {
                     if (rows.DefaultCellStyle.BackColor == Color.Blue)
                     {
-                        dtDevoluciones.Rows.Add(rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(),
-                            rows.Cells[2].Value.ToString(), rows.Cells[3].Value.ToString(), 
-                            rows.Cells[4].Value.ToString(), rows.Cells[5].Value.ToString());
+                        listIDPedidosDevoluciones.Add(rows.Cells[0].Value.ToString());
                     }
                 }
-            }
+                CListIDPedidosDevolucion cListIDPedidos = new CListIDPedidosDevolucion(listIDPedidosDevoluciones);
+            //}
         }
         private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
         {
-            agregarPedidosADatatable();
-            AplicarFolioDevoluciones aplicarFolio = new AplicarFolioDevoluciones(IDCLIENTE, dtDevoluciones);
+            agregarListIDPedidosDevoluciones();
+            AplicarFolioDevoluciones aplicarFolio = new AplicarFolioDevoluciones(IDCLIENTE, listIDPedidosDevoluciones);
             aplicarFolio.ShowDialog();
             actualizarTotal();
-            dtDevoluciones = aplicarFolio.returnsModelos();
+            dtAuxiliar = aplicarFolio.returnModelos();
             agregarDevoluciones();
         }
         private void agregarDevoluciones()
         {
-            foreach (DataRow rows in dtDevoluciones.Rows)
+            foreach (DataRow rows in dtAuxiliar.Rows)
             {
                 int rowIndex = dgvVentasPedido.Rows.Add(rows[0], rows[1], rows[2], rows[3], rows[4], rows[5]);
                 dgvVentasPedido.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Blue;
+                dgvVentasPedido.Rows[rowIndex].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             }
+            actualizarTotal();
         }
         private bool seleccioneCliente()
         {
@@ -282,14 +286,6 @@ namespace MultimodeSales.Vistas.Ventas
         private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             actualizarTotal();
-        }
-        private void dgvVentasPedido_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            if(dgvVentasPedido.Rows[e.Row.Index].DefaultCellStyle.BackColor == Color.Blue)
-            {
-                CMsgBox.DisplayWarning("Si quiere eliminar la Devolucion presione el boton de Eli. Devolucion");
-                e.Cancel = true;
-            }
         }
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
         {

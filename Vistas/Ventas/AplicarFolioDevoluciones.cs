@@ -18,37 +18,33 @@ namespace MultimodeSales.Vistas.Ventas
     {
         CDevolucionBD cDevolucion = new CDevolucionBD();
         DataTable dtPedidosDevueltos;
-        DataTable dtPedidosAplicados;
-        DataTable dtReturnDevueltos = new DataTable();
+        DataTable dtAuxiliar = new DataTable();
+        List<string> listIDPedidosAplicados;
         private string IDCLIENTE;
-        public AplicarFolioDevoluciones(string pIDCliente, DataTable pdtPedidosAplicados)
+        public AplicarFolioDevoluciones(string pIDCliente, List<string> pListIDPedidosAplicados)
         {
             InitializeComponent();
             IDCLIENTE = pIDCliente;
-            dtPedidosAplicados = pdtPedidosAplicados;
+            listIDPedidosAplicados = pListIDPedidosAplicados;
             styles();
             barraSuperior();
             cargarPedidosDevueltosCliente();
-            verificarSiYaEstaEnVenta();
+            agregarColumns();
         }
-        private void verificarSiYaEstaEnVenta()
+        private bool verificarSiYaEstaEnVenta()
         {
-            if (dtPedidosAplicados != null)
+            foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
             {
-                foreach (DataRow rows in dtPedidosAplicados.Rows)
+                foreach (string item in listIDPedidosAplicados)
                 {
-                    for (int i = 0; i < dgvDevoluciones.RowCount; i++)
+                    if (rows.Cells[0].Value.ToString() == item)
                     {
-                        string dgvIDPedido = dgvDevoluciones.Rows[i].Cells[0].Value.ToString();
-                        string dtIDPedidoAplicado = rows[0].ToString();
-                        if (dgvIDPedido == dtIDPedidoAplicado)
-                        {
-                            dgvDevoluciones.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
-                            dgvDevoluciones.Rows[i].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
-                        }
+                        CMsgBox.DisplayWarning($"El pedido {item} ya existe en la ventana de Ventas");
+                        return false;
                     }
                 }
             }
+            return true;
         }
         private void styles()
         {
@@ -90,6 +86,61 @@ namespace MultimodeSales.Vistas.Ventas
                 }
             }
         }
+        private void rbtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void agregarColumns()
+        {
+            dtAuxiliar.Columns.Add("IDPedido");
+            dtAuxiliar.Columns.Add("Modelo");
+            dtAuxiliar.Columns.Add("Marca");
+            dtAuxiliar.Columns.Add("Color");
+            dtAuxiliar.Columns.Add("Talla");
+            dtAuxiliar.Columns.Add("Precio Cliente");
+        }
+        private void rbtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (verificarSiYaEstaEnVenta())
+            {
+                agregarDataGridViewaDatatable();
+                Close();
+            }
+        }
+        private void agregarDataGridViewaDatatable()
+        {
+            foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.Green)
+                {
+                    dtAuxiliar.Rows.Add(rows.Cells[0].Value.ToString(), rows.Cells[2].Value.ToString(),
+                    rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString(),
+                    rows.Cells[5].Value.ToString(), rows.Cells[6].Value.ToString());
+                }
+            }
+        }
+        private void dgvDevoluciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (verificarSiYaEstaEnVenta())
+            {
+                agregarRowaDataTable(e);
+                Close();
+            }
+        }
+
+        private void agregarRowaDataTable(DataGridViewCellEventArgs e)
+        {
+            dtAuxiliar.Rows.Add(dgvDevoluciones.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                dgvDevoluciones.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                dgvDevoluciones.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                dgvDevoluciones.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                dgvDevoluciones.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                dgvDevoluciones.Rows[e.RowIndex].Cells[6].Value.ToString());
+        }
+        public DataTable returnModelos()
+        {
+            return dtAuxiliar;
+        }
         #region Panel Barras
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -104,39 +155,8 @@ namespace MultimodeSales.Vistas.Ventas
             CBarraSuperior.GetInt = Handle;
         }
 
+
         #endregion
-
-        private void rbtnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        private void addColumnsTable()
-        {
-            dtReturnDevueltos.Columns.Add("IDPedido");
-            dtReturnDevueltos.Columns.Add("Modelo");
-            dtReturnDevueltos.Columns.Add("Marca");
-            dtReturnDevueltos.Columns.Add("Color");
-            dtReturnDevueltos.Columns.Add("Talla");
-            dtReturnDevueltos.Columns.Add("PrecioCliente");
-        }
-        private void rbtnAceptar_Click(object sender, EventArgs e)
-        {
-            addColumnsTable();
-            foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
-            {
-                if(rows.DefaultCellStyle.BackColor == Color.Green)
-                {
-                    dtReturnDevueltos.Rows.Add(rows.Cells[0].Value.ToString(), rows.Cells[2].Value.ToString(),
-                        rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString(),
-                        rows.Cells[5].Value.ToString(), rows.Cells[6].Value.ToString());
-                }
-            }
-            Close();
-        }
-
-        public DataTable returnsModelos()
-        {
-            return dtReturnDevueltos;
-        }
+        
     }
 }

@@ -131,7 +131,6 @@
             this.dgvVentasPedido.Size = new System.Drawing.Size(860, 337);
             this.dgvVentasPedido.TabIndex = 31;
             this.dgvVentasPedido.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvVentasPedido_UserDeletedRow);
-            this.dgvVentasPedido.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvVentasPedido_UserDeletingRow);
             this.dgvVentasPedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPedidosFinal_KeyDown);
             // 
             // Column1

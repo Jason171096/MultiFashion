@@ -203,7 +203,6 @@
     </Compile>
     <Compile Include="Programacion\Cliente\CCliente.cs" />
     <Compile Include="Programacion\Devolucion\CDevolucionBD.cs" />
-    <Compile Include="Programacion\Folios\CListIDPedidosDevolucion.cs" />
     <Compile Include="Programacion\Folios\CFolio.cs" />
     <Compile Include="Programacion\Pruebas.cs" />
     <Compile Include="Programacion\Utilerias\CBarraSuperior.cs" />

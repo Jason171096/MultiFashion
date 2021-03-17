@@ -1,15 +1,10 @@
 ﻿using MultimodeSales.Programacion;
 using MultimodeSales.Programacion.Devolucion;
-using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MultimodeSales.Vistas.Ventas
@@ -30,8 +25,9 @@ namespace MultimodeSales.Vistas.Ventas
             barraSuperior();
             cargarPedidosDevueltosCliente();
             agregarColumns();
+            recorrerListaconDataGridView();
         }
-        private bool verificarSiYaEstaEnVenta()
+        private void recorrerListaconDataGridView()
         {
             foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
             {
@@ -39,16 +35,25 @@ namespace MultimodeSales.Vistas.Ventas
                 {
                     if (rows.Cells[0].Value.ToString() == item)
                     {
-                        CMsgBox.DisplayWarning($"El pedido {item} ya existe en la ventana de Ventas");
-                        return false;
+                        dgvDevoluciones.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Blue;
+                        dgvDevoluciones.Rows[rows.Index].DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
                     }
                 }
+            }
+        }
+        private bool verificarSiYaEstaEnVenta(int pCurrentRow)
+        {
+            if (dgvDevoluciones.Rows[pCurrentRow].DefaultCellStyle.BackColor == Color.Blue)
+            {
+                CMsgBox.DisplayWarning($"El pedido ya existe en la ventana de Ventas");
+                return false;
             }
             return true;
         }
         private void styles()
         {
             CRoundButton.FormattedRoundButtonAceptar(rbtnAceptar);
+            CRoundButton.FormattedRoundButtonAceptar(rbtnSelTodo);
             CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
             CDataGridView.FormattedDataGridView(dgvDevoluciones);
             Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
@@ -74,21 +79,20 @@ namespace MultimodeSales.Vistas.Ventas
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor == Color.Green)
+                if (dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
                 {
-                    dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
-                    dgvDevoluciones.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
-                }
-                else
-                {
-                    dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor = Color.Green;
-                    dgvDevoluciones.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
+                    if (dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor == Color.Green)
+                    {
+                        dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
+                        dgvDevoluciones.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
+                    }
+                    else
+                    {
+                        dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor = Color.Green;
+                        dgvDevoluciones.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
+                    }
                 }
             }
-        }
-        private void rbtnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
         private void agregarColumns()
         {
@@ -101,11 +105,8 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void rbtnAceptar_Click(object sender, EventArgs e)
         {
-            if (verificarSiYaEstaEnVenta())
-            {
-                agregarDataGridViewaDatatable();
-                Close();
-            }
+            agregarDataGridViewaDatatable();
+            Close();
         }
         private void agregarDataGridViewaDatatable()
         {
@@ -121,7 +122,7 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void dgvDevoluciones_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (verificarSiYaEstaEnVenta())
+            if (verificarSiYaEstaEnVenta(e.RowIndex))
             {
                 agregarRowaDataTable(e);
                 Close();
@@ -136,6 +137,21 @@ namespace MultimodeSales.Vistas.Ventas
                 dgvDevoluciones.Rows[e.RowIndex].Cells[4].Value.ToString(),
                 dgvDevoluciones.Rows[e.RowIndex].Cells[5].Value.ToString(),
                 dgvDevoluciones.Rows[e.RowIndex].Cells[6].Value.ToString());
+        }
+        private void rbtnSelTodo_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
+            {
+                if(dgvDevoluciones.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
+                {
+                    rows.DefaultCellStyle.BackColor = Color.Green;
+                    rows.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
+                }
+            }
+        }
+        private void rbtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
         public DataTable returnModelos()
         {
@@ -157,6 +173,7 @@ namespace MultimodeSales.Vistas.Ventas
 
 
         #endregion
-        
+
+
     }
 }

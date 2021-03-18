@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace MultimodeSales.Vistas.Ventas
 {
@@ -31,8 +32,11 @@ namespace MultimodeSales.Vistas.Ventas
         {
             foreach (DataGridViewRow rows in dgvDevoluciones.Rows)
             {
+                
+                //IEnumerable<string> Ilist = from lista in listIDPedidosAplicados where lista == rows.Cells[0].Value.ToString() select lista; 
                 foreach (string item in listIDPedidosAplicados)
                 {
+                    //IEnumerable<string> IRowsIndex = from dgv in dgvDevoluciones.Columns[0]. .Value.ToString() where dgv == item
                     if (rows.Cells[0].Value.ToString() == item)
                     {
                         dgvDevoluciones.Rows[rows.Index].DefaultCellStyle.BackColor = Color.Blue;

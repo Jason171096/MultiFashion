@@ -222,13 +222,12 @@ namespace MultimodeSales.Vistas
             {
                 aceptarDevolucion();
             }
-
         }
         private void aceptarDevolucion()
         {
+            cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
             foreach (DataGridViewRow rows in dgvDevolucion.Rows)
             {
-                cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
                 cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString());
             }
             CMsgBox.DisplayInfo("Devolucion confirmada");

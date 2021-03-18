@@ -87,7 +87,7 @@ namespace MultimodeSales.Vistas.Ventas
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
                         actualizarTotal();
                     }
-                    else if(dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
+                    else if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
                     {
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
@@ -173,18 +173,14 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private void agregarListIDPedidosDevoluciones()
         {
-            //if (dtAuxiliar != null)
-            //{
-                listIDPedidosDevoluciones.Clear();
-                foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            listIDPedidosDevoluciones.Clear();
+            foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
+            {
+                if (rows.DefaultCellStyle.BackColor == Color.Blue)
                 {
-                    if (rows.DefaultCellStyle.BackColor == Color.Blue)
-                    {
-                        listIDPedidosDevoluciones.Add(rows.Cells[0].Value.ToString());
-                    }
+                    listIDPedidosDevoluciones.Add(rows.Cells[0].Value.ToString());
                 }
-                CListIDPedidosDevolucion cListIDPedidos = new CListIDPedidosDevolucion(listIDPedidosDevoluciones);
-            //}
+            }
         }
         private void rbtnAplicarDevolucion_Click(object sender, EventArgs e)
         {
@@ -267,7 +263,7 @@ namespace MultimodeSales.Vistas.Ventas
                 {
                     if (rows.Cells[0].Value == null)
                     {
-                        rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCcboxCliente.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
+                        rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCComboBox.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
                     }
                     cVenta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
                 }
@@ -307,6 +303,6 @@ namespace MultimodeSales.Vistas.Ventas
         }
         #endregion
 
-       
+
     }
 }

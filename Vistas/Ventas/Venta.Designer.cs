@@ -549,7 +549,6 @@
         private RoundButton.RoundButton rbtnVender;
         private RoundButton.RoundButton rbtnAgregarPedido;
         private RoundButton.RoundButton rbtnAgregarModelo;
-        private Componentes.UCcomboBoxCliente UCcboxCliente;
         private Componentes.UCBarraSuperior UCBarraSuperior;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

@@ -169,6 +169,7 @@ namespace MultimodeSales.Vistas
             // 
             // UCcboxCliente
             // 
+            this.UCcboxCliente.Enabled = false;
             this.UCcboxCliente.Location = new System.Drawing.Point(88, 25);
             this.UCcboxCliente.Margin = new System.Windows.Forms.Padding(6);
             this.UCcboxCliente.Name = "UCcboxCliente";

@@ -147,13 +147,13 @@ namespace MultimodeSales.Vistas
             {
                 borrarTodo();
                 rbtnBuscarFolio.Enabled = true;
-                UCcboxCliente.cboxCliente.Enabled = false;
+                rbtnSelPedido.Enabled = false;
             }
             else
             {
                 borrarTodo();
                 rbtnBuscarFolio.Enabled = false;
-                UCcboxCliente.cboxCliente.Enabled = true;
+                rbtnSelPedido.Enabled = true;
             }
         }
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace MultimodeSales.Vistas.Ventas
 {
@@ -174,6 +175,7 @@ namespace MultimodeSales.Vistas.Ventas
         private void agregarListIDPedidosDevoluciones()
         {
             listIDPedidosDevoluciones.Clear();
+            //IEnumerable<string> p = from lis in dgvVentasPedido.Rows where dgvVentasPedido.DefaultCellStyle == Color.Blue select lis;
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
                 if (rows.DefaultCellStyle.BackColor == Color.Blue)
@@ -277,6 +279,13 @@ namespace MultimodeSales.Vistas.Ventas
                 txtFolioVenta.Text = "";
                 borrarLabels();
                 cargarPedidos(IDCLIENTE);
+            }
+        }
+        private void devolucionFolioConcreta()
+        {
+            if(dgvVentasPedido.DefaultCellStyle.BackColor == Color.Blue)
+            {
+                
             }
         }
         private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)

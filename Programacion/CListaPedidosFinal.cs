@@ -11,12 +11,15 @@ namespace MultimodeSales.Programacion
     class CListaPedidosFinal
     {
         Conexion conexion = new Conexion();
-        public DataTable ObtenerListaPedidosFinal(string pBuscar)
+        public DataTable ObtenerListaPedidosFinal(int pOpcion, string pBuscar, DateTime pFechaInicial, DateTime pFechaFinal)
         {
             conexion.OpenConnection();
             DataTable dt = new DataTable();
             MySqlCommand cmd = new MySqlCommand("VerListaPedidoFinal", conexion.GetConnection());
+            cmd.Parameters.Add(new MySqlParameter("opcion", pOpcion));
             cmd.Parameters.Add(new MySqlParameter("buscar", pBuscar));
+            cmd.Parameters.Add(new MySqlParameter("fechaInicial", pFechaInicial));
+            cmd.Parameters.Add(new MySqlParameter("fechaFinal", pFechaFinal));
             cmd.CommandType = CommandType.StoredProcedure;
             dt.Load(cmd.ExecuteReader());
             conexion.CloseConnection();

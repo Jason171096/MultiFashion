@@ -64,8 +64,8 @@
             this.rbtnNoLlegaron = new System.Windows.Forms.RadioButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizar = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             this.btnExportExcel = new System.Windows.Forms.Button();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -136,7 +136,7 @@
             this.rbtnFecha.AutoSize = true;
             this.rbtnFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.rbtnFecha.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rbtnFecha.Location = new System.Drawing.Point(6, 74);
+            this.rbtnFecha.Location = new System.Drawing.Point(6, 77);
             this.rbtnFecha.Name = "rbtnFecha";
             this.rbtnFecha.Size = new System.Drawing.Size(87, 28);
             this.rbtnFecha.TabIndex = 12;
@@ -173,7 +173,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(383, 35);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(363, 35);
             this.tableLayoutPanel3.TabIndex = 43;
             // 
             // label2
@@ -185,6 +185,7 @@
             this.label2.Size = new System.Drawing.Size(34, 35);
             this.label2.TabIndex = 46;
             this.label2.Text = "a";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpFechaFinal
             // 
@@ -194,8 +195,9 @@
             this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaFinal.Location = new System.Drawing.Point(233, 3);
             this.dtpFechaFinal.Name = "dtpFechaFinal";
-            this.dtpFechaFinal.Size = new System.Drawing.Size(142, 29);
+            this.dtpFechaFinal.Size = new System.Drawing.Size(123, 29);
             this.dtpFechaFinal.TabIndex = 44;
+            this.dtpFechaFinal.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
             // 
             // dtpFechaInicial
             // 
@@ -207,6 +209,7 @@
             this.dtpFechaInicial.Name = "dtpFechaInicial";
             this.dtpFechaInicial.Size = new System.Drawing.Size(124, 29);
             this.dtpFechaInicial.TabIndex = 42;
+            this.dtpFechaInicial.ValueChanged += new System.EventHandler(this.dtpFechaInicial_ValueChanged);
             // 
             // label1
             // 
@@ -225,7 +228,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(109, 32);
             this.txtBuscar.MaxLength = 10;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(268, 29);
+            this.txtBuscar.Size = new System.Drawing.Size(217, 29);
             this.txtBuscar.TabIndex = 41;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -296,12 +299,12 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(23, 0);
+            this.materialLabel4.Location = new System.Drawing.Point(25, 0);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(66, 18);
             this.materialLabel4.TabIndex = 39;
             this.materialLabel4.Text = "Devuelto";
             // 
@@ -330,12 +333,12 @@
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(27, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(30, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(64, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(61, 18);
             this.materialLabel2.TabIndex = 39;
             this.materialLabel2.Text = "Vendido";
             // 
@@ -364,12 +367,12 @@
             this.lbLeyenda1.AutoSize = true;
             this.lbLeyenda1.Depth = 0;
             this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbLeyenda1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLeyenda1.Location = new System.Drawing.Point(27, 0);
+            this.lbLeyenda1.Location = new System.Drawing.Point(30, 0);
             this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbLeyenda1.Name = "lbLeyenda1";
-            this.lbLeyenda1.Size = new System.Drawing.Size(87, 19);
+            this.lbLeyenda1.Size = new System.Drawing.Size(84, 18);
             this.lbLeyenda1.TabIndex = 39;
             this.lbLeyenda1.Text = "No llegaron";
             // 
@@ -398,12 +401,12 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(27, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(29, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(67, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(65, 18);
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Llegaron";
             // 
@@ -530,15 +533,6 @@
             this.rbtnFinalizar.UseVisualStyleBackColor = true;
             this.rbtnFinalizar.Click += new System.EventHandler(this.rbtnFinalizar_Click);
             // 
-            // UCBarraSuperior
-            // 
-            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
-            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
-            this.UCBarraSuperior.Name = "UCBarraSuperior";
-            this.UCBarraSuperior.Size = new System.Drawing.Size(1232, 48);
-            this.UCBarraSuperior.TabIndex = 40;
-            // 
             // btnExportExcel
             // 
             this.btnExportExcel.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -555,6 +549,15 @@
             this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
+            // UCBarraSuperior
+            // 
+            this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
+            this.UCBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UCBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.UCBarraSuperior.Name = "UCBarraSuperior";
+            this.UCBarraSuperior.Size = new System.Drawing.Size(1232, 48);
+            this.UCBarraSuperior.TabIndex = 40;
             // 
             // PedidosFinal
             // 

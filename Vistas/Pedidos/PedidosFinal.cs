@@ -16,24 +16,38 @@ namespace MultimodeSales.Vistas
         DataView dv;
         CModelo modelo = new CModelo();
         int activeCellClick = 0;
+        int opcionBuscaroFecha = 0;
 
         public PedidosFinal(int pActiveCellClick)
         {
             InitializeComponent();
-            CDataGridView.FormattedDataGridView(dgvPedidosFinal);
-            CRoundButton.FormattedRoundButtonAceptar(rbtnFinalizar);
-            CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
-
+            activeCellClick = pActiveCellClick;
             rbtnNumPedido.Checked = true;
             rbtnTodos.Checked = true;
 
+            styles();
+            barraSuperior();
+            radioButtonsEvents();
+            
+            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+        private void styles()
+        {
+            CDataGridView.FormattedDataGridView(dgvPedidosFinal);
+            CRoundButton.FormattedRoundButtonAceptar(rbtnFinalizar);
+            CRoundButton.FormattedRoundButtonCancelar(rbtnCancelar);
+        }
+        private void barraSuperior()
+        {
             UCBarraSuperior.picMinimize.Click += new EventHandler(minimizedClick);
             UCBarraSuperior.picClose.Click += new EventHandler(closeClick);
             UCBarraSuperior.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.MouseMove += new MouseEventHandler(CBarraSuperior.Release);
             UCBarraSuperior.lbTitle.Text = "Lista de pedidos";
             UCBarraSuperior.panelTitle.Width = UCBarraSuperior.lbTitle.Width + 10;
-
+        }
+        private void radioButtonsEvents()
+        {
             rbtnNumPedido.CheckedChanged += new EventHandler(radioButtonBuscar_CheckedChanged);
             rbtnFecha.CheckedChanged += new EventHandler(radioButtonBuscar_CheckedChanged);
             rbtnTodos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
@@ -41,32 +55,42 @@ namespace MultimodeSales.Vistas
             rbtnNoLlegaron.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnVendidos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
             rbtnDevueltos.CheckedChanged += new EventHandler(radioButtonOrdenar_CheckedChanged);
-            activeCellClick = pActiveCellClick;
-            Region = Region.FromHrgn(CFormBorder.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+
         private void PedidosFinal_Load(object sender, EventArgs e)
         {
             CargarLista();
-            dv = new DataView(dt);
+            cargaDataView();
         }
         private void radioButtonBuscar_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
             if (rb.Checked && rb.TabIndex == 10)
-            {
+            {//RadioButtonBuscar
+                rbtnTodos.Checked = true;
                 dtpFechaInicial.Enabled = false;
+                dtpFechaFinal.Enabled = false;
+                opcionBuscaroFecha = 0;
             }
             else if (rb.Checked && rb.TabIndex == 12)
-            {
+            {//RadioButtonFecha
+                rbtnTodos.Checked = true;
                 dtpFechaInicial.Enabled = true;
+                dtpFechaFinal.Enabled = true;
+                opcionBuscaroFecha = 1;
             }
+        }
+        private void cargaDataView()
+        {
+            dv = new DataView(dt);
         }
         private void radioButtonOrdenar_CheckedChanged(object sender, EventArgs e)
         {
-            Borrar();
             RadioButton rb = sender as RadioButton;
             if (rb.Checked && rb.TabIndex == 20)
             {//RadioButtonTodos
+                cargaDataView();
+                borrarDataGridView();
                 CargarLista();
                 activarButtomFinalizarPedido(true);
             }
@@ -86,14 +110,14 @@ namespace MultimodeSales.Vistas
             }
             else if(rb.Checked && rb.TabIndex == 35)
             {//RadioButtonVendieron
-                dv.RowFilter = "Llego = 1 AND Vendido = 1 AND Devuelto = 0";
+                dv.RowFilter = "Llego = 0 AND Vendido = 1 AND Devuelto = 0";
                 dgvPedidosFinal.DataSource = dv;
                 DarFormatoTabla();
                 activarButtomFinalizarPedido(false);
             }
             else if(rb.Checked && rb.TabIndex == 40)
             {//RadioButtonDevueltos
-                dv.RowFilter = "Llego = 1 AND Vendido = 0 AND Devuelto = 1";
+                dv.RowFilter = "Llego = 0 AND Vendido = 0 AND Devuelto = 1";
                 dgvPedidosFinal.DataSource = dv;
                 DarFormatoTabla();
                 activarButtomFinalizarPedido(false);
@@ -103,7 +127,7 @@ namespace MultimodeSales.Vistas
         private void CargarLista()
         {
             dgvPedidosFinal.DataSource = null;
-            dt = listaPedidosFinal.ObtenerListaPedidosFinal(txtBuscar.Text);
+            dt = listaPedidosFinal.ObtenerListaPedidosFinal(opcionBuscaroFecha, txtBuscar.Text, dtpFechaInicial.Value, dtpFechaFinal.Value);
             dgvPedidosFinal.DataSource = dt;
             paintRows();
             DarFormatoTabla();
@@ -129,7 +153,7 @@ namespace MultimodeSales.Vistas
             dgvPedidosFinal.Columns[11].Visible = false;//Devuelto
         }
         private void dgvPedidosFinal_KeyDown(object sender, KeyEventArgs e)
-        {
+        { 
             if (e.KeyCode == Keys.Enter)
             {
                 if (dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor != Color.OrangeRed && dgvPedidosFinal.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
@@ -201,7 +225,7 @@ namespace MultimodeSales.Vistas
                 worksheet = null;
             }
         }
-        private void Borrar()
+        private void borrarDataGridView()
         {
             dgvPedidosFinal.DataSource = null;
         }
@@ -290,6 +314,25 @@ namespace MultimodeSales.Vistas
             else
                 rbtnFinalizar.Enabled = false;
         }
+        private void dtpFechaInicial_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFechaInicial.Value > dtpFechaFinal.Value)
+                dtpFechaInicial.Value = dtpFechaFinal.Value;
+            changeDate();
+        }
+
+        private void dtpFechaFinal_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFechaInicial.Value > dtpFechaFinal.Value)
+                dtpFechaFinal.Value = dtpFechaInicial.Value;
+            changeDate();
+        }
+        private void changeDate()
+        {
+            CargarLista();
+            cargaDataView();
+            rbtnTodos.Checked = true;
+        }
         #region Barra Superior
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -303,9 +346,8 @@ namespace MultimodeSales.Vistas
         {
             CBarraSuperior.GetInt = Handle;
         }
+
         #endregion
-
-
     }
 }
 

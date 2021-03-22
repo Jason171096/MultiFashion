@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     partial class Folio
     {
@@ -41,7 +41,7 @@ namespace MultimodeSales.Vistas
             this.rbtnCliente = new System.Windows.Forms.RadioButton();
             this.rbtnFecha = new System.Windows.Forms.RadioButton();
             this.dgvFolio = new System.Windows.Forms.DataGridView();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFolio)).BeginInit();
             this.SuspendLayout();

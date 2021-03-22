@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     partial class Devolucion
     {
@@ -43,7 +43,7 @@ namespace MultimodeSales.Vistas
             this.checkBuscarFolio = new MaterialSkin.Controls.MaterialCheckBox();
             this.txtFolioVenta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCcboxCliente = new MultiFashion.Componentes.UCcomboBoxCliente();
             this.rbtnBuscarFolio = new RoundButton.RoundButton();
             this.label4 = new System.Windows.Forms.Label();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
@@ -73,7 +73,7 @@ namespace MultimodeSales.Vistas
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rbtnAceptar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();

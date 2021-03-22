@@ -1,4 +1,4 @@
-﻿namespace MultimodeSales.Vistas
+﻿namespace MultiFashion.Vistas
 {
     partial class Pedido
     {
@@ -44,11 +44,11 @@
             this.rbtnAgregarColorTalla = new RoundButton.RoundButton();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
+            this.UCcboxCliente = new MultiFashion.Componentes.UCcomboBoxCliente();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizarPedido = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -146,7 +146,7 @@
             // Eliminar
             // 
             this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Image = global::MultimodeSales.Properties.Resources.basura24px;
+            this.Eliminar.Image = global::MultiFashion.Properties.Resources.basura24px;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -228,7 +228,7 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Image = global::MultimodeSales.Properties.Resources.basura24px;
+            this.dataGridViewImageColumn1.Image = global::MultiFashion.Properties.Resources.basura24px;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;

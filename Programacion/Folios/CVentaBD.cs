@@ -1,4 +1,4 @@
-﻿using MultimodeSales.Programacion;
+﻿using MultiFashion.Programacion;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MultimodeSales
+namespace MultiFashion
 {
     public class CVenta
     {

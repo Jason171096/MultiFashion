@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas.Folios
+namespace MultiFashion.Vistas.Folios
 {
     partial class TipoFolio
     {
@@ -90,7 +90,7 @@ namespace MultimodeSales.Vistas.Folios
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::MultimodeSales.Properties.Resources.invoices64px;
+            this.pictureBox1.Image = global::MultiFashion.Properties.Resources.invoices64px;
             this.pictureBox1.Location = new System.Drawing.Point(20, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -101,7 +101,7 @@ namespace MultimodeSales.Vistas.Folios
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::MultimodeSales.Properties.Resources.invoices64px;
+            this.pictureBox2.Image = global::MultiFashion.Properties.Resources.invoices64px;
             this.pictureBox2.Location = new System.Drawing.Point(20, 126);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
@@ -114,7 +114,7 @@ namespace MultimodeSales.Vistas.Folios
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.BackgroundImage = global::MultimodeSales.Properties.Resources.background4;
+            this.BackgroundImage = global::MultiFashion.Properties.Resources.background4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.rbtnCancelar;
             this.ClientSize = new System.Drawing.Size(307, 290);

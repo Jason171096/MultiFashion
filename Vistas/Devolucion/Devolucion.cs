@@ -1,15 +1,15 @@
-﻿using MultimodeSales.Programacion.Utilerias;
+﻿using MultiFashion.Programacion.Utilerias;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
-using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Cliente;
-using MultimodeSales.Vistas;
-using MultimodeSales.Programacion.Modelo;
-using MultimodeSales.Programacion.Devolucion;
+using MultiFashion.Programacion;
+using MultiFashion.Programacion.Cliente;
+using MultiFashion.Vistas;
+using MultiFashion.Programacion.Modelo;
+using MultiFashion.Programacion.Devolucion;
 
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     public partial class Devolucion : Form
     {

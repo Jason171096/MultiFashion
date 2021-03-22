@@ -1,6 +1,6 @@
-﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Devolucion;
-using MultimodeSales.Programacion.Utilerias;
+﻿using MultiFashion.Programacion;
+using MultiFashion.Programacion.Devolucion;
+using MultiFashion.Programacion.Utilerias;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 
-namespace MultimodeSales.Vistas.Ventas
+namespace MultiFashion.Vistas.Ventas
 {
     public partial class AplicarFolioDevoluciones : Form
     {

@@ -1,12 +1,12 @@
-﻿using MultimodeSales.Programacion;
+﻿using MultiFashion.Programacion;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using MultimodeSales.Programacion.Marca;
-using MultimodeSales.Programacion.Utilerias;
+using MultiFashion.Programacion.Marca;
+using MultiFashion.Programacion.Utilerias;
 using System.Drawing;
 
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     public partial class Marca : Form
     {

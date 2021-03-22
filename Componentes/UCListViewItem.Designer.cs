@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Componentes
+namespace MultiFashion.Componentes
 {
     partial class UCListViewItem
     {
@@ -40,7 +40,7 @@ namespace MultimodeSales.Componentes
             // 
             // listView
             // 
-            this.listView.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
+            this.listView.BackgroundImage = global::MultiFashion.Properties.Resources.background5;
             this.listView.BackgroundImageTiled = true;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnPedido,

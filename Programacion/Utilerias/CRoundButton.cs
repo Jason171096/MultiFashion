@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
-namespace MultimodeSales.Programacion.Utilerias
+namespace MultiFashion.Programacion.Utilerias
 {
     public static class CRoundButton
     {

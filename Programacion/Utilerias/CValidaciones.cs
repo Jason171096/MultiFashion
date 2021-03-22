@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultimodeSales.Programacion
+namespace MultiFashion.Programacion
 {
     public class Validaciones
     {

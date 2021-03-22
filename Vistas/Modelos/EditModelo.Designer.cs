@@ -1,4 +1,4 @@
-﻿namespace MultimodeSales.Vistas.Modelos
+﻿namespace MultiFashion.Vistas.Modelos
 {
     partial class EditModelo
     {
@@ -45,7 +45,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();

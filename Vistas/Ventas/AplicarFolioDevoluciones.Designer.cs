@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas.Ventas
+namespace MultiFashion.Vistas.Ventas
 {
     partial class AplicarFolioDevoluciones
     {
@@ -33,7 +33,7 @@ namespace MultimodeSales.Vistas.Ventas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.dgvDevoluciones = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Folio = new System.Windows.Forms.DataGridViewTextBoxColumn();

@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas.Folios
+namespace MultiFashion.Vistas.Folios
 {
     partial class FolioVenta
     {
@@ -45,9 +45,9 @@ namespace MultimodeSales.Vistas.Folios
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.picEditFolio = new System.Windows.Forms.PictureBox();
             this.picImprimir = new System.Windows.Forms.PictureBox();
-            this.UCdgvModelos = new MultimodeSales.Componentes.UCDataGridViewModelo();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCdgvModelos = new MultiFashion.Componentes.UCDataGridViewModelo();
+            this.UCcboxCliente = new MultiFashion.Componentes.UCcomboBoxCliente();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -205,7 +205,7 @@ namespace MultimodeSales.Vistas.Folios
             // picEditFolio
             // 
             this.picEditFolio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picEditFolio.Image = global::MultimodeSales.Properties.Resources.edit64px;
+            this.picEditFolio.Image = global::MultiFashion.Properties.Resources.edit64px;
             this.picEditFolio.Location = new System.Drawing.Point(3, 3);
             this.picEditFolio.Name = "picEditFolio";
             this.picEditFolio.Size = new System.Drawing.Size(64, 61);
@@ -218,7 +218,7 @@ namespace MultimodeSales.Vistas.Folios
             // picImprimir
             // 
             this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImprimir.Image = global::MultimodeSales.Properties.Resources.printer64px;
+            this.picImprimir.Image = global::MultiFashion.Properties.Resources.printer64px;
             this.picImprimir.Location = new System.Drawing.Point(3, 70);
             this.picImprimir.Name = "picImprimir";
             this.picImprimir.Size = new System.Drawing.Size(64, 61);

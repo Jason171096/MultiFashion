@@ -1,10 +1,10 @@
-﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Utilerias;
+﻿using MultiFashion.Programacion;
+using MultiFashion.Programacion.Utilerias;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace MultimodeSales.Vistas.Folios
+namespace MultiFashion.Vistas.Folios
 {
     public partial class TipoFolio : Form
     {

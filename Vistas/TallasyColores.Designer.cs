@@ -1,4 +1,4 @@
-﻿namespace MultimodeSales.Vistas
+﻿namespace MultiFashion.Vistas
 {
     partial class TallasyColores
     {
@@ -51,7 +51,7 @@
             this.txtColor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvColores = new System.Windows.Forms.DataGridView();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTallas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();

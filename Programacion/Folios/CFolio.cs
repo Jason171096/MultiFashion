@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultimodeSales.Programacion.Folios
+namespace MultiFashion.Programacion.Folios
 {
     public class CFolio
     {

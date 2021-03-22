@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Componentes
+namespace MultiFashion.Componentes
 {
     partial class UCcomboBoxCliente
     {

@@ -1,4 +1,4 @@
-﻿namespace MultimodeSales.Vistas
+﻿namespace MultiFashion.Vistas
 {
     partial class Cliente
     {
@@ -44,7 +44,7 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();

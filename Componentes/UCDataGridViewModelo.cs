@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MultimodeSales.Programacion;
+using MultiFashion.Programacion;
 
-namespace MultimodeSales.Componentes
+namespace MultiFashion.Componentes
 {
     public partial class UCDataGridViewModelo : UserControl
     {

@@ -1,13 +1,13 @@
-﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Folios;
+﻿using MultiFashion.Programacion;
+using MultiFashion.Programacion.Folios;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
-using MultimodeSales.Vistas.Folios;
+using MultiFashion.Vistas.Folios;
 using System;
-using MultimodeSales.Programacion.Cliente;
+using MultiFashion.Programacion.Cliente;
 
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     public partial class Folio : Form
     {

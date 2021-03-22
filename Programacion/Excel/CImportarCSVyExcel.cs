@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
-using MultimodeSales.Programacion.Utilerias;
+using MultiFashion.Programacion.Utilerias;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultimodeSales.Programacion
+namespace MultiFashion.Programacion
 {
     class CImportarCSVyExcel
     {

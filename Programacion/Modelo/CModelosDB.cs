@@ -1,4 +1,4 @@
-﻿using MultimodeSales.Programacion.Utilerias;
+﻿using MultiFashion.Programacion.Utilerias;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultimodeSales.Programacion.Modelo
+namespace MultiFashion.Programacion.Modelo
 {
     class CModelosDB
     {

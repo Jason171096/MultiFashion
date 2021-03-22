@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultimodeSales.Programacion.Devolucion
+namespace MultiFashion.Programacion.Devolucion
 {
     class CDevolucionBD
     {

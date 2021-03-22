@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using MultimodeSales.Programacion;
-using MultimodeSales.Vistas;
-using MultimodeSales.Vistas.Folios;
-using MultimodeSales.Vistas.Ventas;
+using MultiFashion.Programacion;
+using MultiFashion.Vistas;
+using MultiFashion.Vistas.Folios;
+using MultiFashion.Vistas.Ventas;
 
-namespace MultimodeSales
+namespace MultiFashion
 {
     public partial class Formulario : Form
     {

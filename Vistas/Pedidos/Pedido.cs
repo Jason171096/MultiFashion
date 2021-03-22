@@ -1,13 +1,13 @@
-﻿using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Modelo;
-using MultimodeSales.Programacion.Utilerias;
-using MultimodeSales.Vistas.Modelos;
+﻿using MultiFashion.Programacion;
+using MultiFashion.Programacion.Modelo;
+using MultiFashion.Programacion.Utilerias;
+using MultiFashion.Vistas.Modelos;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     public partial class Pedido : Form
     {

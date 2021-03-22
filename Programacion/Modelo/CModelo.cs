@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultimodeSales.Programacion.Modelo
+namespace MultiFashion.Programacion.Modelo
 {
     public class CModelo
     {

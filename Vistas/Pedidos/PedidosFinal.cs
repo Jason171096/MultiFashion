@@ -3,11 +3,11 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using excel = Microsoft.Office.Interop.Excel;
-using MultimodeSales.Programacion;
-using MultimodeSales.Programacion.Modelo;
-using MultimodeSales.Programacion.Utilerias;
+using MultiFashion.Programacion;
+using MultiFashion.Programacion.Modelo;
+using MultiFashion.Programacion.Utilerias;
 
-namespace MultimodeSales.Vistas
+namespace MultiFashion.Vistas
 {
     public partial class PedidosFinal : Form
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace MultimodeSales.Vistas.Ventas
+namespace MultiFashion.Vistas.Ventas
 {
     partial class Ticket
     {
@@ -31,7 +31,7 @@ namespace MultimodeSales.Vistas.Ventas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ticket));
             this.roundButton1 = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
             this.SuspendLayout();
             // 
             // roundButton1
@@ -39,7 +39,7 @@ namespace MultimodeSales.Vistas.Ventas
             this.roundButton1.BorderColor = System.Drawing.Color.YellowGreen;
             this.roundButton1.ButtonColor = System.Drawing.Color.ForestGreen;
             this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton1.Image = global::MultimodeSales.Properties.Resources.excel24;
+            this.roundButton1.Image = global::MultiFashion.Properties.Resources.excel24;
             this.roundButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.roundButton1.Location = new System.Drawing.Point(522, 443);
             this.roundButton1.Name = "roundButton1";

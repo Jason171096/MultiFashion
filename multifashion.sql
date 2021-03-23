@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2021 a las 23:22:39
+-- Tiempo de generación: 24-03-2021 a las 00:55:22
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -94,6 +94,10 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConfirmacionPedidoEliminar` (IN `idpedido` INT)  NO SQL
 BEGIN
 	SELECT pedidos.Vendido FROM pedidos WHERE pedidos.IDPedido = idpedido;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionCompleta` (IN `idpedido` INT)  BEGIN
+	UPDATE devolucion_pedidos dp SET dp.Aceptado = 1 WHERE dp.IDPedido = idpedido;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionFolio` (IN `idfolio` BIGINT, IN `idcliente` BIGINT, IN `fecha` DATETIME, IN `total` DECIMAL(10,2))  NO SQL
@@ -194,7 +198,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaPedido` (IN `idfolio` BIGINT, IN `idpedido` INT)  NO SQL
 BEGIN
-	UPDATE pedidos SET pedidos.Vendido = 1, pedidos.Devuelto = 0 WHERE pedidos.IDPedido = idpedido;
+	UPDATE pedidos SET pedidos.Llego = 0, pedidos.Vendido = 1, pedidos.Devuelto = 0 WHERE pedidos.IDPedido = idpedido;
     INSERT INTO venta_pedidos(venta_pedidos.IDFolio, venta_pedidos.IDPedido) VALUES(idfolio, idpedido);
 END$$
 
@@ -232,10 +236,14 @@ BEGIN
 	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `buscar` VARCHAR(50))  READS SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `opcion` INT, IN `buscar` VARCHAR(50), IN `fechaInicial` DATE, IN `fechaFinal` DATE)  READS SQL DATA
 BEGIN
-	SET @date := (SELECT `PrimerDiaSemana`());
-	SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido, p.Devuelto FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE p.Fecha > (@date) AND  p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC;
+	IF opcion = 0 THEN 
+		SET @date := (SELECT `PrimerDiaSemana`());
+		SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido, p.Devuelto FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE p.Fecha > (@date) AND  p.IDModelo LIKE CONCAT('%', buscar, '%') ORDER BY c.IDCliente ASC;
+   	ELSE 
+    	SELECT p.IDPedido, c.IDCliente, c.Nombre, m.IDModelo, `NombreMarca`(m.IDMarca) as 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Fecha, p.Llego, p.Vendido, p.Devuelto FROM pedidos p INNER JOIN clientes c ON p.IDCliente = c.IDCliente INNER JOIN modelos m ON m.IDModelo = p.IDModelo WHERE DATE(p.Fecha) BETWEEN fechaInicial AND fechaFinal ORDER BY c.IDCliente ASC;
+     END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerMarcas` ()  BEGIN
@@ -292,6 +300,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`IDCliente`, `Nombre`, `Telefono`) VALUES
+(0, 'DEFAULT', NULL),
 (1, 'ANA LAURA GUZMAN', ''),
 (2, 'RAQUEL MENDOZA', ''),
 (3, 'ANGELES CHAVEZ', ''),
@@ -418,7 +427,7 @@ CREATE TABLE `devolucion` (
 --
 
 INSERT INTO `devolucion` (`IDFolio`, `IDCliente`, `Fecha`, `Total`, `Completo`) VALUES
-(1, 101, '2021-02-18 10:16:58', '3330.05', b'0');
+(1, 101, '2021-03-23 16:53:25', '350.00', b'0');
 
 -- --------------------------------------------------------
 
@@ -438,7 +447,8 @@ CREATE TABLE `devolucion_pedidos` (
 --
 
 INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`, `Aceptado`) VALUES
-(5, 1, 133, b'0');
+(12, 1, 165, b'1'),
+(13, 1, 166, b'1');
 
 -- --------------------------------------------------------
 
@@ -792,7 +802,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('397', 7, 'AMARILLO', '23', '5415.35', NULL, '2020-10-13 23:35:32'),
 ('398', 7, 'NEGRO', '24', '5431.90', NULL, '2020-10-13 23:35:32'),
 ('4', 2, 'VERDE', '43', '100.00', NULL, '2020-10-15 11:04:00'),
-('6', 6, 'MAGENTA', '35 AL 25', '0.00', NULL, '2020-10-19 15:04:05'),
+('6', 6, 'MAGENTA', '35 AL 25', '250.00', NULL, '2020-10-19 15:04:05'),
 ('60', 2, 'MORADO', '5', '0.00', NULL, '2021-01-16 12:48:54'),
 ('6762', 7, 'NEGRO', '22 AL 27  ENTEROS', '459.50', NULL, '2020-10-04 18:19:49'),
 ('7', 6, 'CELESTE', '34', '633.30', NULL, '2020-10-19 14:31:38'),
@@ -825,13 +835,12 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`, `Devuelto`) VALUES
-(128, '114', 101, 'RUBY', 'CH', '2021-02-21 19:16:35', b'1', b'0', b'0'),
-(129, '132', 101, 'AZUL', 'G', '2021-02-21 19:16:35', b'1', b'0', b'0'),
-(130, '160', 101, 'MORADO', '18', '2021-02-21 19:16:35', b'1', b'0', b'0'),
-(131, '188', 101, 'TURQUESA', '22', '2021-02-21 19:16:35', b'1', b'1', b'0'),
-(132, '244', 101, 'AMARILLLO', '17', '2021-02-21 19:16:35', b'1', b'1', b'0'),
-(133, '271', 101, 'AMARILLLO', '18', '2021-02-21 19:16:35', b'1', b'0', b'1'),
-(134, '382', 101, 'ROJO', 'M', '2021-02-21 19:16:35', b'0', b'0', b'0');
+(161, '100', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
+(162, '1', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
+(163, '2', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
+(164, '3', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
+(165, '4', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'0', b'1'),
+(166, '6', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -895,7 +904,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
-(1, 101, '2021-02-18 10:16:38', '8169.65');
+(1, 101, '2021-03-23 16:52:49', '1242.50'),
+(2, 101, '2021-03-23 16:54:18', '500.00');
 
 -- --------------------------------------------------------
 
@@ -914,9 +924,12 @@ CREATE TABLE `venta_pedidos` (
 --
 
 INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
-(57, 1, 131),
-(58, 1, 132),
-(59, 1, 133);
+(86, 1, 165),
+(87, 1, 164),
+(88, 1, 166),
+(89, 1, 161),
+(90, 2, 163),
+(91, 2, 162);
 
 --
 -- Índices para tablas volcadas
@@ -1016,19 +1029,19 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDFolio` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion_pedidos`
 --
 ALTER TABLE `devolucion_pedidos`
-  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -1046,7 +1059,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- Restricciones para tablas volcadas
@@ -1094,7 +1107,7 @@ DELIMITER $$
 --
 -- Eventos
 --
-CREATE DEFINER=`root`@`localhost` EVENT `BorrarPedidoMes` ON SCHEDULE EVERY 1 MONTH STARTS '2021-02-01 11:04:04' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM pedidos WHERE pedidos.Llego = 0 AND pedidos.Vendido = 0$$
+CREATE DEFINER=`root`@`localhost` EVENT `BorrarPedidoMes` ON SCHEDULE EVERY 1 MONTH STARTS '2021-02-01 11:04:04' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM pedidos WHERE pedidos.Llego = 0 AND pedidos.Vendido = 0 AND pedidos.Devuelto = 0$$
 
 DELIMITER ;
 COMMIT;

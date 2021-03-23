@@ -82,7 +82,7 @@ namespace MultimodeSales.Vistas.Ventas
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor == Color.YellowGreen)
+                    if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor == Color.Green)
                     {
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.Indigo;
                         dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
@@ -90,8 +90,8 @@ namespace MultimodeSales.Vistas.Ventas
                     }
                     else if (dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor != Color.Blue)
                     {
-                        dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.YellowGreen;
-                        dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.BackColor = Color.Green;
+                        dgvVentasPedido.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
                         actualizarTotal();
                     }
                 }
@@ -101,10 +101,10 @@ namespace MultimodeSales.Vistas.Ventas
         {
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor != Color.YellowGreen && rows.DefaultCellStyle.BackColor != Color.Blue)
+                if (rows.DefaultCellStyle.BackColor != Color.Green && rows.DefaultCellStyle.BackColor != Color.Blue)
                 {
-                    rows.DefaultCellStyle.BackColor = Color.YellowGreen;
-                    rows.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+                    rows.DefaultCellStyle.BackColor = Color.Green;
+                    rows.DefaultCellStyle.SelectionBackColor = Color.YellowGreen;
                     actualizarTotal();
                 }
             }
@@ -115,11 +115,21 @@ namespace MultimodeSales.Vistas.Ventas
             if (seleccioneCliente())
                 if (folioVacio())
                     if (articulosVacios())
-                        if (!verificarFolioExistente())
-                        {
-                            dialogVenta();
-                            ventaConcreta();
-                        }
+                        if (devolucionMayorVender()) 
+                            if (!verificarFolioExistente())
+                            {
+                                dialogVenta();
+                                ventaConcreta();
+                            }
+        }
+        private bool devolucionMayorVender()
+        {
+            if (lbTotal.Text.Contains("-"))
+            {
+                CMsgBox.DisplayWarning("No se puede vender pedidos en donde la devolucion sea mayor");
+                return false;
+            }
+            return true;
         }
 
         private void rbtnAgregarPedido_Click(object sender, EventArgs e)
@@ -161,7 +171,7 @@ namespace MultimodeSales.Vistas.Ventas
             int cantidad = 0;
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                if (rows.DefaultCellStyle.BackColor == Color.Green)
                 {
                     total += float.Parse(rows.Cells[5].Value.ToString().Trim('$'));
                     cantidad++;
@@ -175,7 +185,6 @@ namespace MultimodeSales.Vistas.Ventas
         private void agregarListIDPedidosDevoluciones()
         {
             listIDPedidosDevoluciones.Clear();
-            //IEnumerable<string> p = from lis in dgvVentasPedido.Rows where dgvVentasPedido.DefaultCellStyle == Color.Blue select lis;
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
                 if (rows.DefaultCellStyle.BackColor == Color.Blue)
@@ -228,7 +237,7 @@ namespace MultimodeSales.Vistas.Ventas
             int cont = 0;
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                if (rows.DefaultCellStyle.BackColor == Color.Green)
                     cont++;
             }
             if (cont > 0)
@@ -261,13 +270,17 @@ namespace MultimodeSales.Vistas.Ventas
         {
             foreach (DataGridViewRow rows in dgvVentasPedido.Rows)
             {
-                if (rows.DefaultCellStyle.BackColor == Color.YellowGreen)
+                if (rows.DefaultCellStyle.BackColor == Color.Green)
                 {
                     if (rows.Cells[0].Value == null)
                     {
                         rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCComboBox.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
                     }
                     cVenta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
+                }
+                else
+                {
+                    devolucionFolioConcreta(rows);
                 }
             }
         }
@@ -281,11 +294,11 @@ namespace MultimodeSales.Vistas.Ventas
                 cargarPedidos(IDCLIENTE);
             }
         }
-        private void devolucionFolioConcreta()
+        private void devolucionFolioConcreta(DataGridViewRow pRows)
         {
-            if(dgvVentasPedido.DefaultCellStyle.BackColor == Color.Blue)
+            if(pRows.DefaultCellStyle.BackColor == Color.Blue)
             {
-                
+                cDevolucion.devolucionCompleta(pRows.Cells[0].Value.ToString());
             }
         }
         private void dgvVentasPedido_UserDeletedRow(object sender, DataGridViewRowEventArgs e)

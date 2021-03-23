@@ -84,9 +84,14 @@ namespace MultimodeSales.Programacion.Devolucion
             conexion.CloseConnection();
             return dt;
         }
-        public void devolucionCompleta()
+        public void devolucionCompleta(string pIDPedido)
         {
-
+            conexion.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand("DevolucionCompleta", conexion.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            cmd.ExecuteNonQuery();
+            conexion.CloseConnection();
         }
     }
 }

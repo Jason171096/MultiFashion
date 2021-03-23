@@ -6,6 +6,7 @@ using excel = Microsoft.Office.Interop.Excel;
 using MultimodeSales.Programacion;
 using MultimodeSales.Programacion.Modelo;
 using MultimodeSales.Programacion.Utilerias;
+using System.Linq;
 
 namespace MultimodeSales.Vistas
 {
@@ -68,16 +69,18 @@ namespace MultimodeSales.Vistas
             if (rb.Checked && rb.TabIndex == 10)
             {//RadioButtonBuscar
                 rbtnTodos.Checked = true;
-                dtpFechaInicial.Enabled = false;
-                dtpFechaFinal.Enabled = false;
+                txtBuscar.Enabled = true;
+                dtpFechaInicial.Enabled = dtpFechaFinal.Enabled = false;
                 opcionBuscaroFecha = 0;
+                CargarLista();
             }
             else if (rb.Checked && rb.TabIndex == 12)
             {//RadioButtonFecha
                 rbtnTodos.Checked = true;
-                dtpFechaInicial.Enabled = true;
-                dtpFechaFinal.Enabled = true;
+                txtBuscar.Enabled = false;
+                dtpFechaInicial.Enabled = dtpFechaFinal.Enabled = true;
                 opcionBuscaroFecha = 1;
+                CargarLista();
             }
         }
         private void cargaDataView()
@@ -306,6 +309,9 @@ namespace MultimodeSales.Vistas
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarLista();
+            //dv.RowFilter = $"IDModelo = {txtBuscar.Text}";
+            //dgvPedidosFinal.DataSource = dv;
+            //(dgvPedidosFinal.DataSource as DataTable).DefaultView.RowFilter = string.Format("IDModelo = {0}", txtBuscar.Text);
         }
         private void activarButtomFinalizarPedido(bool pActivo)
         {
@@ -333,6 +339,10 @@ namespace MultimodeSales.Vistas
             cargaDataView();
             rbtnTodos.Checked = true;
         }
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.SoloNumeros(e);
+        }
         #region Barra Superior
         private void minimizedClick(object sender, EventArgs e)
         {
@@ -348,6 +358,8 @@ namespace MultimodeSales.Vistas
         }
 
         #endregion
+
+        
     }
 }
 

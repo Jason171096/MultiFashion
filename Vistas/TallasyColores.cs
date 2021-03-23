@@ -1,12 +1,12 @@
-﻿using MultiFashion.Programacion;
-using MultiFashion.Programacion.Utilerias;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Utilerias;
 using System;
 using System.Drawing;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
-namespace MultiFashion.Vistas
+namespace MultimodeSales.Vistas
 {
     public partial class TallasyColores : Form
     {

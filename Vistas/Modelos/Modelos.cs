@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using MultiFashion.Programacion;
-using MultiFashion.Programacion.Modelo;
-using MultiFashion.Programacion.Utilerias;
+using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Modelo;
+using MultimodeSales.Programacion.Utilerias;
 using System.Drawing;
-using MultiFashion.Vistas;
-using MultiFashion.Vistas.Modelos;
+using MultimodeSales.Vistas;
+using MultimodeSales.Vistas.Modelos;
 
-namespace MultiFashion.Vistas
+namespace MultimodeSales.Vistas
 {
     public partial class Modeloss : Form
     {

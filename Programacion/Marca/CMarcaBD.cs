@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Programacion.Marca
+namespace MultimodeSales.Programacion.Marca
 {
     class CMarcaBD
     {

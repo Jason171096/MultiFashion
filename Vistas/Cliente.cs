@@ -1,12 +1,12 @@
-﻿using MultiFashion.Programacion;
-using MultiFashion.Programacion.Cliente;
-using MultiFashion.Programacion.Utilerias;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Cliente;
+using MultimodeSales.Programacion.Utilerias;
 using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace MultiFashion.Vistas
+namespace MultimodeSales.Vistas
 {
     public partial class Cliente : Form
     {

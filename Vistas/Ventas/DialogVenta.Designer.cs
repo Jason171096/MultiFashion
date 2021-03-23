@@ -1,5 +1,5 @@
 ﻿
-namespace MultiFashion.Vistas.Ventas
+namespace MultimodeSales.Vistas.Ventas
 {
     partial class DialogVenta
     {

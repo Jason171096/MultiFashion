@@ -1,4 +1,4 @@
-﻿namespace MultiFashion.Vistas
+﻿namespace MultimodeSales.Vistas
 {
     partial class ImportarListaMarca
     {
@@ -43,7 +43,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rbtnImportar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExcel)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();

@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-namespace MultiFashion.Programacion
+namespace MultimodeSales.Programacion
 {
     class CPedidoBD
     {

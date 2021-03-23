@@ -1,5 +1,5 @@
-﻿using MultiFashion.Programacion;
-using MultiFashion.Programacion.Folios;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Folios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Vistas.Folios
+namespace MultimodeSales.Vistas.Folios
 {
     public partial class FolioVenta : Form
     {

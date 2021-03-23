@@ -1,4 +1,4 @@
-﻿namespace MultiFashion.Vistas
+﻿namespace MultimodeSales.Vistas
 {
     partial class Marca
     {
@@ -44,7 +44,7 @@
             this.rbtnAgregarMarca = new RoundButton.RoundButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();

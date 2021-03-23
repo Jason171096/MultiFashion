@@ -1,5 +1,5 @@
 ﻿
-namespace MultiFashion.Componentes
+namespace MultimodeSales.Componentes
 {
     partial class UCBarraSuperior
     {
@@ -55,7 +55,7 @@ namespace MultiFashion.Componentes
             // 
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picClose.Image = global::MultiFashion.Properties.Resources.close48;
+            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
             this.picClose.Location = new System.Drawing.Point(45, 0);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(48, 48);
@@ -67,7 +67,7 @@ namespace MultiFashion.Componentes
             // 
             this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picMinimize.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picMinimize.Image = global::MultiFashion.Properties.Resources.minimize48px;
+            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
             this.picMinimize.Location = new System.Drawing.Point(0, 0);
             this.picMinimize.Name = "picMinimize";
             this.picMinimize.Size = new System.Drawing.Size(48, 48);
@@ -101,7 +101,7 @@ namespace MultiFashion.Componentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MultiFashion.Properties.Resources.background5;
+            this.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
             this.Controls.Add(this.panelTitle);
             this.Controls.Add(this.panel2);
             this.Name = "UCBarraSuperior";

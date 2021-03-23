@@ -1,13 +1,13 @@
-﻿using MultiFashion.Vistas;
-using MultiFashion.Vistas.Folios;
-using MultiFashion.Vistas.Ventas;
+﻿using MultimodeSales.Vistas;
+using MultimodeSales.Vistas.Folios;
+using MultimodeSales.Vistas.Ventas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion
+namespace MultimodeSales
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace MultiFashion
+﻿namespace MultimodeSales
 {
     partial class Formulario
     {
@@ -302,7 +302,7 @@
             // picImportExcel
             // 
             this.picImportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImportExcel.Image = global::MultiFashion.Properties.Resources.csv128px;
+            this.picImportExcel.Image = global::MultimodeSales.Properties.Resources.csv128px;
             this.picImportExcel.Location = new System.Drawing.Point(35, 0);
             this.picImportExcel.Name = "picImportExcel";
             this.picImportExcel.Size = new System.Drawing.Size(150, 155);
@@ -327,7 +327,7 @@
             // picCliente
             // 
             this.picCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picCliente.Image = global::MultiFashion.Properties.Resources.client128px;
+            this.picCliente.Image = global::MultimodeSales.Properties.Resources.client128px;
             this.picCliente.Location = new System.Drawing.Point(35, 0);
             this.picCliente.Name = "picCliente";
             this.picCliente.Size = new System.Drawing.Size(150, 155);
@@ -352,7 +352,7 @@
             // picMarca
             // 
             this.picMarca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMarca.Image = global::MultiFashion.Properties.Resources.catalog128px;
+            this.picMarca.Image = global::MultimodeSales.Properties.Resources.catalog128px;
             this.picMarca.Location = new System.Drawing.Point(35, 0);
             this.picMarca.Name = "picMarca";
             this.picMarca.Size = new System.Drawing.Size(150, 155);
@@ -377,7 +377,7 @@
             // picColTall
             // 
             this.picColTall.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picColTall.Image = global::MultiFashion.Properties.Resources.size_color;
+            this.picColTall.Image = global::MultimodeSales.Properties.Resources.size_color;
             this.picColTall.Location = new System.Drawing.Point(35, 0);
             this.picColTall.Name = "picColTall";
             this.picColTall.Size = new System.Drawing.Size(150, 155);
@@ -402,7 +402,7 @@
             // picModelos
             // 
             this.picModelos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picModelos.Image = global::MultiFashion.Properties.Resources.shoes128px;
+            this.picModelos.Image = global::MultimodeSales.Properties.Resources.shoes128px;
             this.picModelos.Location = new System.Drawing.Point(35, 0);
             this.picModelos.Name = "picModelos";
             this.picModelos.Size = new System.Drawing.Size(150, 155);
@@ -427,7 +427,7 @@
             // picPedido
             // 
             this.picPedido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPedido.Image = global::MultiFashion.Properties.Resources.order128px;
+            this.picPedido.Image = global::MultimodeSales.Properties.Resources.order128px;
             this.picPedido.Location = new System.Drawing.Point(35, 0);
             this.picPedido.Name = "picPedido";
             this.picPedido.Size = new System.Drawing.Size(150, 155);
@@ -452,7 +452,7 @@
             // picPedidosFinal
             // 
             this.picPedidosFinal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPedidosFinal.Image = global::MultiFashion.Properties.Resources.request128px;
+            this.picPedidosFinal.Image = global::MultimodeSales.Properties.Resources.request128px;
             this.picPedidosFinal.Location = new System.Drawing.Point(35, 0);
             this.picPedidosFinal.Name = "picPedidosFinal";
             this.picPedidosFinal.Size = new System.Drawing.Size(150, 155);
@@ -477,7 +477,7 @@
             // picVenta
             // 
             this.picVenta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picVenta.Image = global::MultiFashion.Properties.Resources.sales128px;
+            this.picVenta.Image = global::MultimodeSales.Properties.Resources.sales128px;
             this.picVenta.Location = new System.Drawing.Point(35, 0);
             this.picVenta.Name = "picVenta";
             this.picVenta.Size = new System.Drawing.Size(150, 155);
@@ -502,7 +502,7 @@
             // picDevolucion
             // 
             this.picDevolucion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picDevolucion.Image = global::MultiFashion.Properties.Resources.return128px;
+            this.picDevolucion.Image = global::MultimodeSales.Properties.Resources.return128px;
             this.picDevolucion.Location = new System.Drawing.Point(35, 0);
             this.picDevolucion.Name = "picDevolucion";
             this.picDevolucion.Size = new System.Drawing.Size(150, 155);
@@ -564,7 +564,7 @@
             // picGraph
             // 
             this.picGraph.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picGraph.Image = global::MultiFashion.Properties.Resources.diagram128px;
+            this.picGraph.Image = global::MultimodeSales.Properties.Resources.diagram128px;
             this.picGraph.Location = new System.Drawing.Point(35, 0);
             this.picGraph.Name = "picGraph";
             this.picGraph.Size = new System.Drawing.Size(150, 155);
@@ -649,7 +649,7 @@
             // picPrueba
             // 
             this.picPrueba.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPrueba.Image = global::MultiFashion.Properties.Resources.packages_128px;
+            this.picPrueba.Image = global::MultimodeSales.Properties.Resources.packages_128px;
             this.picPrueba.Location = new System.Drawing.Point(35, 0);
             this.picPrueba.Name = "picPrueba";
             this.picPrueba.Size = new System.Drawing.Size(150, 155);
@@ -670,7 +670,7 @@
             // panelBarra
             // 
             this.panelBarra.BackColor = System.Drawing.Color.Transparent;
-            this.panelBarra.BackgroundImage = global::MultiFashion.Properties.Resources.background5;
+            this.panelBarra.BackgroundImage = global::MultimodeSales.Properties.Resources.background5;
             this.panelBarra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBarra.Controls.Add(this.picClose);
             this.panelBarra.Controls.Add(this.lbHora);
@@ -686,7 +686,7 @@
             // picClose
             // 
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::MultiFashion.Properties.Resources.close48;
+            this.picClose.Image = global::MultimodeSales.Properties.Resources.close48;
             this.picClose.Location = new System.Drawing.Point(1070, 0);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(48, 48);
@@ -711,7 +711,7 @@
             // picMinimize
             // 
             this.picMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picMinimize.Image = global::MultiFashion.Properties.Resources.minimize48px;
+            this.picMinimize.Image = global::MultimodeSales.Properties.Resources.minimize48px;
             this.picMinimize.Location = new System.Drawing.Point(1025, 0);
             this.picMinimize.Name = "picMinimize";
             this.picMinimize.Size = new System.Drawing.Size(48, 48);
@@ -736,7 +736,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::MultiFashion.Properties.Resources.background3;
+            this.panel1.BackgroundImage = global::MultimodeSales.Properties.Resources.background3;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.lbAdmin);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -761,7 +761,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::MultiFashion.Properties.Resources.admin128px;
+            this.pictureBox1.Image = global::MultimodeSales.Properties.Resources.admin128px;
             this.pictureBox1.Location = new System.Drawing.Point(3, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(224, 134);

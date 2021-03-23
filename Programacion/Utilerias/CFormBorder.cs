@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace MultiFashion.Programacion
+namespace MultimodeSales.Programacion
 {
     public static class CFormBorder
     {

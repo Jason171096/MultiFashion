@@ -1,5 +1,5 @@
-﻿using MultiFashion.Programacion;
-using MultiFashion.Programacion.Utilerias;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Utilerias;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Vistas.Ventas
+namespace MultimodeSales.Vistas.Ventas
 {
     public partial class Ticket : Form
     {

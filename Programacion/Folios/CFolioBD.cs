@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiFashion.Programacion.Folios
+namespace MultimodeSales.Programacion.Folios
 {
     public class CFolioBD
     {

@@ -1,4 +1,4 @@
-﻿using MultiFashion.Programacion.Utilerias;
+﻿using MultimodeSales.Programacion.Utilerias;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiFashion.Programacion.Excel
+namespace MultimodeSales.Programacion.Excel
 {
     class CExcelDB
     {

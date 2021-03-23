@@ -1,13 +1,13 @@
-﻿using MultiFashion.Programacion;
-using MultiFashion.Programacion.Marca;
-using MultiFashion.Programacion.Modelo;
-using MultiFashion.Programacion.Utilerias;
+﻿using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Marca;
+using MultimodeSales.Programacion.Modelo;
+using MultimodeSales.Programacion.Utilerias;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace MultiFashion.Vistas.Modelos
+namespace MultimodeSales.Vistas.Modelos
 {
     public partial class EditModelo : Form
     {

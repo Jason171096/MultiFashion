@@ -1,4 +1,4 @@
-﻿namespace MultiFashion.Vistas.Ventas
+﻿namespace MultimodeSales.Vistas.Ventas
 {
     partial class Venta
     {
@@ -40,7 +40,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UCComboBox = new MultiFashion.Componentes.UCcomboBoxCliente();
+            this.UCComboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.rbtnAgregarPedido = new RoundButton.RoundButton();
             this.rbtnAgregarModelo = new RoundButton.RoundButton();
             this.rbtnAplicarDevolucion = new RoundButton.RoundButton();
-            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();

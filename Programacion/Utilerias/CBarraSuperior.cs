@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MultiFashion.Programacion
+namespace MultimodeSales.Programacion
 {
     public static class CBarraSuperior
     {

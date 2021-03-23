@@ -1,10 +1,10 @@
-﻿using MultiFashion.Programacion;
+﻿using MultimodeSales.Programacion;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using MultiFashion.Programacion.Utilerias;
+using MultimodeSales.Programacion.Utilerias;
 
-namespace MultiFashion.Vistas.Ventas
+namespace MultimodeSales.Vistas.Ventas
 {
     public partial class DialogVenta : Form
     {

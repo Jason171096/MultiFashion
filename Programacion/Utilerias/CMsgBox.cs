@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Programacion.Utilerias
+namespace MultimodeSales.Programacion.Utilerias
 {
     public static class CMsgBox
     {

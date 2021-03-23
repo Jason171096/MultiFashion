@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace MultiFashion.Programacion
+namespace MultimodeSales.Programacion
 {
     class Conexion
     {

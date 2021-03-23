@@ -1,4 +1,4 @@
-﻿namespace MultiFashion.Vistas
+﻿namespace MultimodeSales.Vistas
 {
     partial class PedidosFinal
     {
@@ -65,7 +65,7 @@
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.rbtnFinalizar = new RoundButton.RoundButton();
             this.btnExportExcel = new System.Windows.Forms.Button();
-            this.UCBarraSuperior = new MultiFashion.Componentes.UCBarraSuperior();
+            this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosFinal)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -539,7 +539,7 @@
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExportExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnExportExcel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnExportExcel.Image = global::MultiFashion.Properties.Resources.excel24;
+            this.btnExportExcel.Image = global::MultimodeSales.Properties.Resources.excel24;
             this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExportExcel.Location = new System.Drawing.Point(884, 598);
             this.btnExportExcel.Name = "btnExportExcel";

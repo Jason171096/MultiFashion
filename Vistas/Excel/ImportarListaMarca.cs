@@ -3,15 +3,15 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using excel = Microsoft.Office.Interop.Excel;
-using MultiFashion.Programacion.Marca;
+using MultimodeSales.Programacion.Marca;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using MultiFashion.Programacion;
-using MultiFashion.Programacion.Modelo;
-using MultiFashion.Programacion.Utilerias;
+using MultimodeSales.Programacion;
+using MultimodeSales.Programacion.Modelo;
+using MultimodeSales.Programacion.Utilerias;
 
-namespace MultiFashion.Vistas
+namespace MultimodeSales.Vistas
 {
     public partial class ImportarListaMarca : Form
     {

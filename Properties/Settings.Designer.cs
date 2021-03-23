@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MultiFashion.Properties
+namespace MultimodeSales.Properties
 {
 
 

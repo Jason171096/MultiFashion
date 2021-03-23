@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Programacion.Cliente
+namespace MultimodeSales.Programacion.Cliente
 {
     class CClienteDB
     {      

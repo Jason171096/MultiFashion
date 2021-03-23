@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using System.Windows.Forms;
-using MultiFashion.Programacion.Cliente;
+using MultimodeSales.Programacion.Cliente;
 
-namespace MultiFashion.Componentes
+namespace MultimodeSales.Componentes
 {
     public partial class UCcomboBoxCliente : UserControl
     {

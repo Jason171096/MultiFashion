@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MultiFashion.Componentes
+namespace MultimodeSales.Componentes
 {
     public partial class UCListViewItem : UserControl
     {

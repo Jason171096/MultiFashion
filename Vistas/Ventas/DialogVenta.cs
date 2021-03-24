@@ -27,13 +27,10 @@ namespace MultimodeSales.Vistas.Ventas
         {
             lbTotal.Text = total;
             lbCambio.Text = "$0.00";
-            //txtCantidad.Text = "$0.00";
             lbCambio.ForeColor = Color.Red;
             txtCantidad.Focus();
             txtCantidad.SelectAll();
         }
-        //float floatCantidad = float.Parse(txtCantidad.Text.Replace("$", ""));
-        //txtCantidad.Text = string.Format("{0:C}", floatCantidad);
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {

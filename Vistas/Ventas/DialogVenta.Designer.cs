@@ -29,7 +29,6 @@ namespace MultimodeSales.Vistas.Ventas
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogVenta));
             this.lbCambio = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
             this.tbLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -38,9 +37,6 @@ namespace MultimodeSales.Vistas.Ventas
             this.label2 = new System.Windows.Forms.Label();
             this.tbLayoutTotal = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.rbtnVender = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.tbLayout.SuspendLayout();
@@ -97,7 +93,7 @@ namespace MultimodeSales.Vistas.Ventas
             this.txtCantidad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.txtCantidad.Location = new System.Drawing.Point(3, 81);
-            this.txtCantidad.MaxLength = 5;
+            this.txtCantidad.MaxLength = 6;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(445, 53);
             this.txtCantidad.TabIndex = 2;
@@ -162,20 +158,6 @@ namespace MultimodeSales.Vistas.Ventas
             this.label1.TabIndex = 65;
             this.label1.Text = "Total:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
             // 
             // rbtnVender
             // 
@@ -249,9 +231,6 @@ namespace MultimodeSales.Vistas.Ventas
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tbLayoutCambio;
         private System.Windows.Forms.Label label2;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private RoundButton.RoundButton rbtnVender;
         private RoundButton.RoundButton rbtnCancelar;
     }

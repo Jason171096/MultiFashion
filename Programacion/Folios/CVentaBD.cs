@@ -44,13 +44,14 @@ namespace MultimodeSales
             return result;
         }
 
-        public void ventaPedido(string pIDFolio, string pIDPedido)
+        public void ventaPedido(string pIDFolio, string pIDPedido, double pPrecioVendido)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("VentaPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            cmd.Parameters.Add(new MySqlParameter("precioVendido", pPrecioVendido));
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }

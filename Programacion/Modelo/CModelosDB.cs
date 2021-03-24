@@ -14,16 +14,16 @@ namespace MultimodeSales.Programacion.Modelo
     {
         Conexion conexion = new Conexion();
         MySqlDataAdapter da = new MySqlDataAdapter();
-        public DataTable ObtenerModelos(int inicio, int opcion, string buscar, DateTime dateTime)
+        public DataTable ObtenerModelos(int pInicio, int pOpcion, string pBuscar, DateTime pDateTime)
         {
             conexion.OpenConnection();
             DataTable dt = new DataTable();
             MySqlCommand cmd = new MySqlCommand("VerModelosLimit", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new MySqlParameter("inicio", inicio));
-            cmd.Parameters.Add(new MySqlParameter("opcion", opcion));
-            cmd.Parameters.Add(new MySqlParameter("buscar", buscar));
-            cmd.Parameters.Add(new MySqlParameter("fecha", dateTime.Date));
+            cmd.Parameters.Add(new MySqlParameter("inicio", pInicio));
+            cmd.Parameters.Add(new MySqlParameter("opcion", pOpcion));
+            cmd.Parameters.Add(new MySqlParameter("buscar", pBuscar));
+            cmd.Parameters.Add(new MySqlParameter("fecha", pDateTime.Date));
             da.SelectCommand = cmd;
             dt.Clear();
             da.Fill(dt);

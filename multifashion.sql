@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2021 a las 00:55:22
+-- Tiempo de generación: 24-03-2021 a las 20:38:35
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -105,10 +105,10 @@ BEGIN
 	INSERT INTO devolucion(devolucion.IDFolio, devolucion.IDCliente, devolucion.Fecha, devolucion.Total) VALUES(idfolio, idcliente, fecha, total);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionPedido` (IN `idfolio` BIGINT, IN `idpedido` BIGINT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DevolucionPedido` (IN `idfolio` BIGINT, IN `idpedido` BIGINT, IN `precioVendido` DECIMAL(10,2))  NO SQL
 BEGIN
 	UPDATE pedidos SET pedidos.Devuelto = 1, pedidos.Vendido = 0 WHERE pedidos.IDPedido = idpedido;
-    INSERT INTO devolucion_pedidos(devolucion_pedidos.IDFolio, devolucion_pedidos.IDPedido) VALUES(idfolio, idpedido);
+    INSERT INTO devolucion_pedidos(devolucion_pedidos.IDFolio, devolucion_pedidos.IDPedido, devolucion_pedidos.PrecioVendido) VALUES(idfolio, idpedido, precioVendido);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `EditarCliente` (IN `idclienteActual` BIGINT, IN `idcliente` BIGINT, IN `nombre` VARCHAR(50))  NO SQL
@@ -183,7 +183,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerDevolucionesPedido` (IN `idcliente` BIGINT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, dp.IDFolio, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
+    SELECT p.IDPedido, dp.IDFolio, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(dp.precioVendido, 2)) AS 'Precio Cliente' FROM pedidos p INNER JOIN modelos m ON p.IDModelo = m.IDModelo LEFT JOIN devolucion_pedidos dp ON dp.IDPedido = p.IDPedido LEFT JOIN devolucion d ON dp.IDFolio = d.IDFolio WHERE d.IDCliente = idcliente;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerFolioDevolucionesClientes` (IN `idcliente` INT)  NO SQL
@@ -196,10 +196,10 @@ BEGIN
 	INSERT INTO venta(venta.IDFolio, venta.IDCliente, venta.Fecha, venta.Total) VALUES (idfolio, idcliente, fecha, total);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaPedido` (IN `idfolio` BIGINT, IN `idpedido` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VentaPedido` (IN `idfolio` BIGINT, IN `idpedido` INT, IN `precioVendido` DECIMAL(10,2))  NO SQL
 BEGIN
-	UPDATE pedidos SET pedidos.Llego = 0, pedidos.Vendido = 1, pedidos.Devuelto = 0 WHERE pedidos.IDPedido = idpedido;
-    INSERT INTO venta_pedidos(venta_pedidos.IDFolio, venta_pedidos.IDPedido) VALUES(idfolio, idpedido);
+	UPDATE pedidos p SET p.Llego = 0, p.Vendido = 1, p.Devuelto = 0 WHERE p.IDPedido = idpedido;
+    INSERT INTO venta_pedidos(venta_pedidos.IDFolio, venta_pedidos.IDPedido, venta_pedidos.PrecioVendido) VALUES(idfolio, idpedido, precioVendido);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerClientes` ()  READS SQL DATA
@@ -233,7 +233,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerFolioVentaPedidoCliente` (IN `idfolio` INT)  NO SQL
 BEGIN
-	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(m.PrecioCliente, 2)) AS 'Precio Cliente', p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
+	SELECT p.IDPedido, p.IDModelo AS 'Modelo', `NombreMarca`(m.IDMarca) AS 'Marca', p.Color, p.Talla, CONCAT('$', FORMAT(vp.precioVendido, 2)) AS 'Precio Cliente', p.Llego, p.Vendido, p.Devuelto FROM ((venta_pedidos vp INNER JOIN pedidos p ON vp.IDPedido = p.IDPedido) INNER JOIN modelos m ON m.IDModelo = p.IDModelo) WHERE vp.IDFolio = idfolio;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VerListaPedidoFinal` (IN `opcion` INT, IN `buscar` VARCHAR(50), IN `fechaInicial` DATE, IN `fechaFinal` DATE)  READS SQL DATA
@@ -427,7 +427,8 @@ CREATE TABLE `devolucion` (
 --
 
 INSERT INTO `devolucion` (`IDFolio`, `IDCliente`, `Fecha`, `Total`, `Completo`) VALUES
-(1, 101, '2021-03-23 16:53:25', '350.00', b'0');
+(1, 101, '2021-03-24 13:00:03', '45.00', b'0'),
+(2, 101, '2021-03-24 13:37:07', '152.50', b'0');
 
 -- --------------------------------------------------------
 
@@ -439,6 +440,7 @@ CREATE TABLE `devolucion_pedidos` (
   `IDDevolucionPedido` bigint(20) NOT NULL,
   `IDFolio` bigint(20) NOT NULL,
   `IDPedido` bigint(20) NOT NULL,
+  `PrecioVendido` decimal(10,2) NOT NULL,
   `Aceptado` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -446,9 +448,9 @@ CREATE TABLE `devolucion_pedidos` (
 -- Volcado de datos para la tabla `devolucion_pedidos`
 --
 
-INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`, `Aceptado`) VALUES
-(12, 1, 165, b'1'),
-(13, 1, 166, b'1');
+INSERT INTO `devolucion_pedidos` (`IDDevolucionPedido`, `IDFolio`, `IDPedido`, `PrecioVendido`, `Aceptado`) VALUES
+(14, 1, 178, '45.00', b'0'),
+(15, 2, 174, '152.50', b'0');
 
 -- --------------------------------------------------------
 
@@ -493,7 +495,7 @@ CREATE TABLE `modelos` (
 --
 
 INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`, `PrecioPublico`, `Fecha`) VALUES
-('1', 2, 'MENGUATE', '26', '100.00', NULL, '2020-10-15 11:03:09'),
+('1', 2, 'MENGUATE', '26', '152.50', NULL, '2020-10-15 11:03:09'),
 ('100', 7, 'AZUL', '22', '500.00', NULL, '2020-10-13 23:35:14'),
 ('10001', 7, 'MERLOT', '22 AL 26', '459.50', NULL, '2020-10-04 18:19:49'),
 ('10002', 7, 'AZUL', '25', '460.50', NULL, '2020-10-04 18:19:51'),
@@ -807,7 +809,7 @@ INSERT INTO `modelos` (`IDModelo`, `IDMarca`, `Color`, `Talla`, `PrecioCliente`,
 ('6762', 7, 'NEGRO', '22 AL 27  ENTEROS', '459.50', NULL, '2020-10-04 18:19:49'),
 ('7', 6, 'CELESTE', '34', '633.30', NULL, '2020-10-19 14:31:38'),
 ('8', 6, 'ROSA', '22 AL 28', '1050.50', NULL, '2020-10-19 15:05:43'),
-('801', 7, 'LADRILLO', '22 AL 26', '45.00', NULL, '2020-10-04 18:19:48'),
+('801', 7, 'LADRILLO', '22 AL 26', '50.00', NULL, '2020-10-04 18:19:48'),
 ('8049', 7, 'NEGRO', '23 AL 26', '505.50', NULL, '2020-10-04 18:19:49'),
 ('8050', 7, 'NUTRIA', '23 AL 26', '574.50', NULL, '2020-10-04 18:19:49'),
 ('95184', 7, 'NEGRO', '23 AL 26', '896.50', NULL, '2020-10-04 18:19:49');
@@ -835,12 +837,11 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`IDPedido`, `IDModelo`, `IDCliente`, `Color`, `Talla`, `Fecha`, `Llego`, `Vendido`, `Devuelto`) VALUES
-(161, '100', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
-(162, '1', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
-(163, '2', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
-(164, '3', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'1', b'0'),
-(165, '4', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'0', b'1'),
-(166, '6', 101, 'AZUL', 'M', '2021-03-23 16:49:59', b'0', b'0', b'1');
+(174, '1', 101, 'AZUL', 'CH', '2021-03-24 12:58:04', b'0', b'0', b'1'),
+(175, '100', 101, 'AZUL', 'CH', '2021-03-24 12:58:04', b'0', b'1', b'0'),
+(176, '12', 101, 'AZUL', 'CH', '2021-03-24 12:58:04', b'0', b'1', b'0'),
+(177, '325', 101, 'AZUL', 'CH', '2021-03-24 12:58:04', b'1', b'0', b'0'),
+(178, '801', 101, 'AZUL', 'CH', '2021-03-24 12:58:04', b'0', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -904,8 +905,7 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
-(1, 101, '2021-03-23 16:52:49', '1242.50'),
-(2, 101, '2021-03-23 16:54:18', '500.00');
+(1, 101, '2021-03-24 12:58:30', '1647.50');
 
 -- --------------------------------------------------------
 
@@ -916,20 +916,19 @@ INSERT INTO `venta` (`IDFolio`, `IDCliente`, `Fecha`, `Total`) VALUES
 CREATE TABLE `venta_pedidos` (
   `IDVentaPedido` bigint(20) NOT NULL,
   `IDFolio` bigint(20) NOT NULL,
-  `IDPedido` bigint(20) NOT NULL
+  `IDPedido` bigint(20) NOT NULL,
+  `PrecioVendido` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `venta_pedidos`
 --
 
-INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`) VALUES
-(86, 1, 165),
-(87, 1, 164),
-(88, 1, 166),
-(89, 1, 161),
-(90, 2, 163),
-(91, 2, 162);
+INSERT INTO `venta_pedidos` (`IDVentaPedido`, `IDFolio`, `IDPedido`, `PrecioVendido`) VALUES
+(96, 1, 174, '152.50'),
+(97, 1, 175, '500.00'),
+(98, 1, 176, '950.00'),
+(99, 1, 178, '45.00');
 
 --
 -- Índices para tablas volcadas
@@ -1007,7 +1006,8 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `venta_pedidos`
   ADD PRIMARY KEY (`IDVentaPedido`),
-  ADD KEY `IDPedido` (`IDPedido`);
+  ADD KEY `IDPedido` (`IDPedido`),
+  ADD KEY `IDFolio` (`IDFolio`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -1035,13 +1035,13 @@ ALTER TABLE `devolucion`
 -- AUTO_INCREMENT de la tabla `devolucion_pedidos`
 --
 ALTER TABLE `devolucion_pedidos`
-  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IDDevolucionPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `IDPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT de la tabla `talla`
@@ -1059,7 +1059,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `IDVentaPedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- Restricciones para tablas volcadas
@@ -1101,7 +1101,8 @@ ALTER TABLE `venta`
 -- Filtros para la tabla `venta_pedidos`
 --
 ALTER TABLE `venta_pedidos`
-  ADD CONSTRAINT `venta_pedidos_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`);
+  ADD CONSTRAINT `venta_pedidos_ibfk_1` FOREIGN KEY (`IDPedido`) REFERENCES `pedidos` (`IDPedido`),
+  ADD CONSTRAINT `venta_pedidos_ibfk_2` FOREIGN KEY (`IDFolio`) REFERENCES `venta` (`IDFolio`);
 
 DELIMITER $$
 --

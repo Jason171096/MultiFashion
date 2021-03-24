@@ -250,7 +250,6 @@ namespace MultimodeSales.Vistas.Ventas
         }
         private bool verificarFolioExistente()
         {
-
             bool verificarIDFolio = cVenta.verificarFolioVentaExistente(txtFolioVenta.Text);
             if (verificarIDFolio)
             {
@@ -276,7 +275,7 @@ namespace MultimodeSales.Vistas.Ventas
                     {
                         rows.Cells[0].Value = cPedido.AgregarPedidoProvisional(rows.Cells[1].Value.ToString(), UCComboBox.cboxCliente.SelectedValue.ToString(), rows.Cells[3].Value.ToString(), rows.Cells[4].Value.ToString());
                     }
-                    cVenta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString());
+                    cVenta.ventaPedido(txtFolioVenta.Text, rows.Cells[0].Value.ToString(), Convert.ToDouble(rows.Cells[5].Value.ToString().Trim('$')));
                 }
                 else
                 {

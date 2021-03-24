@@ -228,7 +228,7 @@ namespace MultimodeSales.Vistas
             cDevolucion.agregarDevolucionFolio(txtFolioDevolucion.Text, UCcboxCliente.cboxCliente.SelectedValue.ToString(), DateTime.Now, lbTotalDevolucion.Text);
             foreach (DataGridViewRow rows in dgvDevolucion.Rows)
             {
-                cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString());
+                cDevolucion.agregarDevolucionPedido(txtFolioDevolucion.Text, rows.Cells[0].Value.ToString(), Convert.ToDouble(rows.Cells[5].Value.ToString().Trim('$')));
             }
             CMsgBox.DisplayInfo("Devolucion confirmada");
             borrarTodo();

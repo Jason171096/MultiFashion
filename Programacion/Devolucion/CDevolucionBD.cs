@@ -24,13 +24,14 @@ namespace MultimodeSales.Programacion.Devolucion
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }
-        public void agregarDevolucionPedido(string pIDFolio, string pIDPedido)
+        public void agregarDevolucionPedido(string pIDFolio, string pIDPedido, double pPrecioVendido)
         {
             conexion.OpenConnection();
             MySqlCommand cmd = new MySqlCommand("DevolucionPedido", conexion.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new MySqlParameter("idfolio", pIDFolio));
             cmd.Parameters.Add(new MySqlParameter("idpedido", pIDPedido));
+            cmd.Parameters.Add(new MySqlParameter("precioVendido", pPrecioVendido));
             cmd.ExecuteNonQuery();
             conexion.CloseConnection();
         }

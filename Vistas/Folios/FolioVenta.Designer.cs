@@ -36,19 +36,19 @@ namespace MultimodeSales.Vistas.Folios
             this.txtFolio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbTotal = new System.Windows.Forms.Label();
+            this.UCdgvModelos = new MultimodeSales.Componentes.UCDataGridViewModelo();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.picEditFolio = new System.Windows.Forms.PictureBox();
             this.picImprimir = new System.Windows.Forms.PictureBox();
-            this.UCdgvModelos = new MultimodeSales.Componentes.UCDataGridViewModelo();
-            this.UCcboxCliente = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -126,6 +126,14 @@ namespace MultimodeSales.Vistas.Folios
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cliente";
             // 
+            // UCcboxCliente
+            // 
+            this.UCcboxCliente.Enabled = false;
+            this.UCcboxCliente.Location = new System.Drawing.Point(15, 31);
+            this.UCcboxCliente.Name = "UCcboxCliente";
+            this.UCcboxCliente.Size = new System.Drawing.Size(407, 34);
+            this.UCcboxCliente.TabIndex = 0;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label1);
@@ -142,6 +150,16 @@ namespace MultimodeSales.Vistas.Folios
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Venta";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(587, 283);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 24);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Total:";
             // 
             // panel1
             // 
@@ -161,6 +179,13 @@ namespace MultimodeSales.Vistas.Folios
             this.lbTotal.Size = new System.Drawing.Size(58, 24);
             this.lbTotal.TabIndex = 7;
             this.lbTotal.Text = "$total:";
+            // 
+            // UCdgvModelos
+            // 
+            this.UCdgvModelos.Location = new System.Drawing.Point(6, 28);
+            this.UCdgvModelos.Name = "UCdgvModelos";
+            this.UCdgvModelos.Size = new System.Drawing.Size(743, 240);
+            this.UCdgvModelos.TabIndex = 4;
             // 
             // pictureBox5
             // 
@@ -227,21 +252,6 @@ namespace MultimodeSales.Vistas.Folios
             this.picImprimir.TabStop = false;
             this.picImprimir.MouseHover += new System.EventHandler(this.picImprimir_MouseHover);
             // 
-            // UCdgvModelos
-            // 
-            this.UCdgvModelos.Location = new System.Drawing.Point(6, 28);
-            this.UCdgvModelos.Name = "UCdgvModelos";
-            this.UCdgvModelos.Size = new System.Drawing.Size(743, 240);
-            this.UCdgvModelos.TabIndex = 4;
-            // 
-            // UCcboxCliente
-            // 
-            this.UCcboxCliente.Enabled = false;
-            this.UCcboxCliente.Location = new System.Drawing.Point(15, 31);
-            this.UCcboxCliente.Name = "UCcboxCliente";
-            this.UCcboxCliente.Size = new System.Drawing.Size(407, 34);
-            this.UCcboxCliente.TabIndex = 0;
-            // 
             // UCBarraSuperior
             // 
             this.UCBarraSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UCBarraSuperior.BackgroundImage")));
@@ -250,16 +260,6 @@ namespace MultimodeSales.Vistas.Folios
             this.UCBarraSuperior.Name = "UCBarraSuperior";
             this.UCBarraSuperior.Size = new System.Drawing.Size(846, 48);
             this.UCBarraSuperior.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(587, 283);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 24);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Total:";
             // 
             // FolioVenta
             // 

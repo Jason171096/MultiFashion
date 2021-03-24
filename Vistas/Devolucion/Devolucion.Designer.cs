@@ -48,12 +48,6 @@ namespace MultimodeSales.Vistas
             this.label4 = new System.Windows.Forms.Label();
             this.checkCambioModelo = new MaterialSkin.Controls.MaterialCheckBox();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDTalla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBoxCambiar = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTotalDevolucion = new System.Windows.Forms.Label();
@@ -74,6 +68,12 @@ namespace MultimodeSales.Vistas
             this.rbtnAceptar = new RoundButton.RoundButton();
             this.rbtnCancelar = new RoundButton.RoundButton();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
+            this.IDPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDTalla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.gBoxCambiar.SuspendLayout();
@@ -269,46 +269,6 @@ namespace MultimodeSales.Vistas
             this.dgvDevolucion.Size = new System.Drawing.Size(850, 150);
             this.dgvDevolucion.TabIndex = 63;
             this.dgvDevolucion.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDevolucion_UserDeletedRow);
-            // 
-            // IDPedido
-            // 
-            this.IDPedido.HeaderText = "Pedido";
-            this.IDPedido.Name = "IDPedido";
-            this.IDPedido.ReadOnly = true;
-            this.IDPedido.Visible = false;
-            // 
-            // IDModelo
-            // 
-            this.IDModelo.HeaderText = "Modelo";
-            this.IDModelo.Name = "IDModelo";
-            this.IDModelo.ReadOnly = true;
-            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // IDMarca
-            // 
-            this.IDMarca.HeaderText = "Marca";
-            this.IDMarca.Name = "IDMarca";
-            this.IDMarca.ReadOnly = true;
-            // 
-            // IDColor
-            // 
-            this.IDColor.HeaderText = "Color";
-            this.IDColor.Name = "IDColor";
-            this.IDColor.ReadOnly = true;
-            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // IDTalla
-            // 
-            this.IDTalla.HeaderText = "Talla";
-            this.IDTalla.Name = "IDTalla";
-            this.IDTalla.ReadOnly = true;
-            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Precio Cliente";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // gBoxCambiar
             // 
@@ -569,6 +529,46 @@ namespace MultimodeSales.Vistas
             this.UCBarraSuperior.Size = new System.Drawing.Size(880, 48);
             this.UCBarraSuperior.TabIndex = 69;
             // 
+            // IDPedido
+            // 
+            this.IDPedido.HeaderText = "Pedido";
+            this.IDPedido.Name = "IDPedido";
+            this.IDPedido.ReadOnly = true;
+            this.IDPedido.Visible = false;
+            // 
+            // IDModelo
+            // 
+            this.IDModelo.HeaderText = "Modelo";
+            this.IDModelo.Name = "IDModelo";
+            this.IDModelo.ReadOnly = true;
+            this.IDModelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // IDMarca
+            // 
+            this.IDMarca.HeaderText = "Marca";
+            this.IDMarca.Name = "IDMarca";
+            this.IDMarca.ReadOnly = true;
+            // 
+            // IDColor
+            // 
+            this.IDColor.HeaderText = "Color";
+            this.IDColor.Name = "IDColor";
+            this.IDColor.ReadOnly = true;
+            this.IDColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // IDTalla
+            // 
+            this.IDTalla.HeaderText = "Talla";
+            this.IDTalla.Name = "IDTalla";
+            this.IDTalla.ReadOnly = true;
+            this.IDTalla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Precio Vendido";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -629,17 +629,17 @@ namespace MultimodeSales.Vistas
         private MaterialSkin.Controls.MaterialCheckBox checkBuscarFolio;
         private System.Windows.Forms.TextBox txtFolioVenta;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDColor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDTalla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDModelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMarca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDTalla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

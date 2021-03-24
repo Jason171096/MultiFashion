@@ -40,6 +40,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UCComboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.UCBarraSuperior = new MultimodeSales.Componentes.UCBarraSuperior();
-            this.UCComboBox = new MultimodeSales.Componentes.UCcomboBoxCliente();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasPedido)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -181,6 +181,14 @@
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
+            // 
+            // UCComboBox
+            // 
+            this.UCComboBox.Location = new System.Drawing.Point(81, 44);
+            this.UCComboBox.Margin = new System.Windows.Forms.Padding(6);
+            this.UCComboBox.Name = "UCComboBox";
+            this.UCComboBox.Size = new System.Drawing.Size(375, 35);
+            this.UCComboBox.TabIndex = 42;
             // 
             // label4
             // 
@@ -386,12 +394,12 @@
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(24, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(22, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(82, 18);
+            this.materialLabel2.Size = new System.Drawing.Size(84, 19);
             this.materialLabel2.TabIndex = 39;
             this.materialLabel2.Text = "Devolución";
             // 
@@ -420,12 +428,12 @@
             this.lbLeyenda1.AutoSize = true;
             this.lbLeyenda1.Depth = 0;
             this.lbLeyenda1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLeyenda1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbLeyenda1.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbLeyenda1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLeyenda1.Location = new System.Drawing.Point(22, 0);
+            this.lbLeyenda1.Location = new System.Drawing.Point(20, 0);
             this.lbLeyenda1.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbLeyenda1.Name = "lbLeyenda1";
-            this.lbLeyenda1.Size = new System.Drawing.Size(122, 18);
+            this.lbLeyenda1.Size = new System.Drawing.Size(124, 19);
             this.lbLeyenda1.TabIndex = 39;
             this.lbLeyenda1.Text = "No Seleccionado";
             // 
@@ -454,12 +462,12 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(26, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(24, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(98, 18);
+            this.materialLabel1.Size = new System.Drawing.Size(100, 19);
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Seleccionado";
             // 
@@ -484,14 +492,6 @@
             this.UCBarraSuperior.Name = "UCBarraSuperior";
             this.UCBarraSuperior.Size = new System.Drawing.Size(879, 48);
             this.UCBarraSuperior.TabIndex = 72;
-            // 
-            // UCComboBox
-            // 
-            this.UCComboBox.Location = new System.Drawing.Point(81, 44);
-            this.UCComboBox.Margin = new System.Windows.Forms.Padding(6);
-            this.UCComboBox.Name = "UCComboBox";
-            this.UCComboBox.Size = new System.Drawing.Size(375, 35);
-            this.UCComboBox.TabIndex = 42;
             // 
             // Venta
             // 
